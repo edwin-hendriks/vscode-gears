@@ -1,0 +1,310 @@
+{
+	/*
+	 // Place your snippets for GEARS here. Each snippet is defined under a snippet name and has a prefix, body and 
+	 // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	 // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
+	 // Example:
+	 "Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	}
+*/
+	"New process": {
+		"prefix": "process: RESULTS",
+		"body": [
+			"Process '${1:process_name}' with subject #('${2:subject_title}': ${3:subject_element}) startable by ${4:batch_starter_actor}",
+			"",
+			"description '${5:description}'",
+			"",
+			"/* GLOBAL RESULTS */",
+			"",
+			"The following applies:",
+			"\t$0",
+			"",
+			"/* DETAILS PER RESULT */",
+			"",
+			"/* INFORMATION NEEDED */",
+			""
+		],
+		"description": "Basic snippet for creating a new process end result specification. The 'with subject' and 'startable by' are optional. The 'with subject' is only usefull if the process has more than one yellow (interactive) process step. The 'startable by' is only usefull for fully automated processes. Since before GEARS v4.3.0."
+	},
+	"One exists": {
+		"prefix": "one: ELEMENT",
+		"body": [
+			"One ${1:element_name} exists in ${2:collection_name} with:",
+			"\t${3:attribute_name}\t= ${4:value_expression}",
+			"\t$0"
+		],
+		"description": "Creates one element and returns it. Since before GEARS v4.3.0."
+	},
+	"Several exist": {
+		"prefix": "several: COLLECTION",
+		"body": [
+			"Several ${1:element_name} exist in ${2:collection_name} with:",
+			"\t${3:attribute_name}\t= ${4:value_expression}",
+			"\t$0"
+		],
+		"description": "Creates several elements in a collection and return a collection of elements created. Since before GEARS v4.3.0."
+	},
+	"For the": {
+		"prefix": "for the",
+		"body": [
+			"For the ${1:element_name} in ${2:filtered_collection} applies:",
+			"${1:element_name}.${3:attribute_name}\t= ${4:value_expression}",
+			"\tand",
+			"$0"
+		],
+		"description": "Achieve one or more results for one element. Any result is seperated by 'and' . Since before GEARS v4.3.0."
+	},
+	"For each": {
+		"prefix": "for each: LIST or results",
+		"body": [
+			"For each ${1:element_name} in ${2:numerous:numerous} :${3:filtered_collection} applies:",
+			"${1:element_name}.${4:attribute_name}\t= ${5:value_expression}",
+			"\tand",
+			"$0"
+		],
+		"description": "Achieve one or more results for multiple elements. Any result is seperated by 'and'. Add 'numerous' only if you need to process a lot of elements (e.g. more then 1000). You can leave out 'applies'. If so this For each will result in a list value.  (since before GEARS v4.3.0)"
+	},
+	"If then {else}": {
+		"prefix": "if",
+		"body": [
+			"if ${1:condition} then ${2:true_expression_or_result} else ${3:false_expression_or_result}$0"
+		],
+		"description": "If then else which can produce both a conditional expression (a value) or a conditional result. The 'else' part is optional. If ommitted there will be either an empty value or no result. Since before GEARS v4.3.0."
+	},
+	"addWorkDays": {
+		"prefix": "addWorkDays: date",
+		"body": "addWorkDays(${1:startdate}, ${2:number_of_workdays})$0",
+		"description": "E.g. addWorkDays(date('21-03-2017'), 5) == date('28-03-2017'). Results in a date value which is startdate + number_of_workdays as workdays. Since before GEARS v4.3.0."
+	},
+	"asMillis": {
+		"prefix": "asMillis: integer",
+		"body": "asMillis(${1:date_or_timestamp})$0",
+		"description": "Results in the number of milliseconds since 1970-01-01 up to the date_or_timestamp. Since before GEARS v4.3.0."
+	},
+	"capitalize": {
+		"prefix": "capitalize: text",
+		"body": "capitalize(${1:t})$0",
+		"description": "Transforms the first letter of t in capital case. Since before GEARS v4.3.0."
+	},
+	"concat": {
+		"prefix": "concat: text",
+		"body": "concat(${1:list_with_text_values})$0",
+		"description": "E.g. concat(['A', 'B', 'C']) will result in 'ABC'. Concats all text values in list_with_text_values. Since before GEARS v4.3.0."
+	},
+	"count": {
+		"prefix": "count: integer",
+		"body": "count(${1:collection_or_list})$0",
+		"description": "The number of elements in the collection_or_list. Since before GEARS v4.3.0."
+	},
+	"currentDate": {
+		"prefix": "currentDate: date",
+		"body": "currentDate()$0",
+		"description": "Returns the current date of the computer the software is running on. Since before GEARS v4.3.0."
+	},
+	"currentTimestamp": {
+		"prefix": "currentTimestamp: timestamp",
+		"body": "currentTimestamp()$0",
+		"description": "Returns current date and time of the computer the created software is running on. Since before GEARS v4.3.0."
+	},
+	"date": {
+		"prefix": "date: date",
+		"body": "date(${1:text_value})$0",
+		"description": "E.g. date('31-12-2016') returns its equivalent date value. Returns a date value from the text_value with format dd-MM-yyyy. Since before GEARS v4.3.0."
+	},
+	"datePart": {
+		"prefix": "datePart: date",
+		"body": "datePart(${1:timestamp_value})$0",
+		"description": "Returns the date part of the timestamp_value"
+	},
+	"day": {
+		"prefix": "day: integer",
+		"body": "day(${1:date_or_timestamp_value})$0",
+		"description": "E.g. day(date('31-12-2016')) returns 31. Returns the day of the month of the date_or_timestamp_value. Since GEARS v4.3.5."
+	},
+	"days": {
+		"prefix": "days: integer",
+		"body": "days(${1:period_value})$0",
+		"description": "E.g. days(date('1-1-2017') - date('31-12-2016')) results in 1. Results the number of whole days of a period value.  Since GEARS v4.4.9."
+	},
+	"findInText": {
+		"prefix": "findInText: integer",
+		"body": "findInText(${1:text_value}, ${2:regex})$0",
+		"description": "E.g. findInText('AB 1234 CD', '[0-9]') results in 3. Results in an integer value which is first position in the text_value that matched the textual regular expression value regex (see http://regexr.com/ for more info). A match with the first character is 0 and no match results in -1. Since before GEARS v4.3.0."
+	},
+	"first": {
+		"prefix": "first: ELEMENT",
+		"body": "first(${1:collection}, ${2:error_message})$0",
+		"description": "E.g. first([1, 2, 3], 'some error message') results in 1. Results in the first element of a collection. Since before GEARS v4.3.0."
+	},
+	"format": {
+		"prefix": "format: text",
+		"body": "format(${1:date_time_timestamp_num_value}, ${2:format_pattern})$0",
+		"description": "E.g. format(12.34, '#.#') == '12.34' and format(12.34, '#.#', 'nl') == '12,34' and format(.2, '0.00', 'nl') == '0,20' and format(currentTimestamp(), 'EEEE dd MMMM YYYY HH:mm') == 'Friday 25 March 2016 13:56'. Results in a formatted text of the date_time_timestamp_num_value using the format_pattern. See https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html and http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html for more info on possible formats. Since GEARS v4.4.23."
+	},
+	"get": {
+		"prefix": "get: ELEMENT",
+		"body": "get(${1:collection_or_list}, ${2:N}, ${3:error_message})$0",
+		"description": "Returns the N-th element from the collection_or_list or the error_message. The parameter error_message is optional. If ommitted a standard error message will be used. Since before GEARS v4.3.0."
+	},
+	"getCollection": {
+		"prefix": "getCollection: ELEMENT",
+		"body": "getCollection(${1:collection_or_list}, ${2:N}, ${3:M}, ${3:error_message})$0",
+		"description": "Returns a collection containing elements N up and including M or throws the error_message. The parameter error_message is optional. If ommitted a standard error message will be used. Since before GEARS v4.3.0."
+	},
+	"getInstanceId": {
+		"prefix": "getInstanceId: text",
+		"body": "getInstanceId()$0",
+		"description": "Returns the identifier of the current process instance. Since before GEARS v4.3.0."
+	},
+	"integer": {
+		"prefix": "integer: integer",
+		"body": "integer(${1:text_value})$0",
+		"description": "E.g. integer('8') == 8. Returns the integer value of the text_value. Since before GEARS v4.3.0."
+	},
+	"decimal": {
+		"prefix": "decimal: decimal",
+		"body": "decimal(${1:text_value})$0",
+		"description": "E.g. decimal('8.123') == 8.123. Or decimal('1,23E+03') == 1230. Returns the decimal value of the text_value. Also support exponent (E+) notation. Since before GEARS v4.3.0."
+	},
+	"e": {
+		"prefix": "e: decimal",
+		"body": "e()$0",
+		"description": "Returns 2.7182818284 (the number e) with 10 decimal precsion. Since before GEARS v4.3.0."
+	},
+	"length": {
+		"prefix": "length: integer",
+		"body": "length(${1:text_value})$0",
+		"description": "E.g. length('Hi there') == 8. Returns an integer value which is the number of charachters in the text_value. Since before GEARS v4.3.0."
+	},
+	"lowercase": {
+		"prefix": "lowercase: text",
+		"body": "lowercase(${1:text_value})$0",
+		"description": "E.g. lowercase('Hi There') == 'hi there'. Returns text_value but all in lowercase letters. Since GEARS v4.4.44."
+	},
+	"max": {
+		"prefix": "max: any comparable value",
+		"body": "max(${1:collection})$0",
+		"description": "E.g. max([1,2,3]) == 3. Returns the maximum value of a list of values. Since before GEARS v4.3.0."
+	},
+	"min": {
+		"prefix": "min: any comparable value",
+		"body": "min(${1:collection})$0",
+		"description": "E.g. min([1,2,3]) == 1. Returns the minimum value of a list of values. Since before GEARS v4.3.0."
+	},
+	"month": {
+		"prefix": "month: integer",
+		"body": "month(${1:date_or_timestamp_value})$0",
+		"description": "E.g. month(date('31-12-2016')) == 12. Returns the month of the date_or_timestamp_value. Since GEARS v4.3.5."
+	},
+	"months": {
+		"prefix": "months: integer",
+		"body": "months(${1:period_value})$0",
+		"description": "E.g. months(date('1-1-2017') - date('01-01-2016')) == 12. Results in the number of whole months of a period value. Since GEARS v4.4.9."
+	},
+	"period": {
+		"prefix": "period: period",
+		"body": "period(${1:text_value})$0",
+		"description": "E.g. period('1 year 3 weeks 1 day 250 milliseconds') returns its equivalent period value. Returns a period value from the text_value. The text_value needs to be in the period format which is digits followed by period units being year, month, week, day, hour, minute, second, millisecond or its plural forms.  Since before GEARS v4.3.0."
+	},
+	"pi": {
+		"prefix": "pi: decimal",
+		"body": "pi()$0",
+		"description": "Returns 3.1415926535 (the number pi) with 10 decimal precsion. Since before GEARS v4.3.0."
+	},
+	"quarter": {
+		"prefix": "quarter: integer",
+		"body": "quarter(${1:date_or_timestamp_value})$0",
+		"description": "E.g. quarter(date('31-12-2016')) == 4. Returns an integer value which is the quarter of the date_or_timestamp_value. Since GEARS v4.4.36."
+	},
+	"regex_replace": {
+		"prefix": "replace: text",
+		"body": "replace(${1:text_value}, ${2:search_text}, ${3:replacement_text})$0",
+		"description": "E.g. regex_replace('This 1 text has 29 characters', ' [0-9]+', '') == 'This text has characters'. As the replace function but the search_text is now a regular expression (see http://regexr.com/ for info on regular expressions). Since before GEARS v4.3.0."
+	},
+	"replace": {
+		"prefix": "replace: text",
+		"body": "replace(${1:text_value}, ${2:search_text}, ${3:replacement_text})$0",
+		"description": "E.g. replace('To be or not to be', 'be', 'think') == 'To think or not to think'. Returns the text_value, but all parts in it that match search_text will be replaced with replacement_text. Since before GEARS v4.3.0."
+	},
+	"round": {
+		"prefix": "round: decimal",
+		"body": "roundDown(${1:decimal_value}, ${2:scale})$0",
+		"description": "E.g. round(1.945, 1) == 1.9. Returns the decimal_value, but rounded to the scale number of decimal digits. The 'normal' round half-up method is used. See https://en.wikipedia.org/wiki/Rounding#Round_half_up. Since before GEARS v4.3.0."
+	},
+	"roundDown": {
+		"prefix": "roundDown: decimal",
+		"body": "roundDown(${1:decimal_value}, ${2:scale})$0",
+		"description": "E.g. roundDown(1.99, 1) == 1.9. Returns the decimal_value, but rounded down to the scale number of decimal digits. Since before GEARS v4.3.0."
+	},
+	"separatedBy": {
+		"prefix": "separatedBy: text",
+		"body": "separatedBy(${1:list_of_textual_values}, ${2:seperator})$0",
+		"description": "E.g. separatedBy(['Apple', 'Banana', 'Citron'], ' is not a ') == 'Apple is not a Banana is not a Citron'. Returns the concatenation of the textual values in list_of_textual_values but seperated with seperator. Since before GEARS v4.3.0."
+	},
+	"sorted": {
+		"prefix": "sorted: COLLECTION",
+		"body": "sorted(${1:collection}, ${2:sort_directive})$0",
+		"description": "E.g. sorted(PERSONS, 'birthDate ascending lastName descending') returns PERSONS but sorted ascending on table attribute birthDate and then descending on table attribute lastName. Note that the table attribute is used. Not the logical entity/collection attribute. Since before GEARS v4.3.0."
+	},
+	"split": {
+		"prefix": "split: list of textual values",
+		"body": "split(${1:text_value}, ${2:seperator})$0",
+		"description": "E.g. split('Hello World!', ' ') == ['Hello', 'World!']. Returns a list of textual values which is the text_value splitted up using the textual seperator value. Since before GEARS v4.3.0."
+	},
+	"substring": {
+		"prefix": "substring: text",
+		"body": "substring(${1:text_value}, ${2:N}, ${3:M})$0",
+		"description": "E.g. substring('Hello World!', 7, 11) == 'World'. Returns a textual value which is the N-th character until and including the M-th character of text_value. Since before GEARS v4.3.0."
+	},
+	"sum": {
+		"prefix": "sum: integer or decimal or float",
+		"body": "sum(${1:list_of_numeric_values})$0",
+		"description": "E.g. sum(1, 2, 3) = 6. Returns the sum of the values in list_of_numeric_values. All values in the list should be either integer, or decimal or float. Since before GEARS v4.3.0."
+	},
+	"time": {
+		"prefix": "time: time",
+		"body": "time(${1:text_value})$0",
+		"description": "E.g. time('23:59:00') returns its equivalent time value. Returns a time value from the text_value which is in format HH:mm:ss. Since before GEARS v4.3.0."
+	},
+	"timePart": {
+		"prefix": "timePart: time",
+		"body": "timePart(${1:timestamp_value})$0",
+		"description": "Return a time value which is the time part of the timestamp_value"
+	},
+	"timestamp": {
+		"prefix": "timestamp: timestamp",
+		"body": "timestamp(${1:text_value})$0",
+		"description": "E.g. time('31-12-2016 23:59:00') returns its equivalent timestamp value. Returns a timestamp value from the text_value which needs to be in format dd-MM-yyyy HH:mm:ss. Since before GEARS v4.3.0."
+	},
+	"toHtml": {
+		"prefix": "toHtml: text rendered as HTML",
+		"body": "toHtml(${1:text_value})$0",
+		"description": "Returns the text_value but will be rendered as HTML when displayed in a browser. Since before GEARS v4.3.0."
+	},
+	"uppercase": {
+		"prefix": "uppercase: text",
+		"body": "uppercase(${1:text_value})$0",
+		"description": "E.g. uppercase('This is huge!') == 'THIS IS HUGE!'. Returns text_value but all in uppercase letters. Since GEARS v4.4.44."
+	},
+	"uniqueId": {
+		"prefix": "uniqueId: text",
+		"body": "uniqueId()$0",
+		"description": "Returns a global unique identifier. Since before GEARS v4.3.0."
+	},
+	"year": {
+		"prefix": "year: integer",
+		"body": "year(${1:date_or_timestamp_value})$0",
+		"description": "E.g. year(date('31-12-2016')) == 2016. Returns the year of the date_or_timestamp_value. Since GEARS v4.3.5."
+	},
+	"years": {
+		"prefix": "years: integer",
+		"body": "years(${1:period_value})$0",
+		"description": "E.g. months(date('1-1-2017') - date('01-01-2016')) == 1. Results in the number of whole years of a period value. Since GEARS v4.4.9."
+	}
+}

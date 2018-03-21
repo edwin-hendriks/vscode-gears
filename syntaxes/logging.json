@@ -1,0 +1,34 @@
+{
+    "scopeName": "logging",
+    "name": "Logging",
+    "fileTypes": ["log"],
+
+    "patterns": [
+        {
+            "include": "#levels"
+        }
+    ],
+
+    "repository": {
+        "levels": {
+            "patterns": [
+                {
+                    "match": ".*SUCCESS.*",
+                    "name": "log.happyresult"
+                },
+                {
+                    "match": "INFO|Info",
+                    "name": "log.info"
+                },
+                {
+                    "match": ".*WARN.*",
+                    "name": "log.warn"
+                },
+                {
+                    "match": ".*ERROR.*|.*FAILURE.*|.*caused by.*|.*Caused by.*",
+                    "name": "log.error"
+                }
+            ]
+        }
+    }
+}

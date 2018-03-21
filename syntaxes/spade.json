@@ -1,0 +1,172 @@
+{
+    "scopeName": "source.gears",
+    "name": "GEARS",
+    "fileTypes": ["gears", "pa"],
+
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#sentences"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#constants"
+        },
+        {
+            "include": "#functions"
+        },
+        {
+            "include": "#types"
+        }
+    ],
+
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "begin": "/\\*",
+                    "end": "\\*/",
+                    "name": "comment.block.gears"
+                },
+                {
+                    "begin": "//",
+                    "end": "\\n",
+                    "name": "comment.line.gears"
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [
+                {
+                    "begin": "(')",
+                    "end": "(')",
+                    "beginCaptures": {
+                        "1": { "name": "string.quoted.single.gears" }
+                    },
+                    "endCaptures": {
+                        "1": { "name": "string.quoted.single.gears" }
+                    },
+                    "patterns": [
+                        { "include": "#placeholders" },
+                        {
+                            "match": "\\\\.",
+                            "name": "constant.character.escape.gears"
+                        },
+                        {
+                            "match": "[^{'\\\\]*",
+                            "name": "string.quoted.single.gears"
+                        }
+                    ]
+                }
+            ]
+        },
+        "sentences": {
+            "patterns": [
+                {
+                    "begin": "(\")",
+                    "end": "(\")",
+                    "beginCaptures": {
+                        "1": { "name": "entity.other.attribute-name.gears" }
+                    },
+                    "endCaptures": {
+                        "1": { "name": "entity.other.attribute-name.gears" }
+                    },
+                    "patterns": [
+                        { "include": "#placeholders" },
+                        {
+                            "match": "\\\\.",
+                            "name": "constant.character.escape.gears"
+                        },
+                        {
+                            "match": "[^{\"\\\\]*",
+                            "name": "entity.other.attribute-name.gears"
+                        }
+                    ],
+                    "comment": "entity.other.attribute-name.gears entity.name.section.gears"
+                }
+            ]
+        },
+        "placeholders": {
+            "patterns": [
+                {
+                    "begin": "{",
+                    "end": "}",
+                    "patterns": [
+                        { "include": "$self" }
+                    ]
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "match": "\\b(Process|key|description|with subject|startable by)\\b",
+                    "name": "keyword.other.gears"
+                },
+                {
+                    "match": "\\b(For|One|Several|the|each|exists|exist|in|applies|with|numerous)\\b",
+                    "name": "keyword.control.gears"
+                },
+                {
+                    "match": "\\b(and|or|not|old|exists)\\b",
+                    "name": "keyword.operator.gears"
+                },
+                {
+                    "match": "\\b(The following)\\b",
+                    "name": "keyword.control.gears"
+                },
+                {
+                    "match": "\\b(if|then|else)\\b",
+                    "name": "keyword.control.gears"
+                },
+                {
+                    "match": "\\b(input|from|labeled|based on|chosen from|default)\\b",
+                    "name": "keyword.control.gears"
+                },
+                {
+                    "match": "\\b(sorted by|ascending|descending)\\b",
+                    "name": "keyword.other.gears"
+                },
+                {
+                    "match": "\\b(identifies|unique|required|displayed|label|group|opposite of|autovalue)\\b",
+                    "name": "keyword.other.gears"
+                }
+            ]
+        },
+        "constants": {
+            "patterns": [
+                {
+                    "match": "\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))f?\\b",
+                    "name": "constant.numeric.gears"
+                },
+                {
+                    "match": "\\b(true|false|emtpy)\\b",
+                    "name": "constant.language.gears"
+                }
+            ]
+        },
+        "functions": {
+            "patterns": [
+                {
+                    "match": "\\b(addWorkDays|asMillis|capitalize|concat|count|countDays|countNormalizedDays|currentDate|currentDateTime|date|datePart|day|month|year|years|decimal|findInText|first|format|get|getCollection|getInitiator|getInstanceId|integer|length|one|period|replace|round|roundDown|separatedBy|sorted|split|stringFromInteger|substring|sum|time|timePart|timestamp|toDays|tohtml|toUpperCase|uniqueId)(\\()\\b",
+                    "name": "entity.name.function.gears"
+                }
+            ]
+        },
+        "types": {
+            "patterns": [
+                {
+                    "match": "\\b(boolean|integer|decimal|float|text|date|time|timestamp|binary|any)\\b",
+                    "name": "entity.name.type.gears"
+                }
+            ]
+        }
+    }
+}
