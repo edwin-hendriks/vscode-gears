@@ -13,3 +13,7 @@ The environment variable "GEARS\_HOME" must point to the GEARS installation fold
 ### 0.1.0
 
 Initial release of vscode-gears.
+
+### 0.1.1
+
+Fixed some minor issues. Added actual syntax highlighting. Prevented Language server error (not that language server is not yet working).

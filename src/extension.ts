@@ -70,7 +70,8 @@ export function activate(context: vscode.ExtensionContext) {
     }
     
     function startServer(port: number) {
-        let jarFile = process.env["PAGEN_SERVER_JAR"];
+        let jarFile = process.env["GEARS_HOME"] + '\gears-generator\gears-generator.jar';
+        // TODO if jarFile does not exist, do not attempt to start the language server
         let args = [ '-Dstcs.port=' + port, '-jar', unquote(jarFile) ];
 
         logger.info("Starting Language Server: " + args);

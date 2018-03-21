@@ -2,7 +2,7 @@
   "name": "vscode-gears",
   "displayName": "GEARS Language Support",
   "description": "Support for the GEARS specification language",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "edwin-hendriks",
   "homepage": "https://github.com/edwin-hendriks/vscode-gears",
   "license": "GPL-3.0",
