@@ -111,7 +111,7 @@
                     "name": "keyword.other.gears"
                 },
                 {
-                    "match": "\\b(For|One|Several|the|each|exists|exist|in|applies|with|numerous)\\b",
+                    "match": "\\b(For|One|Several|the|each|is created with|are created with|in|applies|with|numerous)\\b",
                     "name": "keyword.control.gears"
                 },
                 {
@@ -119,7 +119,7 @@
                     "name": "keyword.operator.gears"
                 },
                 {
-                    "match": "\\b(The following)\\b",
+                    "match": "\\b(Results in)\\b",
                     "name": "keyword.control.gears"
                 },
                 {
@@ -155,7 +155,7 @@
         "functions": {
             "patterns": [
                 {
-                    "match": "\\b(addWorkDays|asMillis|capitalize|concat|count|countDays|countNormalizedDays|currentDate|currentDateTime|date|datePart|day|month|year|years|decimal|findInText|first|format|get|getCollection|getInitiator|getInstanceId|integer|length|one|period|replace|round|roundDown|separatedBy|sorted|split|stringFromInteger|substring|sum|time|timePart|timestamp|toDays|tohtml|toUpperCase|uniqueId)(\\()\\b",
+                    "match": "\\b(addWorkDays|asMillis|capitalize|concat|count|countDays|countNormalizedDays|currentDate|currentDateTime|date|datePart|day|month|year|years|num|findInText|first|format|get|getCollection|getInitiator|getInstanceId|integer|length|one|period|replace|round|roundDown|separatedBy|sorted|split|stringFromInteger|substring|sum|time|timePart|timestamp|toDays|tohtml|toUpperCase|uniqueId)(\\()\\b",
                     "name": "entity.name.function.gears"
                 }
             ]
@@ -163,7 +163,7 @@
         "types": {
             "patterns": [
                 {
-                    "match": "\\b(boolean|integer|decimal|float|text|date|time|timestamp|binary|any)\\b",
+                    "match": "\\b(boolean|number|percentage|text|date|time|datetime|period|tuple|binary)\\b",
                     "name": "entity.name.type.gears"
                 }
             ]
