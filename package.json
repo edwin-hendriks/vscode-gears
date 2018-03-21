@@ -1,8 +1,8 @@
 {
   "name": "vscode-gears",
   "displayName": "GEARS Language Support",
-  "description": "Support for the GEARS L4 specification language",
-  "version": "0.2.3",
+  "description": "Support for the GEARS specification language",
+  "version": "0.1",
   "publisher": "edwin-hendriks",
   "homepage": "https://github.com/edwin-hendriks/vscode-gears",
   "license": "GPL-3.0",
@@ -28,8 +28,7 @@
       {
         "id": "gears",
         "extensions": [
-          ".gears",
-          ".pa"
+          ".gears"
         ],
         "aliases": [
           "GEARS"
