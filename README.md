@@ -10,6 +10,6 @@ The environment variable "GEARS\_HOME" must point to the GEARS installation fold
 
 ## Release Notes
 
-### 0.1
+### 0.1.0
 
 Initial release of vscode-gears.

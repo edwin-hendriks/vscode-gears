@@ -1,18 +1,4 @@
 {
-	/*
-	 // Place your snippets for GEARS here. Each snippet is defined under a snippet name and has a prefix, body and 
-	 // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	 // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
-	 // Example:
-	 "Print to console": {
-		"prefix": "log",
-		"body": [
-			"console.log('$1');",
-			"$2"
-		],
-		"description": "Log output to console"
-	}
-*/
 	"New process": {
 		"prefix": "process: RESULTS",
 		"body": [
@@ -22,7 +8,7 @@
 			"",
 			"/* GLOBAL RESULTS */",
 			"",
-			"The following applies:",
+			"Results in:",
 			"\t$0",
 			"",
 			"/* DETAILS PER RESULT */",
@@ -35,7 +21,7 @@
 	"One exists": {
 		"prefix": "one: ELEMENT",
 		"body": [
-			"One ${1:element_name} exists in ${2:collection_name} with:",
+			"One ${1:element_name} in ${2:collection_name} is created with:",
 			"\t${3:attribute_name}\t= ${4:value_expression}",
 			"\t$0"
 		],
