@@ -115,7 +115,7 @@
                     "name": "keyword.control.gears"
                 },
                 {
-                    "match": "\\b(and|or|not|old|exists)\\b",
+                    "match": "\\b(and|or|not|old|exists|contains|mod|div|like)\\b",
                     "name": "keyword.operator.gears"
                 },
                 {
@@ -135,7 +135,7 @@
                     "name": "keyword.other.gears"
                 },
                 {
-                    "match": "\\b(identifies|unique|required|displayed|label|group|opposite of|autovalue)\\b",
+                    "match": "\\b(identifies|unique|required|optional|displayed|label|group|opposite of|autovalue)\\b",
                     "name": "keyword.other.gears"
                 }
             ]
@@ -155,16 +155,20 @@
         "functions": {
             "patterns": [
                 {
-                    "match": "\\b(addWorkDays|asMillis|capitalize|concat|count|countDays|countNormalizedDays|currentDate|currentDateTime|date|datePart|day|month|year|years|num|findInText|first|format|get|getCollection|getInitiator|getInstanceId|integer|length|one|period|replace|round|roundDown|separatedBy|sorted|split|stringFromInteger|substring|sum|time|timePart|timestamp|toDays|tohtml|toUpperCase|uniqueId)(\\()\\b",
-                    "name": "entity.name.function.gears"
+                    "match": "\\b(addWorkDays|asMillis|capitalize|concat|count|countDays|countNormalizedDays|currentDate|currentDateTime|date|datePart|day|month|year|years|num|findInText|first|format|get|getCollection|getInitiator|getInstanceId|integer|length|one|period|replace|round|roundDown|separatedBy|sorted|split|stringFromInteger|substring|sum|time|timePart|timestamp|toDays|tohtml|toUpperCase|uniqueId)\\(",
+                    "captures": {
+                        "1": {"name": "entity.name.function.gears"}
+                    }
                 }
             ]
         },
         "types": {
             "patterns": [
                 {
-                    "match": "\\b(boolean|number|percentage|text|date|time|datetime|period|tuple|binary)\\b",
-                    "name": "entity.name.type.gears"
+                    "match": ": *\\b(boolean|number|percentage|text|date|time|datetime|period|tuple|binary|year|years|month|months|day|days)\\b",
+                    "captures": {
+                        "1": {"name": "entity.name.type.gears"}
+                    }
                 }
             ]
         }
