@@ -2,7 +2,7 @@
   "name": "vscode-gears",
   "displayName": "GEARS Language Support",
   "description": "Support for the GEARS specification language",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "publisher": "edwin-hendriks",
   "homepage": "https://github.com/edwin-hendriks/vscode-gears",
   "license": "GPL-3.0",
@@ -20,18 +20,18 @@
     "gears"
   ],
   "activationEvents": [
-    "onLanguage:gears"
+    "onLanguage:sn"
   ],
   "main": "./out/src/extension",
   "contributes": {
     "languages": [
       {
-        "id": "gears",
+        "id": "sn",
         "extensions": [
-          ".gears"
+          ".sn"
         ],
         "aliases": [
-          "GEARS"
+          "SMART notation"
         ]
       },
       {
@@ -49,7 +49,7 @@
     ],
     "grammars": [
       {
-        "language": "gears",
+        "language": "sn",
         "scopeName": "source.gears",
         "path": "./syntaxes/gears.json"
       },
@@ -78,7 +78,7 @@
     ],
     "snippets": [
       {
-        "language": "gears",
+        "language": "sn",
         "path": "./snippets/gears.json"
       }
     ]

@@ -14,7 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     console.log('Extension "vscode-gears" is now active');
 
-    vscode.languages.setLanguageConfiguration('gears', {
+    vscode.languages.setLanguageConfiguration('sn', {
         wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\#\%\^\&\*\(\)\-\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\?\s]+)/g,
         comments: {
             lineComment: '//',
@@ -30,14 +30,14 @@ export function activate(context: vscode.ExtensionContext) {
     let logger: Logger = console; 
         
     let clientOptions: LanguageClientOptions = {
-        // Register the server for gears documents
-        documentSelector: ['gears'],
+        // Register the server for SMART notation (sn) documents
+        documentSelector: ['sn'],
         synchronize: {
             // Synchronize the setting section 'gears' to the server
             // NOTE: this currently doesn't do anything
             configurationSection: 'gears',
             fileEvents: [
-                vscode.workspace.createFileSystemWatcher('**/*.gears')
+                vscode.workspace.createFileSystemWatcher('**/*.sn')
             ]
         },
         // errorHandler: {
@@ -64,7 +64,7 @@ export function activate(context: vscode.ExtensionContext) {
                             resolve({ reader: socket, writer: socket });
                         });
                     }, 4000);
-            });
+                });
             }
         });
     }
@@ -89,7 +89,7 @@ export function activate(context: vscode.ExtensionContext) {
             logger.info(`Child exited with code ${code}`);
         });
     }
-
+/*
     let client = new LanguageClient('GEARS Language Server', connectToServer, clientOptions);
     logger = {
         error: function(message: string): void { client.error(message.trim()); },
@@ -100,6 +100,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     let disposable = client.start();
     context.subscriptions.push(disposable);
+*/
 }
 
 // this method is called when your extension is deactivated

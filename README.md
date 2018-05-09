@@ -1,6 +1,6 @@
 # vscode-gears README
 
-Support for the GEARS specification language.
+Support for SMART notation (requirements specification language).
 
 To publish, see https://code.visualstudio.com/docs/extensions/publish-extension.
 
@@ -22,4 +22,10 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 
 - security update for package "hoek" (2.16.3 -> 4.2.1)
 - functional changes on language syntax
-- extension from gears and sr3 to just sn (which stands for SMART notation)
+- file extension from gears and sr3 to just sn (which stands for SMART notation)
+
+### 0.2.1
+
+- fix for updating file extension to .sn.
+- disabled language server
+- minor improvements in README.md
