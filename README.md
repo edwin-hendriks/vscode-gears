@@ -17,3 +17,9 @@ Initial release of vscode-gears.
 ### 0.1.1
 
 Fixed some minor issues. Added actual syntax highlighting. Prevented Language server error (not that language server is not yet working).
+
+### 0.2.0
+
+- security update for package "hoek" (2.16.3 -> 4.2.1)
+- functional changes on language syntax
+- extension from gears and sr3 to just sn (which stands for SMART notation)
