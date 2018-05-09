@@ -2,7 +2,7 @@
   "name": "vscode-gears",
   "displayName": "GEARS Language Support",
   "description": "Support for the GEARS specification language",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "publisher": "edwin-hendriks",
   "homepage": "https://github.com/edwin-hendriks/vscode-gears",
   "license": "GPL-3.0",
@@ -95,7 +95,7 @@
   },
   "devDependencies": {
     "typescript": "^2.5.2",
-    "vscode": "^1.1.5",
+    "vscode": "^1.1.17",
     "@types/node": "^6.0.40",
     "@types/mocha": "^2.2.32"
   }

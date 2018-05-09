@@ -1,7 +1,7 @@
 {
     "scopeName": "source.gears",
     "name": "GEARS",
-    "fileTypes": ["gears", "pa"],
+    "fileTypes": ["sn"],
 
     "patterns": [
         {
@@ -14,13 +14,13 @@
             "include": "#sentences"
         },
         {
+            "include": "#functions"
+        },
+        {
             "include": "#keywords"
         },
         {
             "include": "#constants"
-        },
-        {
-            "include": "#functions"
         },
         {
             "include": "#types"
@@ -104,18 +104,28 @@
                 }
             ]
         },
+        "functions": {
+            "patterns": [
+                {
+                    "match": "\\b(addWorkDays|asMillis|capitalize|concat|count|countDays|countNormalizedDays|currentDate|currentDateTime|date|datePart|day|month|year|years|num|findInText|first|format|get|getCollection|getInitiator|getInstanceId|integer|length|one|period|replace|round|roundDown|separatedBy|sorted|split|stringFromInteger|substring|sum|time|timePart|timestamp|toDays|tohtml|toUpperCase|uniqueId)\\(",
+                    "captures": {
+                        "1": {"name": "entity.name.function.gears"}
+                    }
+                }
+            ]
+        },
         "keywords": {
             "patterns": [
                 {
-                    "match": "\\b(Process|key|description|with subject|startable by)\\b",
+                    "match": "\\b(Language|Process|Reusable definitions|key|description|with subject|startable by)\\b",
                     "name": "keyword.other.gears"
                 },
                 {
-                    "match": "\\b(For|One|Several|the|each|is created with|are created with|in|applies|with|numerous)\\b",
+                    "match": "\\b(For|One|Several|the|each|is created with|are created with|is deleted|are deleted|in|applies|with|numerous)\\b",
                     "name": "keyword.control.gears"
                 },
                 {
-                    "match": "\\b(and|or|not|old|exists|contains|mod|div|like)\\b",
+                    "match": "\\b(and|or|not|old|exists|contains|mod|div|like|year|years|month|months|day|days)\\b",
                     "name": "keyword.operator.gears"
                 },
                 {
@@ -147,25 +157,15 @@
                     "name": "constant.numeric.gears"
                 },
                 {
-                    "match": "\\b(true|false|emtpy)\\b",
+                    "match": "\\b(true|false|empty)\\b",
                     "name": "constant.language.gears"
-                }
-            ]
-        },
-        "functions": {
-            "patterns": [
-                {
-                    "match": "\\b(addWorkDays|asMillis|capitalize|concat|count|countDays|countNormalizedDays|currentDate|currentDateTime|date|datePart|day|month|year|years|num|findInText|first|format|get|getCollection|getInitiator|getInstanceId|integer|length|one|period|replace|round|roundDown|separatedBy|sorted|split|stringFromInteger|substring|sum|time|timePart|timestamp|toDays|tohtml|toUpperCase|uniqueId)\\(",
-                    "captures": {
-                        "1": {"name": "entity.name.function.gears"}
-                    }
                 }
             ]
         },
         "types": {
             "patterns": [
                 {
-                    "match": ": *\\b(boolean|number|percentage|text|date|time|datetime|period|tuple|binary|year|years|month|months|day|days)\\b",
+                    "match": ": *\\b(boolean|number|percentage|text|multiline|date|time|datetime|period|tuple|binary)\\b",
                     "captures": {
                         "1": {"name": "entity.name.type.gears"}
                     }
