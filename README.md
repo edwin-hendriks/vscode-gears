@@ -29,3 +29,7 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 - fix for updating file extension to .sn.
 - disabled language server
 - minor improvements in README.md
+
+### 0.2.2
+
+- all keywords in lower case
