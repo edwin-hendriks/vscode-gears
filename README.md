@@ -30,6 +30,7 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 - disabled language server
 - minor improvements in README.md
 
-### 0.2.2
+### 0.2.2/0.3.0
 
 - all keywords in lower case
+

@@ -1,102 +1,102 @@
 {
-  "name": "vscode-gears",
-  "displayName": "GEARS Language Support",
-  "description": "Support for the GEARS specification language",
-  "version": "0.2.1",
-  "publisher": "edwin-hendriks",
-  "homepage": "https://github.com/edwin-hendriks/vscode-gears",
-  "license": "GPL-3.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/edwin-hendriks/vscode-gears.git"
-  },
-  "engines": {
-    "vscode": "^1.15.0"
-  },
-  "categories": [
-    "Programming Languages"
-  ],
-  "keywords": [
-    "gears"
-  ],
-  "activationEvents": [
-    "onLanguage:sn"
-  ],
-  "main": "./out/src/extension",
-  "contributes": {
-    "languages": [
-      {
-        "id": "sn",
-        "extensions": [
-          ".sn"
+    "name": "vscode-gears",
+    "displayName": "GEARS Language Support",
+    "description": "Support for the GEARS specification language",
+    "version": "0.3.0",
+    "publisher": "edwin-hendriks",
+    "homepage": "https://github.com/edwin-hendriks/vscode-gears",
+    "license": "GPL-3.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/edwin-hendriks/vscode-gears.git"
+    },
+    "engines": {
+        "vscode": "^1.15.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "gears"
+    ],
+    "activationEvents": [
+        "onLanguage:sn"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "languages": [
+            {
+                "id": "sn",
+                "extensions": [
+                    ".sn"
+                ],
+                "aliases": [
+                    "SMART notation"
+                ]
+            },
+            {
+                "id": "log",
+                "extensions": [
+                    ".log"
+                ],
+                "aliases": [
+                    "Log"
+                ],
+                "mimetypes": [
+                    "text/x-code-output"
+                ]
+            }
         ],
-        "aliases": [
-          "SMART notation"
+        "grammars": [
+            {
+                "language": "sn",
+                "scopeName": "source.gears",
+                "path": "./syntaxes/gears.json"
+            },
+            {
+                "language": "log",
+                "scopeName": "logging",
+                "path": "./syntaxes/logging.json"
+            }
+        ],
+        "themes": [
+            {
+                "label": "GEARS Light",
+                "uiTheme": "vs",
+                "path": "./themes/gears_light.json"
+            }
+        ],
+        "keybindings": [
+            {
+                "key": "ctrl+alt+r",
+                "command": "workbench.action.reloadWindow"
+            },
+            {
+                "key": "ctrl+shift+alt+s",
+                "command": "editor.action.showSnippets"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "sn",
+                "path": "./snippets/gears.json"
+            }
         ]
-      },
-      {
-        "id": "log",
-        "extensions": [
-          ".log"
-        ],
-        "aliases": [
-          "Log"
-        ],
-        "mimetypes": [
-          "text/x-code-output"
-        ]
-      }
-    ],
-    "grammars": [
-      {
-        "language": "sn",
-        "scopeName": "source.gears",
-        "path": "./syntaxes/gears.json"
-      },
-      {
-        "language": "log",
-        "scopeName": "logging",
-        "path": "./syntaxes/logging.json"
-      }
-    ],
-    "themes": [
-      {
-        "label": "GEARS Light",
-        "uiTheme": "vs",
-        "path": "./themes/gears_light.json"
-      }
-    ],
-    "keybindings": [
-      {
-        "key": "ctrl+alt+r",
-        "command": "workbench.action.reloadWindow"
-      },
-      {
-        "key": "ctrl+shift+alt+s",
-        "command": "editor.action.showSnippets"
-      }
-    ],
-    "snippets": [
-      {
-        "language": "sn",
-        "path": "./snippets/gears.json"
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install"
-  },
-  "dependencies": {
-    "portfinder": "^1.0.13",
-    "vscode-jsonrpc": "^3.4.0",
-    "vscode-languageclient": "^3.4.2"
-  },
-  "devDependencies": {
-    "typescript": "^2.5.2",
-    "vscode": "^1.1.17",
-    "@types/node": "^6.0.40",
-    "@types/mocha": "^2.2.32"
-  }
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "dependencies": {
+        "portfinder": "^1.0.13",
+        "vscode-jsonrpc": "^3.4.0",
+        "vscode-languageclient": "^3.4.2"
+    },
+    "devDependencies": {
+        "typescript": "^2.5.2",
+        "vscode": "^1.1.17",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    }
 }
