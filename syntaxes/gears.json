@@ -121,11 +121,11 @@
                     "name": "keyword.other.gears"
                 },
                 {
-                    "match": "\\b(for|one|several|the|each|is created with|are created with|is deleted|are deleted|in|applies|with|numerous)\\b",
+                    "match": "\\b(for|the|only|first|last|for each|one|multiple|the|is created with|are created with|is deleted|are deleted|is archived|are archived|in|applies|with|numerous|otherwise)\\b",
                     "name": "keyword.control.gears"
                 },
                 {
-                    "match": "\\b(and|or|not|old|exists|contains|mod|div|like|year|years|month|months|day|days)\\b",
+                    "match": "\\b(and|or|not|old|exists|intersects|mod|div|like|year|years|month|months|day|days)\\b",
                     "name": "keyword.operator.gears"
                 },
                 {
@@ -137,7 +137,7 @@
                     "name": "keyword.control.gears"
                 },
                 {
-                    "match": "\\b(input|from|labeled|based on|chosen from|default)\\b",
+                    "match": "\\b(input|from|labeled|based on|chosen from|default|of type)\\b",
                     "name": "keyword.control.gears"
                 },
                 {
@@ -145,7 +145,7 @@
                     "name": "keyword.other.gears"
                 },
                 {
-                    "match": "\\b(identifies|unique|required|optional|displayed|label|group|opposite of|autovalue)\\b",
+                    "match": "\\b(unique|required|optional|autovalue|displayed|multiline|action|label|group|opposite of)\\b",
                     "name": "keyword.other.gears"
                 }
             ]
@@ -165,7 +165,7 @@
         "types": {
             "patterns": [
                 {
-                    "match": ": *\\b(boolean|number|percentage|text|multiline|date|time|datetime|period|tuple|binary)\\b",
+                    "match": ": *\\b(text|number|boolean|date|time|datetime|period|tuple|binary)\\b",
                     "captures": {
                         "1": {"name": "entity.name.type.gears"}
                     }

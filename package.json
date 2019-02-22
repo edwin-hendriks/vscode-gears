@@ -2,7 +2,7 @@
     "name": "vscode-gears",
     "displayName": "GEARS Language Support",
     "description": "Support for the GEARS specification language",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "publisher": "edwin-hendriks",
     "homepage": "https://github.com/edwin-hendriks/vscode-gears",
     "license": "GPL-3.0",
@@ -89,14 +89,14 @@
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "dependencies": {
-        "portfinder": "^1.0.13",
-        "vscode-jsonrpc": "^3.4.0",
-        "vscode-languageclient": "^3.4.2"
+        "portfinder": "^1.0.13"
     },
     "devDependencies": {
-        "typescript": "^2.5.2",
-        "vscode": "^1.1.17",
+        "@types/mocha": "^2.2.32",
         "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32"
+        "typescript": "^2.5.2",
+        "vscode": "^1.1.30",
+        "vscode-jsonrpc": "^3.4.0",
+        "vscode-languageclient": "^3.4.2"
     }
 }

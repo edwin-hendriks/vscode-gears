@@ -34,3 +34,6 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 
 - all keywords in lower case
 
+### 0.4.0
+
+- update keywords to latest language specs.
