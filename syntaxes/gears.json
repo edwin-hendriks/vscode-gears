@@ -107,7 +107,7 @@
         "functions": {
             "patterns": [
                 {
-                    "match": "\\b(addWorkDays|asMillis|capitalize|concat|count|countDays|countNormalizedDays|currentDate|currentDateTime|date|datePart|day|month|year|years|num|findInText|first|format|get|getCollection|getInitiator|getInstanceId|integer|length|one|period|replace|round|roundDown|separatedBy|sorted|split|stringFromInteger|substring|sum|time|timePart|timestamp|toDays|tohtml|toUpperCase|uniqueId)\\(",
+                    "match": "\\b(addWorkDays|asMillis|capitalize|concat|count|countDays|countNormalizedDays|currentDate|currentDateTime|now|date|datePart|day|month|year|years|num|findInText|first|format|get|getCollection|getInitiator|getInstanceId|integer|length|one|period|replace|round|roundDown|separatedBy|sorted|split|stringFromInteger|substring|sum|time|timePart|timestamp|toDays|tohtml|toUpperCase|uniqueId)\\(",
                     "captures": {
                         "1": {"name": "entity.name.function.gears"}
                     }
@@ -121,7 +121,7 @@
                     "name": "keyword.other.gears"
                 },
                 {
-                    "match": "\\b(for|the|only|first|last|for each|one|multiple|the|is created with|are created with|is deleted|are deleted|is archived|are archived|in|applies|with|numerous|otherwise)\\b",
+                    "match": "\\b(for|the|only|first|last|each|one|multiple|the|is created with|are created with|is deleted|are deleted|is archived|are archived|in|applies|with|numerous|otherwise)\\b",
                     "name": "keyword.control.gears"
                 },
                 {

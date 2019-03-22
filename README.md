@@ -37,3 +37,8 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 ### 0.4.0
 
 - update keywords to latest language specs.
+
+### 0.4.1
+
+- fixed keyword `each` in `for each`
+- added function `now()`
