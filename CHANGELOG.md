@@ -32,3 +32,7 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 
 - fixed keyword `each` in `for each`
 - added function `now()`
+
+## 0.4.2
+
+- added `contains` operator

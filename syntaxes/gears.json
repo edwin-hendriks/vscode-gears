@@ -125,7 +125,7 @@
                     "name": "keyword.control.gears"
                 },
                 {
-                    "match": "\\b(and|or|not|old|exists|intersects|mod|div|like|year|years|month|months|day|days)\\b",
+                    "match": "\\b(and|or|not|old|exists|contains|intersects|mod|div|like|year|years|month|months|day|days)\\b",
                     "name": "keyword.operator.gears"
                 },
                 {
