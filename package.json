@@ -2,7 +2,8 @@
     "name": "vscode-gears",
     "displayName": "GEARS Language Support",
     "description": "Support for the GEARS specification language",
-    "version": "0.4.2",
+    "icon": "img/GEARS_icon.png",
+    "version": "0.4.3",
     "publisher": "edwin-hendriks",
     "homepage": "https://github.com/edwin-hendriks/vscode-gears",
     "license": "GPL-3.0",
@@ -17,7 +18,7 @@
         "Programming Languages"
     ],
     "keywords": [
-        "gears"
+        "gears", "SMART notation"
     ],
     "activationEvents": [
         "onLanguage:sn"
@@ -28,7 +29,7 @@
             {
                 "id": "sn",
                 "extensions": [
-                    ".sn"
+                    ".sn", ".gears"
                 ],
                 "aliases": [
                     "SMART notation"

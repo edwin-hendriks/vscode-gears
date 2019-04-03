@@ -36,3 +36,8 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 ## 0.4.2
 
 - added `contains` operator
+
+## 0.4.3
+
+- added icon
+- added .gears filename extension
