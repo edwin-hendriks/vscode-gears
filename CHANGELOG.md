@@ -41,3 +41,7 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 
 - added icon
 - added .gears filename extension
+
+## 0.4.4
+
+- added keyword current
