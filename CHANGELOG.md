@@ -45,3 +45,7 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 ## 0.4.4
 
 - added keyword current
+
+## 0.4.5
+
+- fixed security vulnerabilities by upgrading devDependency `vscode` to version `^1.1.35`
