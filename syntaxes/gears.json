@@ -46,14 +46,15 @@
             "patterns": [
                 {
                     "begin": "(')",
-                    "end": "(')",
+                    "end": "(')", 
+                    "name": "string.quoted.single.gears",
                     "beginCaptures": {
                         "1": { "name": "string.quoted.single.gears" }
                     },
                     "endCaptures": {
                         "1": { "name": "string.quoted.single.gears" }
-                    },
-                    "patterns": [
+                    }, 
+                    "TODOWEGHALENpatterns": [
                         { "include": "#placeholders" },
                         {
                             "match": "\\\\.",
