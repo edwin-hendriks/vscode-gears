@@ -53,3 +53,7 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 ## 0.4.6
 
 - multiline string (but for now temporarily at the expense of placeholders, which are now highlighted as strings when inside of strings)
+
+## 0.4.7
+
+- multiline string the right way (thanks to Marcus)
