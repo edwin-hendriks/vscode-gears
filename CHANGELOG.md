@@ -54,6 +54,10 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 
 - multiline string (but for now temporarily at the expense of placeholders, which are now highlighted as strings when inside of strings)
 
+## 0.4.7
+
+- multiline string the right way (thanks to Marcus)
+
 ## 0.5.0
 
 - fixed snippets and added some. You can also press CTRL+SHIFT+P and type 'snip' and select 'Insert snippet'. This produces a searchable list of snippets incl. documentation in which you van search and select your snippet. The 'todef' snippet must be triggered using this CTRL+SHIFT+P approach because it takes in the selected text and transforms it to a definition. Other snippets are also triggered by start typing the first keyword. E.g. type 'process', 'one', 'for each' or some function.
