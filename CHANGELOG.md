@@ -61,3 +61,9 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 ## 0.5.0
 
 - fixed snippets and added some. You can also press CTRL+SHIFT+P and type 'snip' and select 'Insert snippet'. This produces a searchable list of snippets incl. documentation in which you van search and select your snippet. The 'todef' snippet must be triggered using this CTRL+SHIFT+P approach because it takes in the selected text and transforms it to a definition. Other snippets are also triggered by start typing the first keyword. E.g. type 'process', 'one', 'for each' or some function.
+
+## 0.5.1
+
+- added snippets: input from (short and long version), entity definitions, attribute definitions, traits for attributes.
+- snippet titles to lower case
+- used international yyyy-m-d format in snippet documentation.
