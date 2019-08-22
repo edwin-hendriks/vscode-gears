@@ -67,3 +67,7 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 - added snippets: input from (short and long version), entity definitions, attribute definitions, traits for attributes.
 - snippet titles to lower case
 - used international yyyy-m-d format in snippet documentation.
+
+## 0.5.2
+
+- improved README and included demo animated gif.
