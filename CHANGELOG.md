@@ -71,3 +71,7 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 ## 0.5.2
 
 - improved README and included demo animated gif.
+
+## 0.5.3
+
+- moved demo animated gif to github (where it should have been in the first place).
