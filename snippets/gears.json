@@ -121,14 +121,14 @@
 		],
 		"description": "Choose the trait you want: \n\n The 'unique' trait forces the value of this attribute to be unique. If the optional simpleStringLiteral is provided, the combination of the attribute values that share the same simpleLiteral must be unique. \n\n Use either the 'required' trait or its reverse, being the 'optional' trait. If neither is provided 'optional' is assumed as default. The 'required' trait forces that the value of this attribute is provides when stored. \n\n  The 'autovalue' will make sure an automatically generated value will be generated for this attribute on storage. \n\n  The 'displayed' trait makes the value of this attribute the default way to represent this entity. A maximum of 2 attributes can have this trait one of a basic type and another of a tuple type. \n\n  The 'multiline' trait defines that a textual attribute can have multiple lines. \n\n  The 'action' trait defines that this attribute represents an action that should be performed before the process flow can continue. \n\n  The 'default' trait defines the default value of this attribute as specified with the valueExpression that comes right after 'default'. \n\n  The 'labeled' trait overrides the default label with the specified simpleStringLiteral when a label is needed for this attribute in a user interface. \n\n  The 'group' trait specifies a group with the provided simpleStringLiteral in which this attribute is placed. \n\n  The 'opposite of' trait defines the opposite relational attributeName. It makes these 2 attributes act as one relation. \n\n  With the 'description' trait you can give a description to this attribute as specified with the descriptionLiteral."
 	},
-	"addWorkDays": {
-		"prefix": "addWorkDays: date",
-		"body": "addWorkDays(${1:startdate}, ${2:number_of_workdays})$0",
-		"description": "E.g. addWorkDays(date('2017-03-21'), 5) == date('2017-03-28'). Results in a date value which is startdate + number_of_workdays as workdays."
+	"add_work_days": {
+		"prefix": "add_work_days: date",
+		"body": "add_work_days(${1:startdate}, ${2:number_of_workdays})$0",
+		"description": "E.g. add_work_days(date('2017-03-21'), 5) == date('2017-03-28'). Results in a date value which is startdate + number_of_workdays as workdays."
 	},
-	"asMillis": {
-		"prefix": "asMillis: integer",
-		"body": "asMillis(${1:date_or_timestamp})$0",
+	"as_millis": {
+		"prefix": "as_millis: integer",
+		"body": "as_millis(${1:date_or_timestamp})$0",
 		"description": "Results in the number of milliseconds since 1970-01-01 up to the date_or_timestamp."
 	},
 	"capitalize": {
@@ -146,19 +146,29 @@
 		"body": "count(${1:collection_or_list})$0",
 		"description": "The number of elements in the collection_or_list."
 	},
-	"currentDate": {
-		"prefix": "now: date",
-		"body": "now()$0",
-		"description": "Returns the current date and or time of the computer the software is running on."
+	"current_date": {
+		"prefix": "current_date: date",
+		"body": "current_date()$0",
+		"description": "Returns the current date of the computer the software is running on."
+	},
+	"current_time": {
+		"prefix": "current_time: time",
+		"body": "current_time()$0",
+		"description": "Returns the current time of the computer the software is running on."
+	},
+	"current_datetime": {
+		"prefix": "current_datetime: datetime",
+		"body": "current_datetime()$0",
+		"description": "Returns the current datetime of the computer the software is running on."
 	},
 	"date": {
 		"prefix": "date: date",
 		"body": "date(${1:text_value})$0",
 		"description": "E.g. date('2016-12-31') returns its equivalent date value. Returns a date value from the text_value with format dd-MM-yyyy."
 	},
-	"datePart": {
-		"prefix": "datePart: date",
-		"body": "datePart(${1:timestamp_value})$0",
+	"date_part": {
+		"prefix": "date_part: date",
+		"body": "date_part(${1:timestamp_value})$0",
 		"description": "Returns the date part of the timestamp_value"
 	},
 	"day": {
@@ -171,10 +181,10 @@
 		"body": "days(${1:period_value})$0",
 		"description": "E.g. days(date('2017-1-1') - date('2016-12-31')) results in 1. Results the number of whole days of a period value.  "
 	},
-	"findInText": {
-		"prefix": "findInText: integer",
-		"body": "findInText(${1:text_value}, ${2:regex})$0",
-		"description": "E.g. findInText('AB 1234 CD', '[0-9]') results in 3. Results in an integer value which is first position in the text_value that matched the textual regular expression value regex (see http://regexr.com/ for more info). A match with the first character is 0 and no match results in -1."
+	"find_in_text": {
+		"prefix": "find_in_text: integer",
+		"body": "find_in_text(${1:text_value}, ${2:regex})$0",
+		"description": "E.g. find_in_text('AB 1234 CD', '[0-9]') results in 3. Results in an integer value which is first position in the text_value that matched the textual regular expression value regex (see http://regexr.com/ for more info). A match with the first character is 0 and no match results in -1."
 	},
 	"first": {
 		"prefix": "first: ELEMENT",
@@ -184,21 +194,21 @@
 	"format": {
 		"prefix": "format: text",
 		"body": "format(${1:date_time_timestamp_num_value}, ${2:format_pattern})$0",
-		"description": "E.g. format(12.34, '#.#') == '12.34' and format(12.34, '#.#', 'nl') == '12,34' and format(.2, '0.00', 'nl') == '0,20' and format(currentTimestamp(), 'EEEE dd MMMM YYYY HH:mm') == 'Friday 25 March 2016 13:56'. Results in a formatted text of the date_time_timestamp_num_value using the format_pattern. See https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html and http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html for more info on possible formats. "
+		"description": "E.g. format(12.34, '#.#') == '12.34' and format(12.34, '#.#', 'nl') == '12,34' and format(.2, '0.00', 'nl') == '0,20' and format(current_timestamp(), 'EEEE dd MMMM YYYY HH:mm') == 'Friday 25 March 2016 13:56'. Results in a formatted text of the date_time_timestamp_num_value using the format_pattern. See https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html and http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html for more info on possible formats. "
 	},
 	"get": {
 		"prefix": "get: ELEMENT",
 		"body": "get(${1:collection_or_list}, ${2:N}, ${3:error_message})$0",
 		"description": "Returns the N-th element from the collection_or_list or the error_message. The parameter error_message is optional. If ommitted a standard error message will be used."
 	},
-	"getCollection": {
-		"prefix": "getCollection: ELEMENT",
-		"body": "getCollection(${1:collection_or_list}, ${2:N}, ${3:M}, ${3:error_message})$0",
+	"get_collection": {
+		"prefix": "get_collection: ELEMENT",
+		"body": "get_collection(${1:collection_or_list}, ${2:N}, ${3:M}, ${3:error_message})$0",
 		"description": "Returns a collection containing elements N up and including M or throws the error_message. The parameter error_message is optional. If ommitted a standard error message will be used."
 	},
-	"getInstanceId": {
-		"prefix": "getInstanceId: text",
-		"body": "getInstanceId()$0",
+	"get_instance_id": {
+		"prefix": "get_instance_id: text",
+		"body": "get_instance_id()$0",
 		"description": "Returns the identifier of the current process instance."
 	},
 	"integer": {
@@ -273,23 +283,23 @@
 	},
 	"round": {
 		"prefix": "round: decimal",
-		"body": "roundDown(${1:decimal_value}, ${2:scale})$0",
+		"body": "round_down(${1:decimal_value}, ${2:scale})$0",
 		"description": "E.g. round(1.945, 1) == 1.9. Returns the decimal_value, but rounded to the scale number of decimal digits. The 'normal' round half-up method is used. See https://en.wikipedia.org/wiki/Rounding#Round_half_up."
 	},
-	"roundDown": {
-		"prefix": "roundDown: decimal",
-		"body": "roundDown(${1:decimal_value}, ${2:scale})$0",
-		"description": "E.g. roundDown(1.99, 1) == 1.9. Returns the decimal_value, but rounded down to the scale number of decimal digits."
+	"round_down": {
+		"prefix": "round_down: decimal",
+		"body": "round_down(${1:decimal_value}, ${2:scale})$0",
+		"description": "E.g. round_down(1.99, 1) == 1.9. Returns the decimal_value, but rounded down to the scale number of decimal digits."
 	},
-	"separatedBy": {
-		"prefix": "separatedBy: text",
-		"body": "separatedBy(${1:list_of_textual_values}, ${2:seperator})$0",
-		"description": "E.g. separatedBy(['Apple', 'Banana', 'Citron'], ' is not a ') == 'Apple is not a Banana is not a Citron'. Returns the concatenation of the textual values in list_of_textual_values but seperated with seperator."
+	"separated_by": {
+		"prefix": "separated_by: text",
+		"body": "separated_by(${1:list_of_textual_values}, ${2:seperator})$0",
+		"description": "E.g. separated_by(['Apple', 'Banana', 'Citron'], ' is not a ') == 'Apple is not a Banana is not a Citron'. Returns the concatenation of the textual values in list_of_textual_values but seperated with seperator."
 	},
 	"sorted": {
 		"prefix": "sorted: COLLECTION",
 		"body": "sorted(${1:collection}, ${2:sort_directive})$0",
-		"description": "E.g. sorted(PERSONS, 'birthDate ascending lastName descending') returns PERSONS but sorted ascending on table attribute birthDate and then descending on table attribute lastName. Note that the table attribute is used. Not the logical entity/collection attribute."
+		"description": "E.g. sorted(PERSONS, 'birth_date ascending last_name descending') returns PERSONS but sorted ascending on table attribute birth_date and then descending on table attribute last_name. Note that the table attribute is used. Not the logical entity/collection attribute."
 	},
 	"split": {
 		"prefix": "split: list of textual values",
@@ -311,9 +321,9 @@
 		"body": "time(${1:text_value})$0",
 		"description": "E.g. time('23:59:00') returns its equivalent time value. Returns a time value from the text_value which is in format HH:mm:ss."
 	},
-	"timePart": {
-		"prefix": "timePart: time",
-		"body": "timePart(${1:timestamp_value})$0",
+	"time_part": {
+		"prefix": "time_part: time",
+		"body": "time_part(${1:timestamp_value})$0",
 		"description": "Return a time value which is the time part of the timestamp_value"
 	},
 	"timestamp": {
@@ -321,9 +331,9 @@
 		"body": "timestamp(${1:text_value})$0",
 		"description": "E.g. time('31-12-2016 23:59:00') returns its equivalent timestamp value. Returns a timestamp value from the text_value which needs to be in format dd-MM-yyyy HH:mm:ss."
 	},
-	"toHtml": {
-		"prefix": "toHtml: text rendered as HTML",
-		"body": "toHtml(${1:text_value})$0",
+	"to_html": {
+		"prefix": "to_html: text rendered as HTML",
+		"body": "to_html(${1:text_value})$0",
 		"description": "Returns the text_value but will be rendered as HTML when displayed in a browser."
 	},
 	"uppercase": {
@@ -331,9 +341,9 @@
 		"body": "uppercase(${1:text_value})$0",
 		"description": "E.g. uppercase('This is huge!') == 'THIS IS HUGE!'. Returns text_value but all in uppercase letters. "
 	},
-	"uniqueId": {
-		"prefix": "uniqueId: text",
-		"body": "uniqueId()$0",
+	"unique_id": {
+		"prefix": "unique_id: text",
+		"body": "unique_id()$0",
 		"description": "Returns a global unique identifier."
 	},
 	"year": {
