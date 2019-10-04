@@ -75,3 +75,7 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 ## 0.5.3
 
 - moved demo animated gif to github (where it should have been in the first place).
+
+## 0.6.0
+
+- applied snake_case to all functions. This will make this extension only suitable for GEARS v0.13.0 and up.
