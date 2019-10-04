@@ -79,3 +79,11 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 ## 0.6.0
 
 - applied snake_case to all functions. This will make this extension only suitable for GEARS v0.13.0 and up.
+
+## 0.6.1
+
+- fixed issue that new snake_eyes functions are not hightlighted.
+
+## 0.6.2
+
+- now all current and future functions are highlighted.

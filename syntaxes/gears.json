@@ -107,7 +107,7 @@
         "functions": {
             "patterns": [
                 {
-                    "match": "\\b(addWorkDays|asMillis|capitalize|concat|count|countDays|countNormalizedDays|currentDate|currentDateTime|now|date|datePart|day|month|year|years|num|findInText|first|format|get|getCollection|getInitiator|getInstanceId|integer|length|one|period|replace|round|roundDown|separatedBy|sorted|split|stringFromInteger|substring|sum|time|timePart|timestamp|toDays|tohtml|toUpperCase|uniqueId)\\(",
+                    "match": "\\b([a-z][a-z0-9_]*)\\(",
                     "captures": {
                         "1": {"name": "entity.name.function.gears"}
                     }
