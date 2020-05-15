@@ -5,14 +5,14 @@ import * as ChildProcess from 'child_process';
 import * as vscode from 'vscode';
 import {Logger} from 'vscode-jsonrpc';
 import {LanguageClient, LanguageClientOptions, SettingMonitor, ServerOptions, StreamInfo} from 'vscode-languageclient';
+import { GearsTaskProvider } from './gearsTaskProvider';
+
+let gearsTaskProvider: vscode.Disposable | undefined;
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Extension "vscode-gears" is now active');
+    console.log('Extension "vscode-gears" is now activating...');
 
     vscode.languages.setLanguageConfiguration('sn', {
         wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\#\%\^\&\*\(\)\-\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\?\s]+)/g,
@@ -89,6 +89,10 @@ export function activate(context: vscode.ExtensionContext) {
             logger.info(`Child exited with code ${code}`);
         });
     }
+
+	let workspaceRoot = vscode.workspace.rootPath;
+	//if (!workspaceRoot) return; // TODO handle error?
+    gearsTaskProvider = vscode.tasks.registerTaskProvider(GearsTaskProvider.GearsType, new GearsTaskProvider(workspaceRoot));
 /*
     let client = new LanguageClient('GEARS Language Server', connectToServer, clientOptions);
     logger = {
@@ -101,10 +105,17 @@ export function activate(context: vscode.ExtensionContext) {
     let disposable = client.start();
     context.subscriptions.push(disposable);
 */
+
+    // Use the console to output diagnostic information (console.log) and errors (console.error)
+    // This line of code will only be executed once when your extension is activated
+    console.log('Extension "vscode-gears" is now active');
 }
 
 // this method is called when your extension is deactivated
 export function deactivate() {
+    if (gearsTaskProvider) {
+		gearsTaskProvider.dispose();
+	}
 }
 
 function unquote(s: string): string {

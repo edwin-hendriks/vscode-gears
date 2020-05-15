@@ -87,3 +87,13 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 ## 0.6.2
 
 - now all current and future functions are highlighted.
+
+## 0.7.0
+
+- added 1st version of standard gears tasks (generate, diagrams, build, deploy)
+- added snippets (attribute type, process simple, user attributes)
+- updated snippets to new default_entities.sn
+- improved other snippets
+- added simple process snippet
+- updated to resolve security issues
+- excluded node modules
