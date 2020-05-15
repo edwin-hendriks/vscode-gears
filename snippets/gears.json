@@ -226,10 +226,15 @@
 		"body": "get_collection(${1:collection_or_list}, ${2:N}, ${3:M}, ${0:error_message}",
 		"description": "Returns a collection containing elements N up and including M or throws the error_message. The parameter error_message is optional. If ommitted a standard error message will be used."
 	},
-	"get_instance_id": {
-		"prefix": "get_instance_id: text",
-		"body": "get_instance_id(",
+	"process_instance_id": {
+		"prefix": "process_instance_id: text",
+		"body": "process_instance_id()$0",
 		"description": "Returns the identifier of the current process instance."
+	},
+	"current_user": {
+		"prefix": "current_user: USER",
+		"body": "current_user()$0",
+		"description": "Returns the current user."
 	},
 	"integer": {
 		"prefix": "integer: integer",
