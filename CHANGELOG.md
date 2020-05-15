@@ -97,3 +97,8 @@ Fixed some minor issues. Added actual syntax highlighting. Prevented Language se
 - added simple process snippet
 - updated to resolve security issues
 - excluded node modules
+
+## 0.7.1
+
+- replaced instance_id with process_instance_id
+- updated How to use
