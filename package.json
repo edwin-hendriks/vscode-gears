@@ -3,7 +3,7 @@
     "displayName": "GEARS Language Support",
     "description": "Support for the GEARS specification language",
     "icon": "img/GEARS_icon.png",
-    "version": "0.7.1",
+    "version": "0.7.2",
     "publisher": "edwin-hendriks",
     "homepage": "https://github.com/edwin-hendriks/vscode-gears",
     "license": "GPL-3.0",
@@ -12,7 +12,7 @@
         "url": "https://github.com/edwin-hendriks/vscode-gears.git"
     },
     "engines": {
-        "vscode": "^1.15.0"
+        "vscode": "^1.45.1"
     },
     "categories": [
         "Programming Languages"
