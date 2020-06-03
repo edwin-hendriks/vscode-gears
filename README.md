@@ -39,7 +39,8 @@ For snippets either press CTRL+SHIFT+P, type 'snip', choose 'Insert snippet' bef
 Press `CTRL+SHIFT+P`, choose `Run tasks`, then choose `gears`, then choose which task. They are already ordered in a preferred order first generate, then test, then build, then deploy. You need a `settings.json` in the `.vscode` folder of your workspace to make this work. Below is example of the content of this file.
 
     {
-        "gears.version": "0.23",
+        "gears.generator.version": "0.24",
+        "gears.runner.version": "0.1",
         "project.name": "LeaveOfAbsence",
         "project.version": "0.1-SNAPSHOT",
     }

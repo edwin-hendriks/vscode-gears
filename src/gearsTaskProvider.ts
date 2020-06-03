@@ -10,7 +10,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     provideTasks(token?: vscode.CancellationToken): vscode.ProviderResult<vscode.Task[]> {
         console.log('provideTasks');
         function createTask(name: string, command: string): vscode.Task {
-            const def = { 
+            const def: GearsTaskDefinition = {
                 type: GearsTaskProvider.GearsType, 
                 name: name
             }
@@ -19,10 +19,11 @@ export class GearsTaskProvider implements vscode.TaskProvider {
             return task
         }
         return [
-            createTask('1 Generate', 'java -jar "${env:GEARS_RELEASES}/gears-generator-assembly-${config:gears.version}.jar" -name ${config:project.name} *.sn'),
-            createTask('2 Diagrams', '"C:/Program Files (x86)/Google/Chrome/Application/chrome.exe" ${workspaceFolder}/target/diagrams/index.html'),
-            createTask('3 Build', 'cd ${workspaceFolder}/target/${config:project.name} && mvn clean package'),
-            createTask('4 Deploy', 'docker cp ${workspaceFolder}/target/${config:project.name}/target/${config:project.name}-${config:project.version}.war gears-runtime:/camunda/standalone/deployments'),
+            createTask('1. Generate',      'java -jar "${env:GEARS_RELEASES}/gears-generator-assembly-${config:gears.generator.version}.jar" -name ${config:project.name} *.sn'),
+            createTask('2. Diagrams',      '"C:/Program Files (x86)/Google/Chrome/Application/chrome.exe" ${workspaceFolder}/target/diagrams/index.html'),
+            createTask('3. Build',         'cd ${workspaceFolder}/target/${config:project.name} && mvn clean package'),
+            createTask('4. Deploy',        'docker cp ${workspaceFolder}/target/${config:project.name}/target/${config:project.name}-${config:project.version}.war gears-runtime:/camunda/standalone/deployments'),
+            createTask('5. Run scenarios', 'java -jar "${env:GEARS_RELEASES}/gears-runner-assembly-${config:gears.runner.version}.jar" scenarios/*.scenario'),
         ];
     }
 
