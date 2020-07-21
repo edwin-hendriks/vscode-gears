@@ -9,7 +9,7 @@ To publish, see https://code.visualstudio.com/docs/extensions/publish-extension.
 - GEARS must be installed (to be able to generate)
 - OpenJDK 1.8 or higher must be installed (to be able to compile)
 - Docker must be installed (to be able to deploy)
-- The environment variable "GEARS\_HOME" must point to the GEARS installation folder.
+- The environment variable "GEARS\_RELEASES" must point to the GEARS installation folder.
 - A docker-compose.yml file must be somewhere in the workspace (to be able to start the right docker container).
 
 Example content docker-compose-yml:
