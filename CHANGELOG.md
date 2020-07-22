@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.7.3
+
+- add problem matcher 'sn' for the GEARS Generator output
+
 ## 0.7.2
 
 - add gears task #5 for executing scenarios
