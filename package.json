@@ -22,7 +22,8 @@
         "SMART notation"
     ],
     "activationEvents": [
-        "onLanguage:sn"
+        "onLanguage:sn",
+        "workspaceContains:**/*.sn"
     ],
     "main": "./out/src/extension",
     "contributes": {
