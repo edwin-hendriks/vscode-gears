@@ -6,7 +6,7 @@
 - Configuration properties are now declared as extension contributions.
 - Configuration properties 'project.name' and 'project.version' have been renamed to 'gears.project.name' and 'gears.project.version'.
 - The new configuration property 'gears.browser' indicates which browser is used to display diagrams.
-- The new configuration property 'gears.deploy.mode' controls whether deployment is done using Docker or GEARS CLI.
+- The new configuration property 'gears.deploy.mode' controls whether deployment is done using Docker, Maven or GEARS CLI.
 
 ## 0.7.3
 

@@ -91,7 +91,8 @@
                     "default": "docker",
                     "enum": [
                         "docker",
-                        "gears-cli"
+                        "gears-cli",
+                        "maven"
                     ],
                     "description": "Specifies the deployment mode to use"
                 },
