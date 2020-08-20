@@ -3,8 +3,8 @@ import * as Net from 'net';
 import * as PortFinder from 'portfinder';
 import * as ChildProcess from 'child_process';
 import * as vscode from 'vscode';
-import {Logger} from 'vscode-jsonrpc';
-import {LanguageClient, LanguageClientOptions, SettingMonitor, ServerOptions, StreamInfo} from 'vscode-languageclient';
+import { Logger } from 'vscode-jsonrpc';
+import { LanguageClient, LanguageClientOptions, SettingMonitor, ServerOptions, StreamInfo } from 'vscode-languageclient';
 import { GearsTaskProvider } from './gearsTaskProvider';
 
 let gearsTaskProvider: vscode.Disposable | undefined;
@@ -27,9 +27,9 @@ export function activate(context: vscode.ExtensionContext) {
         ],
     });
 
-    let logger: Logger = console; 
+    const logger: Logger = console; 
         
-    let clientOptions: LanguageClientOptions = {
+    const clientOptions: LanguageClientOptions = {
         // Register the server for SMART notation (sn) documents
         documentSelector: ['sn'],
         synchronize: {
@@ -47,11 +47,11 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     function connectToServer(): Promise<StreamInfo> {
-        let javaExecutablePath = "java";
+        const javaExecutablePath = "java";
         return new Promise((resolve, reject) => {
-            let debug = false;
+            const debug = false;
             if (debug) {
-                let socket = Net.connect(12345);
+                const socket = Net.connect(12345);
                 resolve({ reader: socket, writer: socket });
             }
             else {
@@ -59,7 +59,7 @@ export function activate(context: vscode.ExtensionContext) {
                     startServer(port);
                     setTimeout(() => {
                         logger.info(`Connecting to GEARS Language Server on port ${port}...`)
-                        let socket = Net.connect({ port }, () => {
+                        const socket = Net.connect({ port }, () => {
                             logger.info("Connected to GEARS Language Server");
                             resolve({ reader: socket, writer: socket });
                         });
@@ -70,12 +70,12 @@ export function activate(context: vscode.ExtensionContext) {
     }
     
     function startServer(port: number) {
-        let jarFile = process.env["GEARS_HOME"] + '\gears-generator\gears-generator.jar';
+        const jarFile = process.env["GEARS_HOME"] + '\gears-generator\gears-generator.jar';
         // TODO if jarFile does not exist, do not attempt to start the language server
-        let args = [ '-Dstcs.port=' + port, '-jar', unquote(jarFile) ];
+        const args = [ '-Dstcs.port=' + port, '-jar', unquote(jarFile) ];
 
         logger.info("Starting Language Server: " + args);
-        let child = ChildProcess.execFile('java', args, { cwd: vscode.workspace.rootPath });
+        const child = ChildProcess.execFile('java', args, { cwd: vscode.workspace.rootPath });
         child.stdout.on('data', (data) => {
             logger.info('' + data);
         });
@@ -90,11 +90,12 @@ export function activate(context: vscode.ExtensionContext) {
         });
     }
 
-	let workspaceRoot = vscode.workspace.rootPath;
+    const workspaceRoot = vscode.workspace.rootPath
+    const config = vscode.workspace.getConfiguration('gears')
 	//if (!workspaceRoot) return; // TODO handle error?
-    gearsTaskProvider = vscode.tasks.registerTaskProvider(GearsTaskProvider.GearsType, new GearsTaskProvider(workspaceRoot));
+    gearsTaskProvider = vscode.tasks.registerTaskProvider(GearsTaskProvider.GearsType, new GearsTaskProvider(workspaceRoot, config));
 /*
-    let client = new LanguageClient('GEARS Language Server', connectToServer, clientOptions);
+    const client = new LanguageClient('GEARS Language Server', connectToServer, clientOptions);
     logger = {
         error: function(message: string): void { client.error(message.trim()); },
         warn:  function(message: string): void { client.warn(message.trim());  },
@@ -102,13 +103,13 @@ export function activate(context: vscode.ExtensionContext) {
         log:   function(message: string): void { client.info(message.trim());  },
     };
 
-    let disposable = client.start();
+    const disposable = client.start();
     context.subscriptions.push(disposable);
 */
 
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log('Extension "vscode-gears" is now active');
+    console.log('Extension "vscode-gears" is now active with ' + JSON.stringify(config));
 }
 
 // this method is called when your extension is deactivated

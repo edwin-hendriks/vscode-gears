@@ -66,12 +66,12 @@
         "configuration": {
             "title": "GEARS",
             "properties": {
-                "project.name": {
+                "gears.project.name": {
                     "type": "string",
                     "default": null,
                     "description": "Specifies the project name"
                 },
-                "project.version": {
+                "gears.project.version": {
                     "type": "string",
                     "default": "0.1-SNAPSHOT",
                     "description": "Specifies the project version"
@@ -85,6 +85,20 @@
                     "type": "string",
                     "default": null,
                     "description": "Specifies which version of the GEARS Runner should be used"
+                },
+                "gears.deploy.mode": {
+                    "type": "string",
+                    "default": "docker",
+                    "enum": [
+                        "docker",
+                        "gears-cli"
+                    ],
+                    "description": "Specifies the deployment mode to use"
+                },
+                "gears.browser": {
+                    "type": "string",
+                    "default": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
+                    "description": "Specifies the browser to use for displaying diagrams"
                 }
             }
         },
