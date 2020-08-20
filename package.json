@@ -63,6 +63,31 @@
                 "path": "./syntaxes/logging.json"
             }
         ],
+        "configuration": {
+            "title": "GEARS",
+            "properties": {
+                "project.name": {
+                    "type": "string",
+                    "default": null,
+                    "description": "Specifies the project name"
+                },
+                "project.version": {
+                    "type": "string",
+                    "default": "0.1-SNAPSHOT",
+                    "description": "Specifies the project version"
+                },
+                "gears.generator.version": {
+                    "type": "string",
+                    "default": null,
+                    "description": "Specifies which version of the GEARS Generator should be used"
+                },
+                "gears.runner.version": {
+                    "type": "string",
+                    "default": null,
+                    "description": "Specifies which version of the GEARS Runner should be used"
+                }
+            }
+        },
         "problemMatchers": [
             {
                 "name": "sn",
