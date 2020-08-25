@@ -1,4 +1,7 @@
 import * as vscode from 'vscode'
+import * as fs from 'fs'
+import * as open from 'open'
+
 import { GearsTaskProvider } from './gearsTaskProvider'
 import { Config } from './common'
 
@@ -25,6 +28,18 @@ export function activate(context: vscode.ExtensionContext) {
 
     context.subscriptions.push(
         vscode.tasks.registerTaskProvider(GearsTaskProvider.GearsType, new GearsTaskProvider(workspaceRoot, config))
+    )
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('gears.showDiagrams', () => {
+            const index = `${workspaceRoot}/target/diagrams/index.html`
+            if (fs.existsSync(index)) {
+                open(index)
+            }
+            else {
+                vscode.window.showInformationMessage('Diagrams have not been generated yet')
+            }
+        })
     )
 
     // Use the console to output diagnostic information (console.log) and errors (console.error)
