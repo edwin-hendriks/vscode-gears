@@ -100,6 +100,11 @@
                     "type": "string",
                     "default": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
                     "description": "Specifies the browser to use for displaying diagrams"
+                },
+                "gears.docker": {
+                    "type": "string",
+                    "default": "docker",
+                    "description": "Specifies the Docker command to use"
                 }
             }
         },
