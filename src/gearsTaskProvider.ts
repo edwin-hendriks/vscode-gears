@@ -1,4 +1,5 @@
-import * as vscode from 'vscode';
+import * as vscode from 'vscode'
+import { Config } from './common'
 
 type Execution = vscode.ProcessExecution | vscode.ShellExecution | vscode.CustomExecution
 
@@ -6,9 +7,9 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     static GearsType: string = 'gears';
 
     workspaceRoot: string
-    config: vscode.WorkspaceConfiguration
+    config: Config
 
-	constructor(workspaceRoot: string, config: vscode.WorkspaceConfiguration) {
+	constructor(workspaceRoot: string, config: Config) {
         this.workspaceRoot = workspaceRoot
         this.config = config
     }
@@ -59,29 +60,29 @@ export class GearsTaskProvider implements vscode.TaskProvider {
 
     getDiagramsExecution(): Execution {
         const cwd     = this.workspaceRoot
-        const browser = this.config.get('browser')
+        const browser = this.config('browser')
         const page    = `${this.workspaceRoot}/target/diagrams/index.html`
         const cmd     = `${browser} ${page}`
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
     getBuildExecution(): Execution {
-        const projectName = this.config.get('project.name')
+        const projectName = this.config('project.name')
         const cwd = `${this.workspaceRoot}/target/${projectName}`
         const cmd = 'mvn clean package'
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
     getDeployExecution(): Execution {
-        const projectName    = this.config.get('project.name')
-        const projectVersion = this.config.get('project.version')
+        const projectName    = this.config('project.name')
+        const projectVersion = this.config('project.version')
         const cwd  = `${this.workspaceRoot}/target/${projectName}`
         const cmd  = this.getDeployCmd(`target/${projectName}-${projectVersion}.war`)
         return new vscode.ShellExecution(cmd,  { cwd })
     }
 
     getDeployCmd(file: string): string {
-        switch (this.config.get("deploy.mode")) {
+        switch (this.config("deploy.mode")) {
             case 'gears-cli': 
                 return `gears runtime deploy ${file}`;
             case 'maven':
