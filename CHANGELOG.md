@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.7.5
+
+- The deploy task now indicates when deployment is completed.
+- The new configuration property 'gears.docker' indicates which command should be used to invoke Docker.
+
 ## 0.7.4
 
 - Activate extension on presence of *.sn files in the workspace.
