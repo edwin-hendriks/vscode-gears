@@ -83,11 +83,11 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     getDeployCmd(file: string): string {
         switch (this.config.get("deploy.mode")) {
             case 'gears-cli': 
-                return `docker cp ${file} gears-runtime:/camunda/standalone/deployments`;
+                return `gears runtime deploy ${file}`;
             case 'maven':
                 return 'mvn org.wildfly.plugins:wildfly-maven-plugin:2.0.2.Final:deploy'
             default:
-                return `gears runtime deploy ${file}`;
+                return `docker cp ${file} gears-runtime:/camunda/standalone/deployments`;
         }
     }
 
