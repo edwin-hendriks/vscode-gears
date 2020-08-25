@@ -31,14 +31,34 @@ export function activate(context: vscode.ExtensionContext) {
     )
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('gears.showDiagrams', () => {
+        vscode.commands.registerCommand('gears.showDiagrams.outside', () => {
             const index = `${workspaceRoot}/target/diagrams/index.html`
-            if (fs.existsSync(index)) {
-                open(index)
-            }
-            else {
+            if (!fs.existsSync(index)) {
                 vscode.window.showInformationMessage('Diagrams have not been generated yet')
+                return
             }
+            open(index)
+        })
+    )
+
+    context.subscriptions.push(
+        vscode.commands.registerCommand('gears.showDiagrams.inside', () => {
+            const index = `${workspaceRoot}/target/diagrams/index.html`
+            if (!fs.existsSync(index)) {
+                vscode.window.showInformationMessage('Diagrams have not been generated yet')
+                return
+            }
+
+            const panel = vscode.window.createWebviewPanel(
+                'gears',
+                'Diagrams',
+                vscode.ViewColumn.Two,
+                {
+                  enableScripts: true, // Enable scripts in the webview
+                }
+              )
+        
+            panel.webview.html = "<html>Hello</html>"
         })
     )
 

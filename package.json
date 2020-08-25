@@ -168,8 +168,12 @@
         ],
         "commands": [
             {
-                "command": "gears.showDiagrams",
+                "command": "gears.showDiagrams.outside",
                 "title": "Show Diagrams"
+            },
+            {
+                "command": "gears.showDiagrams.inside",
+                "title": "Show Diagrams (Inside)"
             }
         ]
     },
