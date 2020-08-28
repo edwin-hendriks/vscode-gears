@@ -4,7 +4,7 @@ import { Config } from './common'
 type Execution = vscode.ProcessExecution | vscode.ShellExecution | vscode.CustomExecution
 
 export class GearsTaskProvider implements vscode.TaskProvider {
-    static GearsType: string = 'gears';
+    static GearsType: string = 'GEARS';
 
     workspaceRoot: string
     config: Config

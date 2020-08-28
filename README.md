@@ -36,11 +36,11 @@ For snippets either press CTRL+SHIFT+P, type 'snip', choose 'Insert snippet' bef
 
 ## Tasks
 
-Press `CTRL+SHIFT+P`, choose `Run tasks`, then choose `gears`, then choose which task. They are already ordered in a preferred order 1. generate, 2. test (show diagram), 3. build, 4. deploy, 5. run (integration test) scenarios. You need a `settings.json` in the `.vscode` folder of your workspace to make this work. Below is example of the content of this `settings.json` file.
+Press `CTRL+SHIFT+P`, choose `Run tasks`, then choose `gears`, then choose which task. They are already ordered in a preferred order 1. generate, 2. diagrams, 3. build, 4. deploy, 5. run (integration test) scenarios. You need a `settings.json` in the `.vscode` folder of your workspace to make this work. Below is example of the content of this `settings.json` file.
 
     {
-        "gears.generator.version": "0.24",
-        "gears.runner.version": "0.1",
+        "project.gears.generator.version": "0.24",
+        "project.gears.runner.version": "0.1",
         "project.name": "LeaveOfAbsence",
         "project.version": "0.1-SNAPSHOT",
     }
@@ -48,3 +48,7 @@ Press `CTRL+SHIFT+P`, choose `Run tasks`, then choose `gears`, then choose which
 Below is an example demo of how to call the task gears: Generate:
 
 ![Run task gears generate demo](https://github.com/edwin-hendriks/vscode-gears/blob/master/img/task_gears_generate.gif?raw=true)
+
+## Commands
+
+We probably will move the tasks to commands which can be activated with CTRL+SHIP+P as most users of VS Code are used to. For now (as a test) we have only duplicated the task `GEARS 2. Diagrams` as the command `GEARS: Show Diagrams`. This is also an improved version of Diagrams because it will work on all platforms and you can choose the browser of you own liking. 
