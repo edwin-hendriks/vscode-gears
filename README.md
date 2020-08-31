@@ -17,7 +17,7 @@ Example content docker-compose-yml:
     version: '3'
     services:
     runtime:
-        image: "xlrit/gears-runtime:0.3.3"
+        image: "xlrit/gears-runtime:v0.10"
         container_name: "gears-runtime"
         ports:
         - "8080:8080"
@@ -36,16 +36,16 @@ For snippets either press CTRL+SHIFT+P, type 'snip', choose 'Insert snippet' bef
 
 ## Tasks
 
-Press `CTRL+SHIFT+P`, choose `Run tasks`, then choose `gears`, then choose which task. They are already ordered in a preferred order 1. generate, 2. diagrams, 3. build, 4. deploy, 5. run (integration test) scenarios. You need a `settings.json` in the `.vscode` folder of your workspace to make this work. Below is example of the content of this `settings.json` file.
+Press `CTRL+SHIFT+P`, choose `Tasks: Run Task`, then choose `GEARS`, then choose which task. They are already ordered in a preferred order 1. Generate, 2. Diagrams, 3. Build, 4. Deploy, 5. Run (integration test) scenarios. You need a `settings.json` in the `.vscode` folder of your workspace to make this work. Below is example of the content of this `settings.json` file.
 
     {
-        "project.gears.generator.version": "0.24",
-        "project.gears.runner.version": "0.1",
-        "project.name": "LeaveOfAbsence",
-        "project.version": "0.1-SNAPSHOT",
+        "gears.project.name":      "leave_of_absence",
+        "gears.project.version":   "0.1-SNAPSHOT",
+        "gears.generator.version": "0.31",
+        "gears.runner.version":    "0.3",
     }
 
-Below is an example demo of how to call the task gears: Generate:
+Below is an example demo of how to call the task `GEARS: 1. Generate`:
 
 ![Run task gears generate demo](https://github.com/edwin-hendriks/vscode-gears/blob/master/img/task_gears_generate.gif?raw=true)
 

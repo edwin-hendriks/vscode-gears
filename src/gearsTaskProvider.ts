@@ -90,7 +90,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
                 return 'mvn org.wildfly.plugins:wildfly-maven-plugin:2.0.2.Final:deploy'
             default:
                 const docker = this.config('docker')
-                return `${docker} cp ${path} gears-runtime:/camunda/standalone/deployments && \\\n` +
+                return `${docker} cp ${path} gears-runtime:/camunda/standalone/deployments && ` +
                        `${docker} exec -it gears-runtime wait-for-deployment ${file}`
         }
     }
