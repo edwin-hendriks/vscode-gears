@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.7.6
+
+- Add task for loading data.
+
 ## 0.7.5
 
 - The deploy task now indicates when deployment is completed.
