@@ -86,14 +86,19 @@
                     "default": null,
                     "description": "Specifies which version of the GEARS Runner should be used"
                 },
+                "gears.runtime.version": {
+                    "type": "string",
+                    "default": null,
+                    "description": "Specifies which version of the GEARS Runtime should be used"
+                },
                 "gears.deploy.mode": {
                     "type": "string",
-                    "default": "docker",
                     "enum": [
                         "docker",
                         "gears-cli",
                         "maven"
                     ],
+                    "default": "docker",
                     "description": "Specifies the deployment mode to use"
                 },
                 "gears.browser": {

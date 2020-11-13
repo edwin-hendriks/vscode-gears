@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.7.7
+
+- Add task for loading data.
+
 ## 0.7.6
 
 - Deploy now also works on Windows
