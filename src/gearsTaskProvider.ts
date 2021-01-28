@@ -41,8 +41,9 @@ export class GearsTaskProvider implements vscode.TaskProvider {
             createTask('2. Diagrams',      this.getDiagramsExecution()),
             createTask('3. Build',         this.getBuildExecution()),
             createTask('4. Deploy',        this.getDeployExecution()),
-            createTask('5. Load data', this.getLoadDataExecution()),
+            createTask('5. Load data',     this.getLoadDataExecution()),
             createTask('6. Run scenarios', this.getRunScenariosExecution()),
+            createTask('7. Undeploy',      this.getUndeployExecution()),
         ];
     }
 
@@ -93,6 +94,27 @@ export class GearsTaskProvider implements vscode.TaskProvider {
                 const docker = this.config('docker')
                 return `${docker} cp ${path} gears-runtime:/camunda/standalone/deployments && ` +
                        `${docker} exec -it gears-runtime wait-for-deployment ${file}`
+        }
+    }
+
+    getUndeployExecution(): Execution {
+        const projectName    = this.config('project.name')
+        const projectVersion = this.config('project.version')
+        const cwd  = `${this.workspaceRoot}/target/${projectName}`
+        const cmd  = this.getUndeployCmd('target', `${projectName}-${projectVersion}.war`)
+        return new vscode.ShellExecution(cmd,  { cwd })
+    }
+
+    getUndeployCmd(dir: string, file: string): string {
+        const path = `${dir}/${file}`
+        switch (this.config("deploy.mode")) {
+            case 'gears-cli': 
+                return `gears runtime undeploy ${path}`
+            case 'maven':
+                return 'mvn org.wildfly.plugins:wildfly-maven-plugin:2.0.2.Final:undeploy'
+            default:
+                const docker = this.config('docker')
+                return `${docker} exec -it gears-runtime rm /camunda/standalone/deployments/${file}`
         }
     }
 
