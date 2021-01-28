@@ -2,7 +2,7 @@
 
 Support for SMART notation v3.0 (requirements specification language) as supported by GEARS (see www.xlrit.com).
 
-To publish, see https://code.visualstudio.com/docs/extensions/publish-extension.
+To publish, adjust version number in package.json and use command `vsce publish` (for more details see https://code.visualstudio.com/docs/extensions/publish-extension).
 
 # Prerequisites
 
@@ -36,7 +36,7 @@ For snippets either press CTRL+SHIFT+P, type 'snip', choose 'Insert snippet' bef
 
 ## Tasks
 
-Press `CTRL+SHIFT+P`, choose `Tasks: Run Task`, then choose `GEARS`, then choose which task. They are already ordered in a preferred order 1. Generate, 2. Diagrams, 3. Build, 4. Deploy, 5. Run (integration test) scenarios. You need a `settings.json` in the `.vscode` folder of your workspace to make this work. Below is example of the content of this `settings.json` file.
+Press `CTRL+SHIFT+P`, choose `Tasks: Run Task`, then choose `GEARS`, then choose which task. They are already ordered in a preferred order 1. Generate, 2. Diagrams, 3. Build, 4. Deploy, 5. Load data, 6. Run (test) scenarios. You need a `settings.json` in the `.vscode` folder of your workspace to make this work. Below is example of the content of this `settings.json` file.
 
     {
         "gears.project.name":      "leave_of_absence",
