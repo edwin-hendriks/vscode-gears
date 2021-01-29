@@ -2,6 +2,7 @@
 
 ## 0.7.7
 
+- Pass the project version to the Generator.
 - Add Undeploy task.
 
 ## 0.7.6

@@ -55,9 +55,17 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     }
 
     getGenerateExecution(): Execution {
+        const projectName    = this.config('project.name')
+        const projectVersion = this.config('project.version')
+        const generatorJar   = this.getGeneratorJar()
         const cwd = this.workspaceRoot
-        const cmd = 'java -jar "${env:GEARS_RELEASES}/gears-generator-assembly-${config:gears.generator.version}.jar" -name ${config:gears.project.name} *.sn'
+        const cmd = `java -jar "${generatorJar}" -name ${projectName} -version ${projectVersion} *.sn`
         return new vscode.ShellExecution(cmd, { cwd })
+    }
+
+    getGeneratorJar(): String {
+        const generatorVersion = this.config('generator.version')
+        return "${env:GEARS_RELEASES}/gears-generator-assembly-" + generatorVersion + ".jar"
     }
 
     getDiagramsExecution(): Execution {
