@@ -1,11 +1,11 @@
 # Change Log
 
-## 0.7.7
+## 0.7.8
 
-- Pass the project version to the Generator.
+- Pass the gears.project.version to the Generator.
 - Add Undeploy task.
 
-## 0.7.6
+## 0.7.7
 
 - Add task for loading data.
 
