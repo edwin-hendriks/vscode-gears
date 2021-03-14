@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.7.9
+
+- Configurable file pattern for loading data and running scenarios.
+
 ## 0.7.8
 
 - Pass the gears.project.version to the Generator.
