@@ -22,8 +22,8 @@ Example content docker-compose-yml:
         ports:
         - "8080:8080"
         - "9990:9990"
-        - "110:110"
-        - "25:25"
+        - "1110:110"
+        - "2525:25"
 
 
 # How to use
@@ -36,14 +36,7 @@ For snippets either press CTRL+SHIFT+P, type 'snip', choose 'Insert snippet' bef
 
 ## Tasks
 
-Press `CTRL+SHIFT+P`, choose `Tasks: Run Task`, then choose `GEARS`, then choose which task. They are already ordered in a preferred order 1. Generate, 2. Diagrams, 3. Build, 4. Deploy, 5. Load data, 6. Run (test) scenarios. You need a `settings.json` in the `.vscode` folder of your workspace to make this work. Below is example of the content of this `settings.json` file.
-
-    {
-        "gears.project.name":      "leave_of_absence",
-        "gears.project.version":   "0.1-SNAPSHOT",
-        "gears.generator.version": "0.31",
-        "gears.runner.version":    "0.3",
-    }
+Press `CTRL+SHIFT+P`, choose `Tasks: Run Task`, then choose `GEARS`, then choose which task. They are already ordered in a preferred order. E.g. 1. Generate, 2. Diagrams, 3. Build, 4. Deploy, 5. Load data, 6. Run (test) scenarios. etc.
 
 Below is an example demo of how to call the task `GEARS: 1. Generate`:
 
@@ -52,3 +45,14 @@ Below is an example demo of how to call the task `GEARS: 1. Generate`:
 ## Commands
 
 We probably will move the tasks to commands which can be activated with CTRL+SHIP+P as most users of VS Code are used to. For now (as a test) we have only duplicated the task `GEARS 2. Diagrams` as the command `GEARS: Show Diagrams`. This is also an improved version of Diagrams because it will work on all platforms and you can choose the browser of you own liking. 
+
+## Settings
+
+You may want to take a look at the GEARS settings (CTRL+, and then search for GEARS). Below are example required settings which you need to provide to make everything work.:
+
+    {
+        "gears.project.name":      "leave_of_absence",
+        "gears.project.version":   "0.1-SNAPSHOT",
+        "gears.generator.version": "0.55",
+        "gears.runner.version":    "0.11",
+    }
