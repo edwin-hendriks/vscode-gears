@@ -1,8 +1,14 @@
 # Change Log
 
+## 0.8.0
+
+- Configurable file pattern for SN specifications (`*.sn` by default).
+- Add tasks for managing (starting and stopping) the GEARS Runtime.
+- The new configuration property 'gears.runtime.management.mode' controls whether Runtime management is done using Docker, Docker Compose or GEARS CLI.
+
 ## 0.7.9
 
-- Configurable file pattern for loading data and running scenarios.
+- Configurable file pattern for loading data files (`data/*.sql` by default) and running scenarios (`scenarios/*.scenario` by default).
 
 ## 0.7.8
 

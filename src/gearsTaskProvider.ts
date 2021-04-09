@@ -35,15 +35,16 @@ export class GearsTaskProvider implements vscode.TaskProvider {
             }
             return task
         }
-        // TODO task to make sure Runtime (with correct version) is running?
         return [
-            createTask('1. Generate',      this.getGenerateExecution()),
-            createTask('2. Diagrams',      this.getDiagramsExecution()),
-            createTask('3. Build',         this.getBuildExecution()),
-            createTask('4. Deploy',        this.getDeployExecution()),
-            createTask('5. Load data',     this.getLoadDataExecution()),
-            createTask('6. Run scenarios', this.getRunScenariosExecution()),
-            createTask('7. Undeploy',      this.getUndeployExecution()),
+            createTask('0. Start Runtime', this.startRuntimeExecution()),
+            createTask('1. Generate',      this.generateExecution()),
+            createTask('2. Diagrams',      this.diagramsExecution()),
+            createTask('3. Build',         this.buildExecution()),
+            createTask('4. Deploy',        this.deployExecution()),
+            createTask('5. Load data',     this.loadDataExecution()),
+            createTask('6. Run scenarios', this.runScenariosExecution()),
+            createTask('7. Undeploy',      this.undeployExecution()),
+            createTask('8. Stop Runtime',  this.stopRuntimeExecution()),
         ];
     }
 
@@ -54,12 +55,55 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         return newTask;
     }
 
-    getGenerateExecution(): Execution {
+    startRuntimeExecution(): Execution {
+        const cwd = this.workspaceRoot
+        const cmd = this.startRuntimeCmd()
+        return new vscode.ShellExecution(cmd, { cwd })
+    }
+
+    startRuntimeCmd(): string {
+        const runtimeVersion = this.config('runtime.version')
+        switch (this.config('runtime.management.mode')) {
+            case 'gears-cli': 
+                return `gears runtime run --version v${runtimeVersion}`
+            case 'docker-compose':
+                return 'docker-compose up'
+            default: // docker
+                const docker = this.config('docker')
+                return `${docker} run -d --rm -p 1110:110 -p 2525:25 -p 8080:8080 -p 9990:9990 --name gears-runtime xlrit/gears-runtime:v${runtimeVersion}`
+        }
+    }
+
+    stopRuntimeExecution(): Execution {
+        const cwd = this.workspaceRoot
+        const cmd = this.stopRuntimeCmd()
+        return new vscode.ShellExecution(cmd, { cwd })
+    }
+
+    stopRuntimeCmd(): string {
+        switch (this.config("runtime.management.mode")) {
+            case 'gears-cli': 
+                return `gears runtime kill`
+            case 'docker-compose':
+                return 'docker-compose down'
+            default: // docker
+                const docker = this.config('docker')
+                return `${docker} kill gears-runtime`
+        }
+    }
+
+    generateExecution(): Execution {
         const projectName    = this.config('project.name')
         const projectVersion = this.config('project.version')
+        const runtimeVersion = this.config('runtime.version')
+        const filePattern    = this.config('file-pattern.specs')
         const generatorJar   = this.getGeneratorJar()
         const cwd = this.workspaceRoot
-        const cmd = `java -jar "${generatorJar}" -name ${projectName} -version ${projectVersion} *.sn`
+        var cmd = `java -jar "${generatorJar}"`
+        if (projectName)    cmd += ` --name ${projectName}`
+        if (projectVersion) cmd += ` --version ${projectVersion}`
+        if (runtimeVersion) cmd += ` --runtime-version ${runtimeVersion}`
+        cmd += ` ${filePattern}`
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
@@ -68,7 +112,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         return "${env:GEARS_RELEASES}/gears-generator-assembly-" + generatorVersion + ".jar"
     }
 
-    getDiagramsExecution(): Execution {
+    diagramsExecution(): Execution {
         const cwd     = this.workspaceRoot
         const browser = this.config('browser')
         const page    = `${this.workspaceRoot}/target/diagrams/index.html`
@@ -76,14 +120,14 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
-    getBuildExecution(): Execution {
+    buildExecution(): Execution {
         const projectName = this.config('project.name')
         const cwd = `${this.workspaceRoot}/target/${projectName}`
         const cmd = 'mvn clean package'
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
-    getDeployExecution(): Execution {
+    deployExecution(): Execution {
         const projectName    = this.config('project.name')
         const projectVersion = this.config('project.version')
         const cwd  = `${this.workspaceRoot}/target/${projectName}`
@@ -105,7 +149,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         }
     }
 
-    getUndeployExecution(): Execution {
+    undeployExecution(): Execution {
         const projectName    = this.config('project.name')
         const projectVersion = this.config('project.version')
         const cwd  = `${this.workspaceRoot}/target/${projectName}`
@@ -126,14 +170,14 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         }
     }
 
-    getLoadDataExecution(): Execution {
+    loadDataExecution(): Execution {
         const filePattern = this.config('file-pattern.data')
         const cwd = this.workspaceRoot
         const cmd = 'java -jar "${env:GEARS_RELEASES}/gears-runner-assembly-${config:gears.runner.version}.jar" ' + filePattern
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
-    getRunScenariosExecution(): Execution {
+    runScenariosExecution(): Execution {
         const filePattern = this.config('file-pattern.scenarios')
         const cwd = this.workspaceRoot
         const cmd = 'java -jar "${env:GEARS_RELEASES}/gears-runner-assembly-${config:gears.runner.version}.jar" ' + filePattern

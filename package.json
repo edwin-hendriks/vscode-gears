@@ -101,6 +101,16 @@
                     "default": "docker",
                     "description": "Specifies the deployment mode to use"
                 },
+                "gears.runtime.management.mode": {
+                    "type": "string",
+                    "enum": [
+                        "docker",
+                        "docker-compose",
+                        "gears-cli"
+                    ],
+                    "default": "docker-compose",
+                    "description": "Specifies the Runtime management mode to use"
+                },
                 "gears.browser": {
                     "type": "string",
                     "default": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
