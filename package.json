@@ -111,6 +111,11 @@
                     "default": "docker",
                     "description": "Specifies the Docker command to use"
                 },
+                "gears.file-pattern.specs": {
+                    "type": "string",
+                    "default": "*.sn",
+                    "description": "Specifies the pattern for SN specifications"
+                },
                 "gears.file-pattern.data": {
                     "type": "string",
                     "default": "data/*.sql",
