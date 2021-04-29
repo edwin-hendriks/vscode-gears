@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.8.1
+
+- Minor fix in start runtime task.
+
 ## 0.8.0
 
 - Configurable file pattern for SN specifications (`*.sn` by default).

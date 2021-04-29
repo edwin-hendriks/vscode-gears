@@ -65,7 +65,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         const runtimeVersion = this.config('runtime.version')
         switch (this.config('runtime.management.mode')) {
             case 'gears-cli': 
-                return `gears runtime run --version v${runtimeVersion}`
+                return `gears runtime run --version ${runtimeVersion}`
             case 'docker-compose':
                 return 'docker-compose up'
             default: // docker
