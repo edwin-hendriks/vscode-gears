@@ -3,7 +3,7 @@
     "displayName": "GEARS Language Support",
     "description": "Support for the GEARS specification language",
     "icon": "img/GEARS_icon.png",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "publisher": "edwin-hendriks",
     "homepage": "https://github.com/edwin-hendriks/vscode-gears",
     "license": "GPL-3.0",
@@ -135,6 +135,11 @@
                     "type": "string",
                     "default": "scenarios/*.scenario",
                     "description": "Specifies the pattern for running scenario files"
+                },
+                "gears.runner.endpoint": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Specifies the endpoint for the GEARS Runner."
                 }
             }
         },

@@ -171,16 +171,24 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     }
 
     loadDataExecution(): Execution {
+        const endpoint = this.config('runner.endpoint')
         const filePattern = this.config('file-pattern.data')
         const cwd = this.workspaceRoot
-        const cmd = 'java -jar "${env:GEARS_RELEASES}/gears-runner-assembly-${config:gears.runner.version}.jar" ' + filePattern
+        const jar = '${env:GEARS_RELEASES}/gears-runner-assembly-${config:gears.runner.version}.jar'
+        var cmd = `java -jar ${jar}`
+        if (endpoint) cmd += ` --endpoint ${endpoint}`
+        cmd += ` ${filePattern}`
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
     runScenariosExecution(): Execution {
+        const endpoint = this.config('runner.endpoint')
         const filePattern = this.config('file-pattern.scenarios')
         const cwd = this.workspaceRoot
-        const cmd = 'java -jar "${env:GEARS_RELEASES}/gears-runner-assembly-${config:gears.runner.version}.jar" ' + filePattern
+        const jar = '${env:GEARS_RELEASES}/gears-runner-assembly-${config:gears.runner.version}.jar'
+        var cmd = `java -jar ${jar}`
+        if (endpoint) cmd += ` --endpoint ${endpoint}`
+        cmd += ` ${filePattern}`
         return new vscode.ShellExecution(cmd, { cwd })
     }
 }

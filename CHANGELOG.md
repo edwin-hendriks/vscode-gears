@@ -2,6 +2,7 @@
 
 ## 0.8.1
 
+- Configurable endpoint for the GEARS Runner.
 - Minor fix in start runtime task.
 
 ## 0.8.0
