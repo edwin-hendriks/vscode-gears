@@ -97,12 +97,15 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         const projectVersion = this.config('project.version')
         const runtimeVersion = this.config('runtime.version')
         const filePattern    = this.config('file-pattern.specs')
+        const extraArgs      = this.config('generator.extraArgs')
         const generatorJar   = this.getGeneratorJar()
+        
         const cwd = this.workspaceRoot
         var cmd = `java -jar "${generatorJar}"`
         if (projectName)    cmd += ` --name ${projectName}`
         if (projectVersion) cmd += ` --version ${projectVersion}`
         if (runtimeVersion) cmd += ` --runtime-version ${runtimeVersion}`
+        if (extraArgs) cmd += ` ${extraArgs}`
         cmd += ` ${filePattern}`
         return new vscode.ShellExecution(cmd, { cwd })
     }

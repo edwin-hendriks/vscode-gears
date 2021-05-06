@@ -145,6 +145,11 @@
                     "type": "string",
                     "default": "",
                     "description": "Specifies extra command line arguments for the GEARS Runner."
+                },
+                "gears.generator.extraArgs": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Specifies extra command line arguments for the GEARS Runner."
                 }
             }
         },

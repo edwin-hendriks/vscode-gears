@@ -2,6 +2,7 @@
 
 ## 0.8.1
 
+- Extra arguments can be configured for the GEARS Generator and Runner.
 - Configurable endpoint for the GEARS Runner.
 - Minor fix in start runtime task.
 
