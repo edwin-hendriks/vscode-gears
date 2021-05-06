@@ -140,6 +140,11 @@
                     "type": "string",
                     "default": "",
                     "description": "Specifies the endpoint for the GEARS Runner."
+                },
+                "gears.runner.extraArgs": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Specifies extra command line arguments for the GEARS Runner."
                 }
             }
         },
