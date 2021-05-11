@@ -81,45 +81,35 @@
                     "default": null,
                     "description": "Specifies which version of the GEARS Generator should be used"
                 },
+                "gears.generator.extraArgs": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Specifies extra command line arguments for the GEARS Runner."
+                },
                 "gears.runner.version": {
                     "type": "string",
                     "default": null,
                     "description": "Specifies which version of the GEARS Runner should be used"
+                },
+                "gears.runner.endpoint": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Specifies the endpoint for the GEARS Runner."
+                },
+                "gears.runner.extraArgs": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Specifies extra command line arguments for the GEARS Runner."
                 },
                 "gears.runtime.version": {
                     "type": "string",
                     "default": null,
                     "description": "Specifies which version of the GEARS Runtime should be used"
                 },
-                "gears.deploy.mode": {
-                    "type": "string",
-                    "enum": [
-                        "docker",
-                        "gears-cli",
-                        "maven"
-                    ],
-                    "default": "docker",
-                    "description": "Specifies the deployment mode to use"
-                },
-                "gears.runtime.management.mode": {
-                    "type": "string",
-                    "enum": [
-                        "docker",
-                        "docker-compose",
-                        "gears-cli"
-                    ],
-                    "default": "docker-compose",
-                    "description": "Specifies the Runtime management mode to use"
-                },
                 "gears.browser": {
                     "type": "string",
                     "default": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
                     "description": "Specifies the browser to use for displaying diagrams"
-                },
-                "gears.docker": {
-                    "type": "string",
-                    "default": "docker",
-                    "description": "Specifies the Docker command to use"
                 },
                 "gears.file-pattern.specs": {
                     "type": "string",
@@ -135,21 +125,6 @@
                     "type": "string",
                     "default": "scenarios/*.scenario",
                     "description": "Specifies the pattern for running scenario files"
-                },
-                "gears.runner.endpoint": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Specifies the endpoint for the GEARS Runner."
-                },
-                "gears.runner.extraArgs": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Specifies extra command line arguments for the GEARS Runner."
-                },
-                "gears.generator.extraArgs": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Specifies extra command line arguments for the GEARS Runner."
                 }
             }
         },

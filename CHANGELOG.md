@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.9.0
+
+- Update tasks for new Runtime architecture.
+  The Start/Stop Runtime and Deploy/Undeploy tasks have been replaced by Run Application. 
+- Related settings have been removed: `gears.docker`, `gears.deploy.mode`, `gears.runtime.management.mode`.
+
 ## 0.8.1
 
 - Extra arguments can be configured for the GEARS Generator and Runner.

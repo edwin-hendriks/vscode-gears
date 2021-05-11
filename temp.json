@@ -1,0 +1,9 @@
+"gears.generator.plugins": {
+    "type": "array",
+    "default": [],
+    "description": "Plugins to use"
+},
+/*
+        const plugins        = this.config('generator.plugins')
+        if (plugins) cmd += ` --plugins ${plugins}`
+*/
