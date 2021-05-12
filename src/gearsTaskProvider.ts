@@ -4,7 +4,7 @@ import { Config } from './common'
 type Execution = vscode.ProcessExecution | vscode.ShellExecution | vscode.CustomExecution
 
 export class GearsTaskProvider implements vscode.TaskProvider {
-    static GearsType: string = 'GEARS';
+    static GearsType: string = 'GEARS'
 
     workspaceRoot: string
     config: Config
@@ -59,9 +59,10 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         const runtimeVersion = this.config('runtime.version')
         const filePattern    = this.config('file-pattern.specs')
         const extraArgs      = this.config('generator.extraArgs')
-        const generatorJar   = this.getGeneratorJar()
         
         const cwd = this.workspaceRoot
+        const generatorJar = '${env:GEARS_RELEASES}/gears-generator-assembly-${config:gears.generator.version}.jar'
+        
         var cmd = `java -jar "${generatorJar}"`
         if (projectName)    cmd += ` --name ${projectName}`
         if (projectVersion) cmd += ` --version ${projectVersion}`
@@ -69,11 +70,6 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         if (extraArgs)      cmd += ` ${extraArgs}`
         cmd += ` ${filePattern}`
         return new vscode.ShellExecution(cmd, { cwd })
-    }
-
-    getGeneratorJar(): String {
-        const generatorVersion = this.config('generator.version')
-        return "${env:GEARS_RELEASES}/gears-generator-assembly-" + generatorVersion + ".jar"
     }
 
     diagramsExecution(): Execution {
@@ -112,7 +108,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
 
         const cwd = this.workspaceRoot
         const jar = '${env:GEARS_RELEASES}/gears-runner-assembly-${config:gears.runner.version}.jar'
-        var cmd = `java -jar ${jar}`
+        var cmd = `java -jar "${jar}"`
         if (endpoint) cmd += ` --endpoint ${endpoint}`
         if (extraArgs) cmd += ` ${extraArgs}`
         cmd += ` ${filePattern}`
@@ -126,7 +122,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         
         const cwd = this.workspaceRoot
         const jar = '${env:GEARS_RELEASES}/gears-runner-assembly-${config:gears.runner.version}.jar'
-        var cmd = `java -jar ${jar}`
+        var cmd = `java -jar "${jar}"`
         if (endpoint) cmd += ` --endpoint ${endpoint}`
         if (extraArgs) cmd += ` ${extraArgs}`
         cmd += ` ${filePattern}`
