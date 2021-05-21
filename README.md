@@ -36,7 +36,7 @@ For snippets either press CTRL+SHIFT+P, type 'snip', choose 'Insert snippet' bef
 
 ## Tasks
 
-Press `CTRL+SHIFT+P`, choose `Tasks: Run Task`, then choose `GEARS`, then choose which task. They are already ordered in a preferred order. E.g. 1. Generate, 2. Diagrams, 3. Build, 4. Deploy, 5. Load data, 6. Run (test) scenarios. etc.
+Press `CTRL+SHIFT+B`,, then choose which task. They are already a logical order. E.g. GEARS: 1. Generate, 2. Show Diagrams, 3. Build, 4. Run Application, 5. Load data, 6. Run scenarios.
 
 Below is an example demo of how to call the task `GEARS: 1. Generate`:
 
