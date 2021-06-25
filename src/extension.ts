@@ -1,6 +1,6 @@
 import * as vscode from 'vscode'
-import * as fs from 'fs'
-import * as open from 'open'
+import * as fs     from 'fs'
+import * as open   from 'open'
 
 import { GearsTaskProvider } from './gearsTaskProvider'
 import { Config } from './common'

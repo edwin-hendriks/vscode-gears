@@ -1,5 +1,6 @@
 import * as vscode from 'vscode'
-import { Config } from './common'
+import * as fs     from 'fs'
+import { Config }  from './common'
 
 type Execution = vscode.ProcessExecution | vscode.ShellExecution | vscode.CustomExecution
 
@@ -12,6 +13,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
 	constructor(workspaceRoot: string, config: Config) {
         this.workspaceRoot = workspaceRoot
         this.config = config
+        this.logConfigFile()
     }
     
     provideTasks(token?: vscode.CancellationToken): vscode.ProviderResult<vscode.Task[]> {
@@ -59,7 +61,8 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         const runtimeVersion = this.config('runtime.version')
         const filePattern    = this.config('file-pattern.specs')
         const extraArgs      = this.config('generator.extraArgs')
-        
+        const configFile     = this.getConfigFilename()
+
         const cwd = this.workspaceRoot
         const generatorJar = '${env:GEARS_RELEASES}/gears-generator-assembly-${config:gears.generator.version}.jar'
         
@@ -68,8 +71,23 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         if (projectVersion) cmd += ` --version ${projectVersion}`
         if (runtimeVersion) cmd += ` --runtime-version ${runtimeVersion}`
         if (extraArgs)      cmd += ` ${extraArgs}`
+        if (configFile)     cmd += ` --config ${configFile}`
         cmd += ` ${filePattern}`
         return new vscode.ShellExecution(cmd, { cwd })
+    }
+
+    getConfigFilename(): string {
+        const filename = `${this.workspaceRoot}/gears.json`
+        return fs.existsSync(filename) ? filename : null
+    }
+    
+    logConfigFile(): void {
+        const filename = `${this.workspaceRoot}/gears.json`
+        if (fs.existsSync(filename)) {
+            const data = fs.readFileSync(filename)
+            const config = JSON.parse(data.toString())
+            console.log(config)
+        }
     }
 
     diagramsExecution(): Execution {
