@@ -1,8 +1,13 @@
 # Change Log
 
+## 0.10.1
+
+- fixed errors in this CHANGELOG.md at version 0.10.0
+- added documentation on how to use `gears.json`.
+
 ## 0.10.0
 
-- If `config.json` exists in the root of the workspace, pass it to the Generator using 
+- If `gears.json` exists in the root of the workspace, pass it to the Generator using 
   its new `--config` command line argument (requires Generator version 0.64 or higher).
 
 ## 0.9.0

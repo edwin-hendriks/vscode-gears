@@ -53,6 +53,23 @@ You may want to take a look at the GEARS settings (CTRL+, and then search for GE
     {
         "gears.project.name":      "leave_of_absence",
         "gears.project.version":   "0.1-SNAPSHOT",
-        "gears.generator.version": "0.55",
-        "gears.runner.version":    "0.11",
+        "gears.generator.version": "0.64",
+        "gears.runner.version":    "0.14",
     }
+
+Since version 0.10.0 it is also possible to add a `gears.json` file in the root folder of your project which contains the same and even more settings for your GEARS project. Below is an example which also shows the parameter names you should use:
+
+    {
+        "projectName":      "leave_of_absence",
+        "projectVersion":   "0.1-SNAPSHOT",
+        "generatorVersion": "0.64",
+        "runtimeVersion":   "0.54.1",
+        "runnerVersion":    "0.14",
+        "plugins":          [
+            "com.xlrit.gears.runtime:gears-runtime-plugin-mail"
+        ]
+    }
+
+If this file exists, its settings will be used. Using `.settings.json` will probably become depricated in the future in favour of this `gears.json` file.
+
+**Note that**: in this version of this extension the parameters `generatorVersion` and `runnerVersion` are not yet working. For those parameters the ones in `.settings.json` are still leading. We'll let you know when this is fixed.
