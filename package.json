@@ -181,7 +181,7 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "The Gears task Edwin and Marcus will customize"
+                        "description": "A GEARS task"
                     }
                 }
             }
