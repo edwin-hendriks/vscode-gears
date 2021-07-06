@@ -3,7 +3,7 @@
     "displayName": "GEARS Language Support",
     "description": "Support for the GEARS specification language",
     "icon": "img/GEARS_icon.png",
-    "version": "0.10.1",
+    "version": "0.11.0",
     "publisher": "edwin-hendriks",
     "homepage": "https://github.com/edwin-hendriks/vscode-gears",
     "license": "GPL-3.0",
@@ -66,30 +66,10 @@
         "configuration": {
             "title": "GEARS",
             "properties": {
-                "gears.project.name": {
-                    "type": "string",
-                    "default": null,
-                    "description": "Specifies the project name"
-                },
-                "gears.project.version": {
-                    "type": "string",
-                    "default": "0.1-SNAPSHOT",
-                    "description": "Specifies the project version"
-                },
-                "gears.generator.version": {
-                    "type": "string",
-                    "default": null,
-                    "description": "Specifies which version of the GEARS Generator should be used"
-                },
                 "gears.generator.extraArgs": {
                     "type": "string",
                     "default": "",
                     "description": "Specifies extra command line arguments for the GEARS Runner."
-                },
-                "gears.runner.version": {
-                    "type": "string",
-                    "default": null,
-                    "description": "Specifies which version of the GEARS Runner should be used"
                 },
                 "gears.runner.endpoint": {
                     "type": "string",
@@ -100,11 +80,6 @@
                     "type": "string",
                     "default": "",
                     "description": "Specifies extra command line arguments for the GEARS Runner."
-                },
-                "gears.runtime.version": {
-                    "type": "string",
-                    "default": null,
-                    "description": "Specifies which version of the GEARS Runtime should be used"
                 },
                 "gears.browser": {
                     "type": "string",

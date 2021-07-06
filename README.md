@@ -7,24 +7,8 @@ To publish, adjust version number in package.json and use command `vsce publish`
 # Prerequisites
 
 - GEARS must be installed (to be able to generate)
-- OpenJDK 1.8 or higher must be installed (to be able to compile)
-- Docker must be installed (to be able to deploy)
 - The environment variable "GEARS\_RELEASES" must point to the GEARS installation folder.
-- A docker-compose.yml file must be somewhere in the workspace (to be able to start the right docker container).
-
-Example content docker-compose-yml:
-
-    version: '3'
-    services:
-    runtime:
-        image: "xlrit/gears-runtime:v0.10"
-        container_name: "gears-runtime"
-        ports:
-        - "8080:8080"
-        - "9990:9990"
-        - "1110:110"
-        - "2525:25"
-
+- Java 11 or higher must be installed (to be able to compile)
 
 # How to use
 
@@ -36,7 +20,7 @@ For snippets either press CTRL+SHIFT+P, type 'snip', choose 'Insert snippet' bef
 
 ## Tasks
 
-Press `CTRL+SHIFT+B`,, then choose which task. They are already a logical order. E.g. GEARS: 1. Generate, 2. Show Diagrams, 3. Build, 4. Run Application, 5. Load data, 6. Run scenarios.
+Press `CTRL+SHIFT+B`, then choose a task. They are already in logical order. E.g. GEARS: 1. Generate, 2. Show Diagrams, 3. Build, 4. Run Application, 5. Load data, 6. Run scenarios.
 
 Below is an example demo of how to call the task `GEARS: 1. Generate`:
 
@@ -48,16 +32,7 @@ We probably will move the tasks to commands which can be activated with CTRL+SHI
 
 ## Settings
 
-You may want to take a look at the GEARS settings (CTRL+, and then search for GEARS). Below are example required settings which you need to provide to make everything work.:
-
-    {
-        "gears.project.name":      "leave_of_absence",
-        "gears.project.version":   "0.1-SNAPSHOT",
-        "gears.generator.version": "0.64",
-        "gears.runner.version":    "0.14",
-    }
-
-Since version 0.10.0 it is also possible to add a `gears.json` file in the root folder of your project which contains the same and even more settings for your GEARS project. Below is an example which also shows the parameter names you should use:
+Since version 0.11.0 many settings are configured using `gears.json` in the workspace root. Below is an example which also shows the parameter names you should use:
 
     {
         "projectName":      "leave_of_absence",
@@ -70,6 +45,4 @@ Since version 0.10.0 it is also possible to add a `gears.json` file in the root 
         ]
     }
 
-If this file exists, its settings will be used. Using `.settings.json` will probably become depricated in the future in favour of this `gears.json` file.
-
-**Note that**: in this version of this extension the parameters `generatorVersion` and `runnerVersion` are not yet working. For those parameters the ones in `.settings.json` are still leading. We'll let you know when this is fixed.
+Additional settings can be configured using VSCode's configuration mechanism (CTRL+, and then search for GEARS).
