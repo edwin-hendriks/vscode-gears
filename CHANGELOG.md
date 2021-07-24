@@ -1,5 +1,16 @@
 # Change Log
 
+## 0.11.0
+
+changes for v0.66 of GEARS generator:
+- added otherwise snippet and improved highlighting
+- added error snippet
+- fixed incorrect syntax for multiple ELEMENT in....
+- added reusable definitions snippet
+- fixed for the and for each
+- improved attribute definition snippet
+- improved attribute trait snippet
+
 ## 0.10.1
 
 - fixed errors in this CHANGELOG.md at version 0.10.0
