@@ -66,30 +66,10 @@
         "configuration": {
             "title": "GEARS",
             "properties": {
-                "gears.project.name": {
-                    "type": "string",
-                    "default": null,
-                    "description": "Specifies the project name"
-                },
-                "gears.project.version": {
-                    "type": "string",
-                    "default": "0.1-SNAPSHOT",
-                    "description": "Specifies the project version"
-                },
-                "gears.generator.version": {
-                    "type": "string",
-                    "default": null,
-                    "description": "Specifies which version of the GEARS Generator should be used"
-                },
                 "gears.generator.extraArgs": {
                     "type": "string",
                     "default": "",
                     "description": "Specifies extra command line arguments for the GEARS Runner."
-                },
-                "gears.runner.version": {
-                    "type": "string",
-                    "default": null,
-                    "description": "Specifies which version of the GEARS Runner should be used"
                 },
                 "gears.runner.endpoint": {
                     "type": "string",
@@ -100,11 +80,6 @@
                     "type": "string",
                     "default": "",
                     "description": "Specifies extra command line arguments for the GEARS Runner."
-                },
-                "gears.runtime.version": {
-                    "type": "string",
-                    "default": null,
-                    "description": "Specifies which version of the GEARS Runtime should be used"
                 },
                 "gears.browser": {
                     "type": "string",
@@ -181,7 +156,7 @@
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "The Gears task Edwin and Marcus will customize"
+                        "description": "A GEARS task"
                     }
                 }
             }

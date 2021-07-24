@@ -1,4 +1,16 @@
-# Change Log
+# Changelog
+
+## 0.11.0
+
+- Many configuration properties are now configured using gears.json instead of VSCode's configuration mechanism (i.e. .vscode/settings.json). See README.md for more info.
+
+  | Old                       | New              |
+  | ------------------------- | ---------------- |
+  | gears.project.name        | projectName      |
+  | gears.project.version     | projectVersion   |
+  | gears.generator.version   | generatorVersion |
+  | gears.runner.version      | runnerVersion    |
+  | gears.runtime.version     | runtimeVersion   |
 
 ## 0.11.0
 
@@ -13,8 +25,8 @@ changes for v0.66 of GEARS generator:
 
 ## 0.10.1
 
-- fixed errors in this CHANGELOG.md at version 0.10.0
-- added documentation on how to use `gears.json`.
+- Fixed errors in this CHANGELOG.md at version 0.10.0
+- Added documentation on how to use `gears.json`.
 
 ## 0.10.0
 
