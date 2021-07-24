@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.11.0
+## 0.11.1
 
 - Many configuration properties are now configured using gears.json instead of VSCode's configuration mechanism (i.e. .vscode/settings.json). See README.md for more info.
 
