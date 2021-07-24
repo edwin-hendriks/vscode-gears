@@ -33,6 +33,15 @@
 		],
 		"description": "Extented snippet for creating a new process end result specification. The 'with subject' and 'startable by' are optional. The 'with subject' is only usefull if the process has more than one yellow (interactive) process step. The 'startable by' is only usefull for fully automated processes."
 	},
+	"reusable definitions": {
+		"prefix": "reusable definitions",
+		"body": [
+			"reusable definitions",
+			"",
+			"$0"
+		],
+		"description": "Start a .sn with the text reusable definitions if you want it to contain definitions that are used from another .sn file."
+	},
 	"one created": {
 		"prefix": "one: ELEMENT",
 		"body": [
@@ -67,30 +76,37 @@
 	"multiple created": {
 		"prefix": "multiple: COLLECTION",
 		"body": [
-			"multiple ${1:element_name} exist in ${2:collection_name} with:",
+			"multiple ${1:element_name} in ${2:collection_name} are created with:",
 			"    ${3:attribute_name} = ${0:value_expression}"
 		],
 		"description": "Creates several elements in a collection and return a collection of elements created."
 	},
+	"multiple relation": {
+		"prefix": "multiple: RELATED_ENTITY_TYPE",
+		"body": [
+			"multiple ${0:RELATED_ENTITY_TYPE}"
+		],
+		"description": "to define a * to many relationship to another entity."
+	},
 	"for the": {
 		"prefix": "for the",
 		"body": [
-			"for the ${1:element_name} in ${2:filtered_collection} applies:",
-			"${1:element_name}.${3:attribute_name} = ${4:value_expression}",
+			"for the ${1:ELEMENT_NAME} in ${2:FILTERED_COLLECTION} applies:",
+			"    ${1:ELEMENT_NAME}.${3:attribute_name} = ${4:value_expression}",
 			"    and",
-			"$0"
+			"    $0"
 		],
 		"description": "Achieve one or more results for one element. Any result is seperated by 'and' ."
 	},
 	"for each": {
 		"prefix": "for each: LIST or results",
 		"body": [
-			"for each ${1:element_name} in ${2:numerous:numerous} :${3:filtered_collection} applies:",
-			"${1:element_name}.${4:attribute_name} = ${5:value_expression}",
+			"for each ${1:ELEMENT_NAME} in ${2| ,numerous|} ${3:FILTERED_COLLECTION} applies:",
+			"    ${1:ELEMENT_NAME}.${4:attribute_name} = ${5:value_expression}",
 			"    and",
-			"$0"
+			"    $0"
 		],
-		"description": "Achieve one or more results for multiple elements. Any result is seperated by 'and'. Add 'numerous' only if you need to process a lot of elements (e.g. more then 1000). You can leave out 'applies'. If so this For each will result in a list value.  (since before GEARS v4.3.0)"
+		"description": "Achieve one or more results for multiple elements. Any result is seperated by 'and'. Add 'numerous' only if you need to process a lot of elements (e.g. more then 1000). You can leave out 'applies'. If so this For each will result in a list value."
 	},
 	"if then {else}": {
 		"prefix": "if",
@@ -115,6 +131,18 @@
 		],
 		"description": "Input from defines a value is coming as input from an actor or a user. Based on defines the info the actor or user needs to give his input. Chosen from defines from what values the actor or user can choose from. Default defines what the default value is. Of type defines the type (only needed when the type cannot be determined otherwise."
 	},
+	"otherwise": {
+		"prefix": "otherwise",
+		"body":	["otherwise ${0:otherwise_expression}"
+		],
+		"description": "If an expression can result in an undefined value (e.g. an optional attribute without a value) you can place otherwise after this expression followed by an otherwise_expression which defines the value if the initial expression results in undefined."
+	},
+	"error": {
+		"prefix": "error",
+		"body":	["error ${0:text_expression}"
+		],
+		"description": "this will produce an error with an optional text_expression as the error message text. If text_expression is ommitted a default error message will be used. The error and the error message will be shown to the user if possible and logged."
+	},
 	"entity definition": {
 		"prefix": "entity",
 		"body":	["${1:ENTITY_NAME} in $1S"
@@ -125,7 +153,7 @@
 	},
 	"attribute definition": {
 		"prefix": "attribute",
-		"body":	["${1:attribute_name}    : ${2|text,number,boolean,date,time,datetime,period,tuple,binary,['value1'.'value2'],RELATED_ENTITY_NAME,multiple RELATED_ENTITY_NAME|}"
+		"body":	["${1:attribute_name}    : ${2|text,number,boolean,date,time,datetime,period,tuple,binary,['value1'.'value2'],RELATED_ENTITY_TYPE,multiple RELATED_ENTITY_TYPE|}"
 		],
 		"description": "Define an attribute by providing its name, then choose the type of the attribute. You can override the default length of a text attribute by adding (n) after type 'text'. E.g. text(10). You can override the default length and precision by adding (n,m) after number. E.g. number(4,2) for a number of length 4 incl. decimals and 2 decimals. The ['value1'.'value2'] should be replaced with a comma separated list of possible values between brackets (e.g. ['male', 'female', 'unknown']).  RELATED_ENTITY_NAME should be replaced with the name of an existing related entity. \n\n Use snippet: 'trait' to define traits of each attribute."
 	},
@@ -137,7 +165,7 @@
 	},
 	"attribute trait": {
 		"prefix": "trait",
-		"body":	["${1|unique simpleStringLiteral,required,optional,autovalue,displayed,multiline,action,default valueExpression,labeled simpleStringLiteral,group simpleStringLiteral,opposite of attributeName,description descriptionLiteral|}"
+		"body":	["${1|unique simpleStringLiteral,required,optional,autovalue,displayed,multiline,action,default valueExpression,labeled simpleStringLiteral,group simpleStringLiteral,opposite of RELATIONAL_ATTRIBUTE,description descriptionLiteral|}"
 		],
 		"description": "Choose the trait you want: \n\n The 'unique' trait forces the value of this attribute to be unique. If the optional simpleStringLiteral is provided, the combination of the attribute values that share the same simpleLiteral must be unique. \n\n Use either the 'required' trait or its reverse, being the 'optional' trait. If neither is provided 'optional' is assumed as default. The 'required' trait forces that the value of this attribute is provides when stored. \n\n  The 'autovalue' will make sure an automatically generated value will be generated for this attribute on storage. \n\n  The 'displayed' trait makes the value of this attribute the default way to represent this entity. A maximum of 2 attributes can have this trait one of a basic type and another of a tuple type. \n\n  The 'multiline' trait defines that a textual attribute can have multiple lines. \n\n  The 'action' trait defines that this attribute represents an action that should be performed before the process flow can continue. \n\n  The 'default' trait defines the default value of this attribute as specified with the valueExpression that comes right after 'default'. \n\n  The 'labeled' trait overrides the default label with the specified simpleStringLiteral when a label is needed for this attribute in a user interface. \n\n  The 'group' trait specifies a group with the provided simpleStringLiteral in which this attribute is placed. \n\n  The 'opposite of' trait defines the opposite relational attributeName. It makes these 2 attributes act as one relation. \n\n  With the 'description' trait you can give a description to this attribute as specified with the descriptionLiteral."
 	},
