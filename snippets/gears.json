@@ -169,6 +169,11 @@
 		],
 		"description": "Choose the trait you want: \n\n The 'unique' trait forces the value of this attribute to be unique. If the optional simpleStringLiteral is provided, the combination of the attribute values that share the same simpleLiteral must be unique. \n\n Use either the 'required' trait or its reverse, being the 'optional' trait. If neither is provided 'optional' is assumed as default. The 'required' trait forces that the value of this attribute is provides when stored. \n\n  The 'autovalue' will make sure an automatically generated value will be generated for this attribute on storage. \n\n  The 'displayed' trait makes the value of this attribute the default way to represent this entity. A maximum of 2 attributes can have this trait one of a basic type and another of a tuple type. \n\n  The 'multiline' trait defines that a textual attribute can have multiple lines. \n\n  The 'action' trait defines that this attribute represents an action that should be performed before the process flow can continue. \n\n  The 'default' trait defines the default value of this attribute as specified with the valueExpression that comes right after 'default'. \n\n  The 'labeled' trait overrides the default label with the specified simpleStringLiteral when a label is needed for this attribute in a user interface. \n\n  The 'group' trait specifies a group with the provided simpleStringLiteral in which this attribute is placed. \n\n  The 'opposite of' trait defines the opposite relational attributeName. It makes these 2 attributes act as one relation. \n\n  With the 'description' trait you can give a description to this attribute as specified with the descriptionLiteral."
 	},
+	"does not exist": {
+		"prefix": "does not exist",
+		"body": "does not exist",
+		"description": "to check of a value, collection or element does not exist. E.g. PERSON.WIFE does not exist."
+	},
 	"add_work_days": {
 		"prefix": "add_work_days: date",
 		"body": "add_work_days(${1:startdate}, ${0:number_of_workdays})",
