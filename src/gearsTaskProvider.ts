@@ -49,7 +49,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
             createTask('4. Run Application',   this.runExecution(gearsConfig)),
             createTask('5. Load data',         this.loadDataExecution(gearsConfig)),
             createTask('6. Run scenarios',     this.runScenariosExecution(gearsConfig)),
-            //createTask('7. Stop Application',  this.stopExecution()),
+            //createTask('7. Stop Application',  this.stopExecution(gearsConfig)),
         ]
         
         //console.log("provideTasks: ", tasks)
@@ -78,15 +78,15 @@ export class GearsTaskProvider implements vscode.TaskProvider {
 
     generateExecution(gearsConfig: any): Execution {
         const cwd            = this.workspaceRoot
-        const filePattern    = this.config('file-pattern.specs')
-        const extraArgs      = this.config('generator.extraArgs')
         const configFile     = path.relative(cwd, gearsConfig.filename)
+        const filter         = this.config('generator.filter')
+        const extraArgs      = this.config('generator.extraArgs')
         const generatorJar   = this.getGeneratorJar(gearsConfig)
         
         var cmd = `java -jar "${generatorJar}"`
-        if (extraArgs)      cmd += ` ${extraArgs}`
-        if (configFile)     cmd += ` --config ${configFile}`
-        cmd += ` ${filePattern}`
+        if (configFile) cmd += ` --config ${configFile}`
+        if (filter)     cmd += ` --filter ${filter}`
+        if (extraArgs)  cmd += ` ${extraArgs}`
         
         return new vscode.ShellExecution(cmd, { cwd })
     }
@@ -106,21 +106,25 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     }
 
     runExecution(gearsConfig: any): Execution {
-        const cwd = this.getGeneratedProjectDir(gearsConfig)
-        const cmd = 'mvn spring-boot:run'
+        const cwd      = this.getGeneratedProjectDir(gearsConfig)
+        const profiles = this.config('run.profiles')
+        
+        var cmd = 'mvn spring-boot:run'
+        if (profiles) cmd += ` -Dspring-boot.run.profiles=${profiles}`
+        
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
     stopExecution(gearsConfig: any): Execution {
         const cwd = this.getGeneratedProjectDir(gearsConfig)
-        const cmd = 'mvn spring-boot:stop -Dspring-boot.stop.fork=true'
+        const cmd = 'mvn spring-boot:stop'
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
     loadDataExecution(gearsConfig: any): Execution {
         const endpoint    = this.config('runner.endpoint')
         const extraArgs   = this.config('runner.extraArgs')
-        const filePattern = this.config('file-pattern.data')
+        const loadPattern = this.config('runner.load-pattern')
 
         const cwd = this.workspaceRoot
         const jar = this.getRunnerJar(gearsConfig)
@@ -128,15 +132,15 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         var cmd = `java -jar "${jar}"`
         if (endpoint)  cmd += ` --endpoint ${endpoint}`
         if (extraArgs) cmd += ` ${extraArgs}`
+        cmd += ` --load '${loadPattern}'`
         
-        cmd += ` ${filePattern}`
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
     runScenariosExecution(gearsConfig: any): Execution {
-        const endpoint    = this.config('runner.endpoint')
-        const extraArgs   = this.config('runner.extraArgs')
-        const filePattern = this.config('file-pattern.scenarios')
+        const endpoint   = this.config('runner.endpoint')
+        const extraArgs  = this.config('runner.extraArgs')
+        const runPattern = this.config('runner.run-pattern')
         
         const cwd = this.workspaceRoot
         const jar = this.getRunnerJar(gearsConfig)
@@ -144,7 +148,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         var cmd = `java -jar "${jar}"`
         if (endpoint)  cmd += ` --endpoint ${endpoint}`
         if (extraArgs) cmd += ` ${extraArgs}`
-        cmd += ` ${filePattern}`
+        cmd += ` --run '${runPattern}'`
         
         return new vscode.ShellExecution(cmd, { cwd })
     }

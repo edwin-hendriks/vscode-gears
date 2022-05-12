@@ -3,7 +3,7 @@
     "displayName": "GEARS Language Support",
     "description": "Support for the GEARS specification language",
     "icon": "img/GEARS_icon.png",
-    "version": "0.11.1",
+    "version": "0.12.0",
     "publisher": "edwin-hendriks",
     "homepage": "https://github.com/edwin-hendriks/vscode-gears",
     "license": "GPL-3.0",
@@ -66,10 +66,25 @@
         "configuration": {
             "title": "GEARS",
             "properties": {
+                "gears.generator.filter": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Specifies the process key filter which limits which processes will be generated"
+                },
                 "gears.generator.extraArgs": {
                     "type": "string",
                     "default": "",
-                    "description": "Specifies extra command line arguments for the GEARS Runner."
+                    "description": "Specifies extra command line arguments for the GEARS Generator."
+                },
+                "gears.runner.load-pattern": {
+                    "type": "string",
+                    "default": "**",
+                    "description": "Specifies the pattern for loading data files"
+                },
+                "gears.runner.run-pattern": {
+                    "type": "string",
+                    "default": "**",
+                    "description": "Specifies the pattern for running scenario files"
                 },
                 "gears.runner.endpoint": {
                     "type": "string",
@@ -81,25 +96,15 @@
                     "default": "",
                     "description": "Specifies extra command line arguments for the GEARS Runner."
                 },
+                "gears.run.profiles": {
+                    "type": "string",
+                    "default": "dev",
+                    "description": "A comma separated list of Spring profiles to activate."
+                },
                 "gears.browser": {
                     "type": "string",
                     "default": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
                     "description": "Specifies the browser to use for displaying diagrams"
-                },
-                "gears.file-pattern.specs": {
-                    "type": "string",
-                    "default": "*.sn",
-                    "description": "Specifies the pattern for SN specifications"
-                },
-                "gears.file-pattern.data": {
-                    "type": "string",
-                    "default": "data/*.sql",
-                    "description": "Specifies the pattern for loading data files"
-                },
-                "gears.file-pattern.scenarios": {
-                    "type": "string",
-                    "default": "scenarios/*.scenario",
-                    "description": "Specifies the pattern for running scenario files"
                 }
             }
         },
@@ -178,11 +183,11 @@
         "portfinder": "^1.0.27"
     },
     "devDependencies": {
-        "@types/mocha": "^2.2.32",
-        "@types/node": "^6.14.10",
-        "@types/vscode": "^1.47.0",
-        "typescript": "^3.9.7",
-        "vscode-jsonrpc": "^3.6.2",
-        "vscode-languageclient": "^3.4.2"
+        "@types/mocha": "^9.1.1",
+        "@types/node": "^16.11.7",
+        "@types/vscode": "^1.67.0",
+        "typescript": "^4.6.4",
+        "vscode-jsonrpc": "^8.0.0",
+        "vscode-languageclient": "^8.0.0"
     }
 }

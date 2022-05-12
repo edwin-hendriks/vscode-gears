@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.12.0
+
+- Update the available settings:
+
+  | Name                      | Default   | Description                                                           |
+  | ------------------------- | --------------------------------------------------------------------------------- |
+  | gears.generator.filter    | (empty)   | The process key filter which limits which processes will be generated |
+  | gears.generator.extraArgs | (empty)   | Extra command line arguments for the GEARS Generator                  |
+  | gears.runner.load-pattern | **        | The pattern for loading data files                                    |
+  | gears.runner.run-pattern  | **        | The pattern for running scenario files                                |
+  | gears.runner.endpoint     | (empty)   | The endpoint for the GEARS Runner                                     |
+  | gears.runner.extraArgs    | (empty)   | Extra command line arguments for the GEARS Runner                     |
+  | gears.run.profiles        | dev       | Comma separated list of Spring profiles to activate                   |
+  | gears.browser             | chome.exe | The browser to use for displaying diagrams                            |
+
+- Added highlighting for the "does not exist" construct.
+
 ## 0.11.1
 
 - Many configuration properties are now configured using gears.json instead of VSCode's configuration mechanism (i.e. .vscode/settings.json). See README.md for more info.
