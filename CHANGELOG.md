@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.13.0
+
+- Add task (with number 2) to copy resources only. This invokes the Generator with the `--copy-resources` option.
+
 ## 0.12.0
 
 - Update the available settings:

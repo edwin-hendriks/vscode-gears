@@ -44,11 +44,12 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         
         const tasks = [
             createTask('1. Generate',          this.generateExecution(gearsConfig)),
-            createTask('2. Show Diagrams',     this.diagramsExecution()),
-            createTask('3. Build',             this.buildExecution(gearsConfig)),
-            createTask('4. Run Application',   this.runExecution(gearsConfig)),
-            createTask('5. Load data',         this.loadDataExecution(gearsConfig)),
-            createTask('6. Run scenarios',     this.runScenariosExecution(gearsConfig)),
+            createTask('2. Copy Resources',    this.copyResourcesExecution(gearsConfig)),
+            createTask('3. Show Diagrams',     this.diagramsExecution()),
+            createTask('4. Build',             this.buildExecution(gearsConfig)),
+            createTask('5. Run Application',   this.runExecution(gearsConfig)),
+            createTask('6. Load data',         this.loadDataExecution(gearsConfig)),
+            createTask('7. Run scenarios',     this.runScenariosExecution(gearsConfig)),
             //createTask('7. Stop Application',  this.stopExecution(gearsConfig)),
         ]
         
@@ -87,6 +88,18 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         if (configFile) cmd += ` --config ${configFile}`
         if (filter)     cmd += ` --filter ${filter}`
         if (extraArgs)  cmd += ` ${extraArgs}`
+        
+        return new vscode.ShellExecution(cmd, { cwd })
+    }
+
+    copyResourcesExecution(gearsConfig: any): Execution {
+        const cwd            = this.workspaceRoot
+        const configFile     = path.relative(cwd, gearsConfig.filename)
+        const generatorJar   = this.getGeneratorJar(gearsConfig)
+        
+        var cmd = `java -jar "${generatorJar}"`
+        if (configFile) cmd += ` --config ${configFile}`
+        cmd += ` --copy-resources`
         
         return new vscode.ShellExecution(cmd, { cwd })
     }
