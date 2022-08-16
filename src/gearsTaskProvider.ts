@@ -36,9 +36,10 @@ export class GearsTaskProvider implements vscode.TaskProvider {
             task.presentationOptions = { 
                 showReuseMessage: false 
             }
+            console.debug("Created task: {}", task)
             return task
         }
-        
+
         const gearsConfig = this.loadGearsConfig()
         if (!gearsConfig) return []
         

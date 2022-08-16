@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.13.1
+
+- Upgrade several dependencies.
+- Consistent spelling of task type "GEARS".
+
 ## 0.13.0
 
 - Add task (with number 2) to copy resources only. This invokes the Generator with the `--copy-resources` option.

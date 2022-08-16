@@ -154,7 +154,7 @@
         ],
         "taskDefinitions": [
             {
-                "type": "gears",
+                "type": "GEARS",
                 "required": [
                     "name"
                 ],
