@@ -1,5 +1,10 @@
 # Changelog
 
+## Next version
+
+- Activate Spring profiles "dev" and "local" by default when running a generated application.
+- TODO gears.json verplicht voor tasks (fix or document)
+
 ## 0.13.1
 
 - Upgrade several dependencies.

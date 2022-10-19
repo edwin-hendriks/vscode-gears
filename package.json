@@ -98,7 +98,7 @@
                 },
                 "gears.run.profiles": {
                     "type": "string",
-                    "default": "dev",
+                    "default": "dev,local",
                     "description": "A comma separated list of Spring profiles to activate."
                 },
                 "gears.browser": {
