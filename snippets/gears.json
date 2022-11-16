@@ -153,13 +153,13 @@
 	},
 	"attribute definition": {
 		"prefix": "attribute",
-		"body":	["${1:attribute_name}    : ${2|text,number,boolean,date,time,datetime,period,tuple,binary,['value1'.'value2'],RELATED_ENTITY_TYPE,multiple RELATED_ENTITY_TYPE|}"
+		"body":	["${1:attribute_name}    : ${2|text,number,boolean,date,time,datetime,period,file,tuple,['value1'.'value2'],RELATED_ENTITY_TYPE,multiple RELATED_ENTITY_TYPE|}"
 		],
 		"description": "Define an attribute by providing its name, then choose the type of the attribute. You can override the default length of a text attribute by adding (n) after type 'text'. E.g. text(10). You can override the default length and precision by adding (n,m) after number. E.g. number(4,2) for a number of length 4 incl. decimals and 2 decimals. The ['value1'.'value2'] should be replaced with a comma separated list of possible values between brackets (e.g. ['male', 'female', 'unknown']).  RELATED_ENTITY_NAME should be replaced with the name of an existing related entity. \n\n Use snippet: 'trait' to define traits of each attribute."
 	},
 	"attribute type": {
 		"prefix": "type",
-		"body":	["${1|text,number,boolean,date,time,datetime,period,tuple,binary,['value1'.'value2'],RELATED_ENTITY_NAME,multiple RELATED_ENTITY_NAME|}"
+		"body":	["${1|text,number,boolean,date,time,datetime,period,file,tuple,['value1'.'value2'],RELATED_ENTITY_NAME,multiple RELATED_ENTITY_NAME|}"
 		],
 		"description": "The possible types of an attribute. You can override the default length of a text attribute by adding (n) after type 'text'. E.g. text(10). You can override the default length and precision by adding (n,m) after number. E.g. number(4,2) for a number of length 4 incl. decimals and 2 decimals. The ['value1'.'value2'] should be replaced with a comma separated list of possible values between brackets (e.g. ['male', 'female', 'unknown']).  RELATED_ENTITY_NAME should be replaced with the name of an existing related entity. \n\n Use snippet: 'trait' to define traits of each attribute."
 	},

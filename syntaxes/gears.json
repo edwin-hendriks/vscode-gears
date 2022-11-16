@@ -165,7 +165,7 @@
         "types": {
             "patterns": [
                 {
-                    "match": ": *\\b(text|number|boolean|date|time|datetime|period|tuple|binary)\\b",
+                    "match": ": *\\b(text|number|boolean|date|time|datetime|period|file|tuple)\\b",
                     "captures": {
                         "1": {"name": "entity.name.type.gears"}
                     }

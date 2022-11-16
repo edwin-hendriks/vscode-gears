@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.14.1
+
+- Rename type "binary" to "file".
+
 ## 0.14.0
 
 - Activate Spring profile "local" by default when running a generated application.
