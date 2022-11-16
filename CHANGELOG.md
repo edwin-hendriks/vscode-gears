@@ -1,9 +1,9 @@
 # Changelog
 
-## Next version
+## 0.14.0
 
-- Activate Spring profiles "dev" and "local" by default when running a generated application.
-- TODO gears.json verplicht voor tasks (fix or document)
+- Activate Spring profile "local" by default when running a generated application.
+- Clarify that `gears.json` is required to provide tasks.
 
 ## 0.13.1
 

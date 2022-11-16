@@ -3,7 +3,7 @@
     "displayName": "GEARS Language Support",
     "description": "Support for the GEARS specification language",
     "icon": "img/GEARS_icon.png",
-    "version": "0.13.1",
+    "version": "0.14.0",
     "publisher": "edwin-hendriks",
     "homepage": "https://github.com/edwin-hendriks/vscode-gears",
     "license": "GPL-3.0",
@@ -98,7 +98,7 @@
                 },
                 "gears.run.profiles": {
                     "type": "string",
-                    "default": "dev,local",
+                    "default": "local",
                     "description": "A comma separated list of Spring profiles to activate."
                 },
                 "gears.browser": {

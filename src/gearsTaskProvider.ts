@@ -41,7 +41,10 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         }
 
         const gearsConfig = this.loadGearsConfig()
-        if (!gearsConfig) return []
+        if (!gearsConfig) {
+            console.error("gears.json is required to provide tasks")
+            return []
+        }
         
         const tasks = [
             createTask('1. Generate',          this.generateExecution(gearsConfig)),
