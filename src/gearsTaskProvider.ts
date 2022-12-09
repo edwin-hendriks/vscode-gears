@@ -47,13 +47,13 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         }
         
         const tasks = [
-            createTask('1. Generate',          this.generateExecution(gearsConfig)),
-            createTask('2. Copy Resources',    this.copyResourcesExecution(gearsConfig)),
-            createTask('3. Show Diagrams',     this.diagramsExecution()),
-            createTask('4. Build',             this.buildExecution(gearsConfig)),
-            createTask('5. Run Application',   this.runExecution(gearsConfig)),
-            createTask('6. Load data',         this.loadDataExecution(gearsConfig)),
-            createTask('7. Run scenarios',     this.runScenariosExecution(gearsConfig)),
+            createTask('1. Generate',           this.generateExecution(gearsConfig)),
+            createTask('2. Copy Resources',     this.copyResourcesExecution(gearsConfig)),
+            createTask('3. Show Diagrams',      this.diagramsExecution()),
+            createTask('4. Build',              this.buildExecution(gearsConfig)),
+            createTask('5. Start Application',  this.startExecution(gearsConfig)),
+            createTask('6. Load data',          this.loadDataExecution(gearsConfig)),
+            createTask('7. Run Scenarios',      this.runScenariosExecution(gearsConfig)),
             //createTask('7. Stop Application',  this.stopExecution(gearsConfig)),
         ]
         
@@ -122,7 +122,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
-    runExecution(gearsConfig: any): Execution {
+    startExecution(gearsConfig: any): Execution {
         const cwd      = this.getGeneratedProjectDir(gearsConfig)
         const profiles = this.config('run.profiles')
         
