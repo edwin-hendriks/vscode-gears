@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.15.0
+
+- Add task "Open Generated Code".
+- Rename task "Run Application" to "Start Application".
+
 ## 0.14.1
 
 - Rename type "binary" to "file".
