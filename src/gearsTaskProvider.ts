@@ -47,14 +47,15 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         }
         
         const tasks = [
-            createTask('1. Generate',           this.generateExecution(gearsConfig)),
-            createTask('2. Copy Resources',     this.copyResourcesExecution(gearsConfig)),
-            createTask('3. Show Diagrams',      this.diagramsExecution()),
-            createTask('4. Build',              this.buildExecution(gearsConfig)),
-            createTask('5. Start Application',  this.startExecution(gearsConfig)),
-            createTask('6. Load data',          this.loadDataExecution(gearsConfig)),
-            createTask('7. Run Scenarios',      this.runScenariosExecution(gearsConfig)),
-            //createTask('7. Stop Application',  this.stopExecution(gearsConfig)),
+            createTask('1. Generate',                    this.generateExecution(gearsConfig)),
+            createTask('2. Copy Resources',              this.copyResourcesExecution(gearsConfig)),
+            createTask('3. Show Diagrams',               this.diagramsExecution()),
+            createTask('4. Build',                       this.buildExecution(gearsConfig)),
+            createTask('5. Start Application',           this.startExecution(gearsConfig)),
+            createTask('6. Load data',                   this.loadDataExecution(gearsConfig)),
+            createTask('7. Run Scenarios',               this.runScenariosExecution(gearsConfig)),
+            //createTask('8. Run Scenarios with Selenide', this.runScenariosExecution(gearsConfig)),
+            createTask('9. Open Generated Code',         this.openCodeExecution(gearsConfig)),
         ]
         
         //console.log("provideTasks: ", tasks)
@@ -167,6 +168,13 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         if (extraArgs) cmd += ` ${extraArgs}`
         cmd += ` --run '${runPattern}'`
         
+        return new vscode.ShellExecution(cmd, { cwd })
+    }
+
+    openCodeExecution(gearsConfig: any): Execution {
+        const cwd = this.workspaceRoot
+        const dir = this.getGeneratedProjectDir(gearsConfig)
+        var cmd = `code ${dir}`
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
