@@ -52,9 +52,9 @@ export class GearsTaskProvider implements vscode.TaskProvider {
             createTask('3. Show Diagrams',               this.diagramsExecution()),
             createTask('4. Build',                       this.buildExecution(gearsConfig)),
             createTask('5. Start Application',           this.startExecution(gearsConfig)),
-            createTask('6. Load data',                   this.loadDataExecution(gearsConfig)),
-            createTask('7. Run Scenarios',               this.runScenariosExecution(gearsConfig)),
-            //createTask('8. Run Scenarios with Selenide', this.runScenariosExecution(gearsConfig)),
+            createTask('6. Load data',                   this.loadDataExecution(gearsConfig, null)),
+            createTask('7. Run Scenarios',               this.runScenariosExecution(gearsConfig, null)),
+            createTask('8. Run Scenarios with Selenide', this.runScenariosExecution(gearsConfig, "selenide")),
             createTask('9. Open Generated Code',         this.openCodeExecution(gearsConfig)),
         ]
         
@@ -139,36 +139,43 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
-    loadDataExecution(gearsConfig: any): Execution {
-        const endpoint    = this.config('runner.endpoint')
-        const extraArgs   = this.config('runner.extraArgs')
-        const loadPattern = this.config('runner.load-pattern')
-
+    loadDataExecution(gearsConfig: any, target: string): Execution {
         const cwd = this.workspaceRoot
-        const jar = this.getRunnerJar(gearsConfig)
+        const cmd = this.getRunnerCommand(gearsConfig, 'load', target)
 
-        var cmd = `java -jar "${jar}"`
-        if (endpoint)  cmd += ` --endpoint ${endpoint}`
-        if (extraArgs) cmd += ` ${extraArgs}`
-        cmd += ` --load '${loadPattern}'`
+        return new vscode.ShellExecution(cmd, { cwd })
+    }
+
+    runScenariosExecution(gearsConfig: any, target: string): Execution {
+        const cwd = this.workspaceRoot
+        const cmd = this.getRunnerCommand(gearsConfig, 'run', target)
         
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
-    runScenariosExecution(gearsConfig: any): Execution {
-        const endpoint   = this.config('runner.endpoint')
-        const extraArgs  = this.config('runner.extraArgs')
-        const runPattern = this.config('runner.run-pattern')
-        
-        const cwd = this.workspaceRoot
-        const jar = this.getRunnerJar(gearsConfig)
-        
-        var cmd = `java -jar "${jar}"`
-        if (endpoint)  cmd += ` --endpoint ${endpoint}`
-        if (extraArgs) cmd += ` ${extraArgs}`
-        cmd += ` --run '${runPattern}'`
-        
-        return new vscode.ShellExecution(cmd, { cwd })
+    getRunnerCommand(gearsConfig: any, goal: string, target: string): string {
+        const endpoint  = this.config(`runner.endpoint`)
+        const extraArgs = this.config(`runner.extraArgs`)
+        const pattern   = this.config(`runner.${goal}-pattern`)
+
+        const version = gearsConfig.runnerVersion
+
+        if (version.startsWith('0.')) {
+            const jar = this.getRunnerJar(version)
+            var cmd = `java -jar "${jar}"`
+            if (endpoint)  cmd += ` --endpoint ${endpoint}`
+            if (target)    cmd += ` --target ${target}`
+            if (extraArgs) cmd += ` ${extraArgs}`
+            cmd += ` --run '${pattern}'`
+            return cmd
+        }
+        else {
+            var cmd = `mvn com.xlrit.gears.runtime:gears-maven-runner-plugin:${version}:${goal}`
+            if (endpoint)  cmd += ` -Dgears.runner.endpoint=${endpoint}`
+            if (target)    cmd += ` -Dgears.runner.target=${target}`
+            if (extraArgs) cmd += ` ${extraArgs}`
+            return cmd
+        }
     }
 
     openCodeExecution(gearsConfig: any): Execution {
@@ -190,9 +197,8 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         return path.resolve(releasesDir, jarName)
     }
 
-    getRunnerJar(gearsConfig: any): string {
+    getRunnerJar(version: string): string {
         const releasesDir = process.env.GEARS_RELEASES
-        const version = gearsConfig.runnerVersion
         const jarName = `gears-runner-assembly-${version}.jar`
         return path.resolve(releasesDir, jarName)
     }

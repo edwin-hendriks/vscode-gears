@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.16.0
+
+- Support the new Runner (version 1.10.1 and above).
+- Add task 8: "Run Scenarios with Selenide".
+
 ## 0.15.0
 
 - Add task "Open Generated Code".
