@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.1
+
+- Fix the load task for the legacy runner.
+
 ## 0.16.0
 
 - Support the new Runner (version 1.10.1 and above).
