@@ -174,6 +174,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
             if (endpoint)  cmd += ` -Dgears.runner.endpoint=${endpoint}`
             if (target)    cmd += ` -Dgears.runner.target=${target}`
             if (extraArgs) cmd += ` ${extraArgs}`
+            cmd += ` -Dgears.runner.pattern='${pattern}'`
             return cmd
         }
     }
