@@ -49,6 +49,16 @@
                 "mimetypes": [
                     "text/x-code-output"
                 ]
+            },
+            {
+                "id": "scenario",
+                "extensions": [
+                    ".scenario",
+                    ".scenarioignore"
+                ],
+                "aliases": [
+                    "Scenario"
+                ]
             }
         ],
         "grammars": [
@@ -61,6 +71,11 @@
                 "language": "log",
                 "scopeName": "logging",
                 "path": "./syntaxes/logging.json"
+            },
+            {
+                "language": "scenario",
+                "scopeName": "scenario.gears",
+                "path": "./syntaxes/scenario.json"
             }
         ],
         "configuration": {
