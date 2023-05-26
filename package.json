@@ -55,7 +55,7 @@
             {
                 "language": "sn",
                 "scopeName": "source.gears",
-                "path": "./syntaxes/gears.json"
+                "path": "./syntaxes/sn.json"
             },
             {
                 "language": "log",
@@ -149,7 +149,7 @@
         "snippets": [
             {
                 "language": "sn",
-                "path": "./snippets/gears.json"
+                "path": "./snippets/sn.json"
             }
         ],
         "taskDefinitions": [
