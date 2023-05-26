@@ -24,6 +24,9 @@
         },
         {
             "include": "#types"
+        },
+        {
+            "include": "#traits"
         }
     ],
 
@@ -173,6 +176,14 @@
                     "captures": {
                         "1": {"name": "entity.name.type.gears"}
                     }
+                }
+            ]
+        },
+        "traits": {
+            "patterns": [
+                {
+                    "match": "#[a-z][a-z]*",
+                    "name": "string.unquoted.trait.gears"
                 }
             ]
         }
