@@ -117,7 +117,7 @@
         "keywords": {
             "patterns": [
                 {
-                    "match": "\\b(language|process|reusable definitions|key|description|with subject|startable by)\\b",
+                    "match": "\\b(process|reusable definitions|key|description|with subject|startable by)\\b",
                     "name": "keyword.other.gears"
                 },
                 {
@@ -125,7 +125,7 @@
                     "name": "keyword.control.gears"
                 },
                 {
-                    "match": "\\b(and|or|not|current|old|does not exist|exists|contains|intersects|mod|div|like|year|years|month|months|day|days|otherwise|error)\\b",
+                    "match": "\\b(and|or|not|current|old|does not exist|exists|contains|intersects|mod|div|like|error)\\b",
                     "name": "keyword.operator.gears"
                 },
                 {
@@ -133,7 +133,7 @@
                     "name": "keyword.control.gears"
                 },
                 {
-                    "match": "\\b(if|then|else)\\b",
+                    "match": "\\b(if|then|else|otherwise)\\b",
                     "name": "keyword.control.gears"
                 },
                 {
