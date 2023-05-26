@@ -117,7 +117,11 @@
         "keywords": {
             "patterns": [
                 {
-                    "match": "\\b(process|reusable definitions|key|description|with subject|startable by)\\b",
+                    "match": "\\b(reusable definitions|key|with subject|startable by)\\b",
+                    "name": "keyword.other.gears"
+                },
+                {
+                    "match": "\\b(process|description)(?=\\s+')",
                     "name": "keyword.other.gears"
                 },
                 {
@@ -165,7 +169,7 @@
         "types": {
             "patterns": [
                 {
-                    "match": ": *\\b(text|number|boolean|date|time|datetime|period|file|tuple)\\b",
+                    "match": "(?<=:|of type) *\\b(text|number|boolean|date|time|datetime|period|file|tuple)\\b",
                     "captures": {
                         "1": {"name": "entity.name.type.gears"}
                     }
