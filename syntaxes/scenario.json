@@ -1,0 +1,97 @@
+{
+    "scopeName": "scenario.gears",
+    "name": "Scenario",
+    "fileTypes": ["scenario", "scenarioignore"],
+
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#constants"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#variables"
+        },
+        {
+            "include": "#markup"
+        }
+    ],
+
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "match": "\\b(with user|start process with key|process complete|assert|claim|submit|set datetime)\\b",
+                    "name": "keyword.control.scenario"
+                },
+                {
+                    "match": "\\b(as)\\b",
+                    "name": "keyword.operator.scenario"
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [
+                {
+                    "match": "(\"[^\"\\s]*\")",
+                    "name": "string.quoted.double.scenario"
+                },
+                {
+                    "match": "('[^'\\s]*')",
+                    "name": "string.quoted.single.scenario"
+                }
+            ]
+        },
+        "constants": {
+            "patterns": [
+                {
+                    "match": "\\b(?:-?([0-9]+\\.?[0-9]*)|(?:\\.[0-9]+))\\b",
+                    "name": "constant.numeric.scenario"
+                },
+                {
+                    "match": "\\b(true|false)\\b",
+                    "name": "constant.language.scenario"
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "begin": "//",
+                    "end": "\\n",
+                    "name": "comment.line.scenario"
+                }
+            ]
+        },
+        "variables": {
+            "patterns": [
+                {
+                    "match": "\\b(the only task|the first task)\\b",
+                    "name": "variable.language.scenario"
+                }
+            ]
+        },
+        "markup": {
+            "patterns": [
+                {
+                    "begin": "({{{)",
+                    "end": "(}}})",
+                    "beginCaptures": {
+                        "1": { "name": "constant.numeric.scenario" }
+                    },
+                    "endCaptures": {
+                        "1": { "name": "constant.numeric.scenario" }
+                    },
+                    "name": "string.unquoted.scenario"
+                }
+            ]
+        }
+    }
+}
