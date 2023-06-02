@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.17.0
+
+- Added `gears.runner.pattern` option to command line arguments.
+- Updated syntax highlighting for `.sn` files with new language features.
+- Added syntax highlighting for test `.scenarion` files.
+
 ## 0.16.1
 
 - Fix the load task for the legacy runner.
