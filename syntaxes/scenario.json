@@ -40,11 +40,11 @@
         "strings": {
             "patterns": [
                 {
-                    "match": "(\"[^\"\\s]*\")",
+                    "match": "(\"[^\"\\n]*\")",
                     "name": "string.quoted.double.scenario"
                 },
                 {
-                    "match": "('[^'\\s]*')",
+                    "match": "('[^'\\n]*')",
                     "name": "string.quoted.single.scenario"
                 }
             ]
