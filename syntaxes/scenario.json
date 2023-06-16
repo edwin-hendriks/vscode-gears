@@ -56,7 +56,7 @@
                     "name": "constant.numeric.scenario"
                 },
                 {
-                    "match": "\\b(true|false)\\b",
+                    "match": "\\b(true|false|null)\\b",
                     "name": "constant.language.scenario"
                 }
             ]
