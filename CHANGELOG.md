@@ -1,10 +1,14 @@
 # Changelog
 
+## 0.17.1
+
+- Allow spaces in strings and null hightlighting in `.scenario` files
+
 ## 0.17.0
 
 - Added `gears.runner.pattern` option to command line arguments.
 - Updated syntax highlighting for `.sn` files with new language features.
-- Added syntax highlighting for test `.scenarion` files.
+- Added syntax highlighting for test `.scenario` files.
 
 ## 0.16.1
 
