@@ -3,7 +3,7 @@
     "displayName": "GEARS Language Support",
     "description": "Support for the GEARS specification language",
     "icon": "img/GEARS_icon.png",
-    "version": "0.17.1",
+    "version": "0.17.2",
     "publisher": "edwin-hendriks",
     "homepage": "https://github.com/edwin-hendriks/vscode-gears",
     "license": "GPL-3.0",
@@ -36,7 +36,11 @@
                 ],
                 "aliases": [
                     "SMART notation"
-                ]
+                ],
+                "icon": {
+                    "light": "./icons/smart-notation-light.svg",
+                    "dark": "./icons/smart-notation-dark.svg"
+                }
             },
             {
                 "id": "log",
@@ -58,7 +62,11 @@
                 ],
                 "aliases": [
                     "Scenario"
-                ]
+                ],
+                "icon": {
+                    "light": "./icons/scenario.svg",
+                    "dark": "./icons/scenario.svg"
+                }
             }
         ],
         "grammars": [
