@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.17.2
+- Add file icons for smart notation and scenario  files
+
 ## 0.17.1
 
 - Allow spaces in strings and null hightlighting in `.scenario` files
