@@ -1,7 +1,6 @@
 import * as vscode  from 'vscode'
-import * as fs      from 'fs'
 import * as path    from 'path'
-import * as process from 'process'
+import * as utils   from './gearsUtils'
 import { Config }   from './common'
 
 type Execution = vscode.ProcessExecution | vscode.ShellExecution | vscode.CustomExecution
@@ -40,7 +39,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
             return task
         }
 
-        const gearsConfig = this.loadGearsConfig()
+        const gearsConfig = utils.loadGearsConfig()
         if (!gearsConfig) {
             console.error("gears.json is required to provide tasks")
             return []
@@ -67,27 +66,12 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         return undefined
     }
 
-    loadGearsConfig(): any {
-        const filename = `${this.workspaceRoot}/gears.json`
-        if (!fs.existsSync(filename)) {
-            console.log("No gears.json found in workspace root")
-            return undefined
-        }
-        else {
-            const data = fs.readFileSync(filename)
-            const config = JSON.parse(data.toString())
-            console.log("GEARS config", config)
-            config.filename = filename
-            return config
-        }
-    }
-
     generateExecution(gearsConfig: any): Execution {
         const cwd            = this.workspaceRoot
         const configFile     = path.relative(cwd, gearsConfig.filename)
         const filter         = this.config('generator.filter')
         const extraArgs      = this.config('generator.extraArgs')
-        const generatorJar   = this.getGeneratorJar(gearsConfig)
+        const generatorJar   = utils.getGeneratorJar(gearsConfig)
         
         var cmd = `java -jar "${generatorJar}"`
         if (configFile) cmd += ` --config ${configFile}`
@@ -100,7 +84,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     copyResourcesExecution(gearsConfig: any): Execution {
         const cwd            = this.workspaceRoot
         const configFile     = path.relative(cwd, gearsConfig.filename)
-        const generatorJar   = this.getGeneratorJar(gearsConfig)
+        const generatorJar   = utils.getGeneratorJar(gearsConfig)
         
         var cmd = `java -jar "${generatorJar}"`
         if (configFile) cmd += ` --config ${configFile}`
@@ -118,13 +102,13 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     }
 
     buildExecution(gearsConfig: any): Execution {
-        const cwd = this.getGeneratedProjectDir(gearsConfig)
+        const cwd = utils.getGeneratedProjectDir(gearsConfig)
         const cmd = 'mvn clean package'
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
     startExecution(gearsConfig: any): Execution {
-        const cwd      = this.getGeneratedProjectDir(gearsConfig)
+        const cwd      = utils.getGeneratedProjectDir(gearsConfig)
         const profiles = this.config('run.profiles')
         
         var cmd = 'mvn spring-boot:run'
@@ -134,75 +118,31 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     }
 
     stopExecution(gearsConfig: any): Execution {
-        const cwd = this.getGeneratedProjectDir(gearsConfig)
+        const cwd = utils.getGeneratedProjectDir(gearsConfig)
         const cmd = 'mvn spring-boot:stop'
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
     loadDataExecution(gearsConfig: any, target: string): Execution {
         const cwd = this.workspaceRoot
-        const cmd = this.getRunnerCommand(gearsConfig, 'load', target)
+        const cmd = utils.getRunnerCommand(gearsConfig, 'load', target)
 
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
     runScenariosExecution(gearsConfig: any, target: string): Execution {
         const cwd = this.workspaceRoot
-        const cmd = this.getRunnerCommand(gearsConfig, 'run', target)
+        const cmd = utils.getRunnerCommand(gearsConfig, 'run', target)
         
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
-    getRunnerCommand(gearsConfig: any, goal: string, target: string): string {
-        const endpoint  = this.config(`runner.endpoint`)
-        const extraArgs = this.config(`runner.extraArgs`)
-        const pattern   = this.config(`runner.${goal}-pattern`)
-
-        const version = gearsConfig.runnerVersion
-
-        if (version.startsWith('0.')) {
-            const jar = this.getRunnerJar(version)
-            var cmd = `java -jar "${jar}"`
-            if (endpoint)  cmd += ` --endpoint ${endpoint}`
-            if (target)    cmd += ` --target ${target}`
-            if (extraArgs) cmd += ` ${extraArgs}`
-            cmd += ` --${goal} '${pattern}'`
-            return cmd
-        }
-        else {
-            var cmd = `mvn com.xlrit.gears.runtime:gears-maven-runner-plugin:${version}:${goal}`
-            if (endpoint)  cmd += ` -Dgears.runner.endpoint=${endpoint}`
-            if (target)    cmd += ` -Dgears.runner.target=${target}`
-            if (extraArgs) cmd += ` ${extraArgs}`
-            cmd += ` -Dgears.runner.pattern='${pattern}'`
-            return cmd
-        }
-    }
-
     openCodeExecution(gearsConfig: any): Execution {
         const cwd = this.workspaceRoot
-        const dir = this.getGeneratedProjectDir(gearsConfig)
+        const dir = utils.getGeneratedProjectDir(gearsConfig)
         var cmd = `code ${dir}`
         return new vscode.ShellExecution(cmd, { cwd })
-    }
-
-    getGeneratedProjectDir(gearsConfig: any): string {
-        const projectName = gearsConfig.projectName
-        return `${this.workspaceRoot}/target/${projectName}`
-    }
-
-    getGeneratorJar(gearsConfig: any): string {
-        const releasesDir = process.env.GEARS_RELEASES
-        const version = gearsConfig.generatorVersion
-        const jarName = `gears-generator-assembly-${version}.jar`
-        return path.resolve(releasesDir, jarName)
-    }
-
-    getRunnerJar(version: string): string {
-        const releasesDir = process.env.GEARS_RELEASES
-        const jarName = `gears-runner-assembly-${version}.jar`
-        return path.resolve(releasesDir, jarName)
-    }
+      }
 }
 
 interface GearsTaskDefinition extends vscode.TaskDefinition {
