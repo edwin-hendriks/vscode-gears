@@ -4,3 +4,4 @@ node_modules
 /PaGenServer.log
 *.vsix
 .idea
+.vscode/settings.json
