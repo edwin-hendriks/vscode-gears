@@ -125,14 +125,14 @@ export class GearsTaskProvider implements vscode.TaskProvider {
 
     loadDataExecution(gearsConfig: any, target: string): Execution {
         const cwd = this.workspaceRoot
-        const cmd = utils.getRunnerCommand(gearsConfig, 'load', target)
+        const cmd = this.getRunnerCommand(gearsConfig, 'load', target)
 
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
     runScenariosExecution(gearsConfig: any, target: string): Execution {
         const cwd = this.workspaceRoot
-        const cmd = utils.getRunnerCommand(gearsConfig, 'run', target)
+        const cmd = this.getRunnerCommand(gearsConfig, 'run', target)
         
         return new vscode.ShellExecution(cmd, { cwd })
     }
@@ -143,6 +143,32 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         var cmd = `code ${dir}`
         return new vscode.ShellExecution(cmd, { cwd })
       }
+
+    getRunnerCommand(gearsConfig: any, goal: string, target: string): string {
+    const endpoint  = this.config(`runner.endpoint`)
+    const extraArgs = this.config(`runner.extraArgs`)
+    const pattern   = this.config(`runner.${goal}-pattern`)
+    
+    const version = gearsConfig.runnerVersion
+    
+    if (version.startsWith('0.')) {
+        const jar = utils.getRunnerJar(version)
+        var cmd = `java -jar "${jar}"`
+        if (endpoint)  cmd += ` --endpoint ${endpoint}`
+        if (target)    cmd += ` --target ${target}`
+        if (extraArgs) cmd += ` ${extraArgs}`
+        cmd += ` --${goal} '${pattern}'`
+        return cmd
+    }
+    else {
+        var cmd = `mvn com.xlrit.gears.runtime:gears-maven-runner-plugin:${version}:${goal}`
+        if (endpoint)  cmd += ` -Dgears.runner.endpoint=${endpoint}`
+        if (target)    cmd += ` -Dgears.runner.target=${target}`
+        if (extraArgs) cmd += ` ${extraArgs}`
+        cmd += ` -Dgears.runner.pattern='${pattern}'`
+        return cmd
+    }
+    }
 }
 
 interface GearsTaskDefinition extends vscode.TaskDefinition {
