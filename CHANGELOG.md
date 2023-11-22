@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.17.3
+- Make the "Show diagrams" command compatible with Generator 1.12.7 and up.
+
 ## 0.17.2
 - Add file icons for smart notation and scenario  files
 

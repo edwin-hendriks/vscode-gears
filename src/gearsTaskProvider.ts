@@ -48,7 +48,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         const tasks = [
             createTask('1. Generate',                    this.generateExecution(gearsConfig)),
             createTask('2. Copy Resources',              this.copyResourcesExecution(gearsConfig)),
-            createTask('3. Show Diagrams',               this.diagramsExecution()),
+            createTask('3. Show Diagrams',               this.diagramsExecution(gearsConfig)),
             createTask('4. Build',                       this.buildExecution(gearsConfig)),
             createTask('5. Start Application',           this.startExecution(gearsConfig)),
             createTask('6. Load data',                   this.loadDataExecution(gearsConfig, null)),
@@ -93,10 +93,10 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
-    diagramsExecution(): Execution {
+    diagramsExecution(gearsConfig: any): Execution {
         const cwd     = this.workspaceRoot
         const browser = this.config('browser')
-        const page    = `${this.workspaceRoot}/target/diagrams/index.html`
+        const page    = `${utils.getGeneratedProjectDir(gearsConfig)}/diagrams/index.html`
         const cmd     = `${browser} ${page}`
         return new vscode.ShellExecution(cmd, { cwd })
     }
