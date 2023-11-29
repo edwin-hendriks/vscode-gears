@@ -12,6 +12,12 @@ To publish, adjust version number in package.json and use command `vsce publish`
 
 # How to use
 
+## Problems
+
+Just open a SMART Notation (GEARS) project. In the **Problems** pane it will show all problems in the current file. As normal you can click on a problem to jump to it. Note that this requires you have the GEARS Generator under GEARS_RELEASES (v1.12.5 or higher) and a matching `"generatorVersion"` defined in file `gears.json`. 
+
+![problem highlighting](img/problem_highlighting.gif)
+
 ## Snippets
 
 For snippets either press CTRL+SHIFT+P, type 'snip', choose 'Insert snippet' before choosing the snippet you want. Each snippet is documented explaining what it is for and how to use it. All snippets can also be selected after typing the first characters except the 'todef' snippet. This snippet requires you to select text first and choose snippet using `CTRL+SHIFT+P` as shown below:
