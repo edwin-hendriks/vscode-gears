@@ -2,7 +2,9 @@
 
 Support for SMART notation v3.0 (requirements specification language) as supported by GEARS (see www.xlrit.com).
 
-To publish, adjust version number in package.json and use command `vsce publish` (for more details see https://code.visualstudio.com/docs/extensions/publish-extension).
+To publish, adjust version number in package.json and use commands:
+- `npm install`
+- `vsce publish` (for more details see https://code.visualstudio.com/docs/extensions/publish-extension).
 
 # Prerequisites
 

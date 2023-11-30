@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.18.1
+- fixed npm dependencies
+
 ## 0.18.0
 - Added first version of language server that shows problems in syntax and semantics. 
 - Make the "Show diagrams" command compatible with Generator 1.12.7 and up.
