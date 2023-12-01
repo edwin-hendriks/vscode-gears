@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.18.3
+- fixed npm dependencies (again, again)
+
+## 0.18.2
+- fixed npm dependencies (again)
+
 ## 0.18.1
 - fixed npm dependencies
 
