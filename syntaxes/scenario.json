@@ -14,6 +14,9 @@
             "include": "#constants"
         },
         {
+            "include": "#types"
+        },
+        {
             "include": "#comments"
         },
         {
@@ -28,7 +31,7 @@
         "keywords": {
             "patterns": [
                 {
-                    "match": "\\b(with user|start process with key|process complete|assert|claim|submit|set datetime)\\b",
+                    "match": "\\b(with user|start process with key|process complete|assert|claim|submit|set datetime|let)\\b",
                     "name": "keyword.control.scenario"
                 },
                 {
@@ -49,8 +52,28 @@
                 }
             ]
         },
+        "types": {
+            "patterns": [
+                {
+                    "match":"\\b(file|text|integer|decimal|boolean|datetime|date|time|period)\\b",
+                    "name": "entity.name.type.scenario"
+                }
+            ]
+        },
         "constants": {
             "patterns": [
+                {
+                    "match": "\\b[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\b",
+                    "name": "constant.numeric.scenario"
+                },
+                {
+                    "match": "\\b[0-9]{4}-[0-9]{2}-[0-9]{2}\\b",
+                    "name": "constant.numeric.scenario"
+                },
+                {
+                    "match": "\\b[0-9]{2}:[0-9]{2}:[0-9]{2}\\b",
+                    "name": "constant.numeric.scenario"
+                },
                 {
                     "match": "\\b(?:-?([0-9]+\\.?[0-9]*)|(?:\\.[0-9]+))\\b",
                     "name": "constant.numeric.scenario"
@@ -73,7 +96,7 @@
         "variables": {
             "patterns": [
                 {
-                    "match": "\\b(the only task|the first task)\\b",
+                    "match": "\\b(the only|the first|the last|task)\\b",
                     "name": "variable.language.scenario"
                 }
             ]
