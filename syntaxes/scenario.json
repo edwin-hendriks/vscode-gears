@@ -87,6 +87,11 @@
         "comments": {
             "patterns": [
                 {
+                    "begin": "/\\*",
+                    "end": "\\*/",
+                    "name": "comment.block.scenario"
+                },
+                {
                     "begin": "//",
                     "end": "\\n",
                     "name": "comment.line.scenario"
