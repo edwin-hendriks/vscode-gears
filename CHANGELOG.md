@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.18.4
+- fixed npm dependencies (again, again, again (dev dependencies that should have been normal dependencies))
+- Updated syntax highlighting:
+  - in `.sn` files: `are updated`
+  - in `.scenario` files: keyword `the first`, `the only`, `the last`, `let`, multi line comments, the different GRQL query types and date/time/datetime literals
 ## 0.18.3
 - fixed npm dependencies (again, again)
 
