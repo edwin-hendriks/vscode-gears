@@ -14,9 +14,6 @@
             "include": "#constants"
         },
         {
-            "include": "#types"
-        },
-        {
             "include": "#comments"
         },
         {
@@ -49,14 +46,6 @@
                 {
                     "match": "('[^'\\n]*')",
                     "name": "string.quoted.single.scenario"
-                }
-            ]
-        },
-        "types": {
-            "patterns": [
-                {
-                    "match":"\\b(file|text|integer|decimal|boolean|datetime|date|time|period)\\b",
-                    "name": "entity.name.type.scenario"
                 }
             ]
         },
