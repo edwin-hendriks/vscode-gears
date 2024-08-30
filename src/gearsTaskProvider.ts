@@ -46,15 +46,15 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         }
         
         const tasks = [
-            createTask('1. Generate',                    this.generateExecution(gearsConfig)),
-            createTask('2. Copy Resources',              this.copyResourcesExecution(gearsConfig)),
-            createTask('3. Show Diagrams',               this.diagramsExecution(gearsConfig)),
-            createTask('4. Build',                       this.buildExecution(gearsConfig)),
-            createTask('5. Start Application',           this.startExecution(gearsConfig)),
-            createTask('6. Load data',                   this.loadDataExecution(gearsConfig, null)),
-            createTask('7. Run Scenarios',               this.runScenariosExecution(gearsConfig, null)),
-            createTask('8. Run Scenarios with Selenide', this.runScenariosExecution(gearsConfig, "selenide")),
-            createTask('9. Open Generated Code',         this.openCodeExecution(gearsConfig)),
+            createTask('1. Generate',            this.generateExecution(gearsConfig)),
+            createTask('2. Copy Resources',      this.copyResourcesExecution(gearsConfig)),
+            createTask('3. Show Diagrams',       this.diagramsExecution(gearsConfig)),
+            createTask('4. Build',               this.buildExecution(gearsConfig)),
+            createTask('5. Start Application',   this.startExecution(gearsConfig)),
+            createTask('6. Load data',           this.runnerExecution(gearsConfig, 'load')),
+            createTask('7. Run Scenarios',       this.runnerExecution(gearsConfig, 'run')),
+            createTask('8. Export data',         this.runnerExecution(gearsConfig, 'export')),
+            createTask('9. Open Generated Code', this.openCodeExecution(gearsConfig)),
         ]
         
         //console.log("provideTasks: ", tasks)
@@ -123,17 +123,10 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
-    loadDataExecution(gearsConfig: any, target: string): Execution {
+    runnerExecution(gearsConfig: any, goal: string): Execution {
         const cwd = this.workspaceRoot
-        const cmd = this.getRunnerCommand(gearsConfig, 'load', target)
+        const cmd = this.getRunnerCommand(gearsConfig, goal)
 
-        return new vscode.ShellExecution(cmd, { cwd })
-    }
-
-    runScenariosExecution(gearsConfig: any, target: string): Execution {
-        const cwd = this.workspaceRoot
-        const cmd = this.getRunnerCommand(gearsConfig, 'run', target)
-        
         return new vscode.ShellExecution(cmd, { cwd })
     }
 
@@ -144,30 +137,18 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         return new vscode.ShellExecution(cmd, { cwd })
       }
 
-    getRunnerCommand(gearsConfig: any, goal: string, target: string): string {
+    getRunnerCommand(gearsConfig: any, goal: string): string {
     const endpoint  = this.config(`runner.endpoint`)
     const extraArgs = this.config(`runner.extraArgs`)
     const pattern   = this.config(`runner.${goal}-pattern`)
     
     const version = gearsConfig.runnerVersion
     
-    if (version.startsWith('0.')) {
-        const jar = utils.getRunnerJar(version)
-        var cmd = `java -jar "${jar}"`
-        if (endpoint)  cmd += ` --endpoint ${endpoint}`
-        if (target)    cmd += ` --target ${target}`
-        if (extraArgs) cmd += ` ${extraArgs}`
-        cmd += ` --${goal} '${pattern}'`
-        return cmd
-    }
-    else {
-        var cmd = `mvn com.xlrit.gears.runtime:gears-maven-runner-plugin:${version}:${goal}`
+    var cmd = `mvn com.xlrit.gears.runtime:gears-maven-runner-plugin:${version}:${goal}`
         if (endpoint)  cmd += ` -Dgears.runner.endpoint=${endpoint}`
-        if (target)    cmd += ` -Dgears.runner.target=${target}`
         if (extraArgs) cmd += ` ${extraArgs}`
         cmd += ` -Dgears.runner.pattern='${pattern}'`
         return cmd
-    }
     }
 }
 

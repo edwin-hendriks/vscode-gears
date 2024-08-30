@@ -109,6 +109,11 @@
                     "default": "**",
                     "description": "Specifies the pattern for running scenario files"
                 },
+                "gears.runner.export-pattern": {
+                    "type": "string",
+                    "default": "**",
+                    "description": "Specifies the pattern for exporting spec files"
+                },
                 "gears.runner.endpoint": {
                     "type": "string",
                     "default": "",
