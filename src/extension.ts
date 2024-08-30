@@ -31,6 +31,18 @@ export function activate(context: vscode.ExtensionContext) {
             ['(', ')'],
         ],
     })
+    vscode.languages.setLanguageConfiguration('scenario', {
+        wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\#\%\^\&\*\(\)\-\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\?\s]+)/g,
+        comments: {
+            lineComment: '//',
+            blockComment: ['/*', '*/']
+        },
+        brackets: [
+            ['{', '}'],
+            ['[', ']'],
+            ['(', ')'],
+        ],
+    })
 
     const workspaceRoot = vscode.workspace.rootPath
     const config: Config = section => vscode.workspace.getConfiguration('gears').get(section)
