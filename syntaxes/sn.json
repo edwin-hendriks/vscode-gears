@@ -132,7 +132,7 @@
                     "name": "keyword.control.gears"
                 },
                 {
-                    "match": "\\b(and|or|not|current|old|does not exist|exists|contains|intersects|mod|div|like|error)\\b",
+                    "match": "\\b(and|or|not|current|old|published|does not exist|exists|contains|intersects|mod|div|like|error)\\b",
                     "name": "keyword.operator.gears"
                 },
                 {
