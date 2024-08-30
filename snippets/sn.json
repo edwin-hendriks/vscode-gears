@@ -43,7 +43,7 @@
 		"description": "Start a .sn with the text reusable definitions if you want it to contain definitions that are used from another .sn file."
 	},
 	"one created": {
-		"prefix": "one: ELEMENT",
+		"prefix": "one: ELEMENT is created",
 		"body": [
 			"one ${1:element_name} in ${2:collection_name} is created with:",
 			"    ${3:attribute_name} = ${4:value_expression}",
@@ -51,8 +51,17 @@
 		],
 		"description": "Creates one element and returns it."
 	},
+	"multiple updated": {
+		"prefix": "multiple: ELEMENTS are updated",
+		"body": [
+			"multiple ${1:element_name} in ${2:collection_expression} are updated with:",
+			"    ${3:attribute_name} = ${4:value_expression}",
+			"    $0"
+		],
+		"description": "Updates multiple elements of a collection."
+	},
 	"one MAIL created": {
-		"prefix": "mail: ELEMENT",
+		"prefix": "mail: is created",
 		"body": [
 			"one ${1:MAIL_NAME} in MAILS is created with:",
 			"    from_address = ${2:from_expression}",
@@ -63,13 +72,30 @@
 		"description": "Creates an email message."
 	},
 	"one MESSAGE created": {
-		"prefix": "message: ELEMENT",
+		"prefix": "message: is created",
 		"body": [
 			"one ${1:MESSAGE_NAME} in MESSAGES is created with:",
 			"    SENDER    = ${2:from_expression}",
 			"    RECIPIENT = ${3:to_expression}",
 			"    title     = ${4:title_expression}",
 			"    body      = ${0:body_expression}"
+		],
+		"description": "Creates an internal message."
+	},
+	"one DOCUMENT created": {
+		"prefix": "document: is created",
+		"body": [
+			"one ${1:DOCUMENT_NAME} in DOCUMENTS is created with:",
+			"    type       = ${2:type_expression}",
+			"    title      = ${3:title_expression}",
+			"    filename   = ${4:filename_expression}",
+			"    template   = ${5:template_expression}",
+			"    parameters = \"${6:parameter_definition_title}\"",
+			"",
+			"\"$6\" =",
+			"    { key1: value1",
+			"    , key2: value2",
+			"    }"
 		],
 		"description": "Creates an internal message."
 	},

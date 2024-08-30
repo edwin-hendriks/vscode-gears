@@ -3,7 +3,7 @@
     "displayName": "GEARS Language Support",
     "description": "Support for the GEARS specification language",
     "icon": "img/GEARS_icon.png",
-    "version": "0.18.5",
+    "version": "0.18.9",
     "publisher": "edwin-hendriks",
     "homepage": "https://github.com/edwin-hendriks/vscode-gears",
     "license": "GPL-3.0",
@@ -157,6 +157,11 @@
                 "label": "GEARS Light",
                 "uiTheme": "vs",
                 "path": "./themes/gears_light.json"
+            },
+            {
+                "label": "GEARS Dark",
+                "uiTheme": "vs-dark",
+                "path": "./themes/gears_dark.json"
             }
         ],
         "keybindings": [

@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.18.9
+
+- better readable comments.
+
+## 0.18.8
+
+- made some fixes in GEARS Dark theme
+
+## 0.18.7
+
+- added 1st concept of dark theme
+- added snippet for multiple updated
+
+## 0.18.6
+
+- Added snippit for creating documents
+
 ## 0.18.5
 - Updated syntax highlighting:
   - in `.sn` files: `are updated`
