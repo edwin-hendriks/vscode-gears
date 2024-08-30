@@ -151,23 +151,12 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     
     const version = gearsConfig.runnerVersion
     
-    if (version.startsWith('0.')) {
-        const jar = utils.getRunnerJar(version)
-        var cmd = `java -jar "${jar}"`
-        if (endpoint)  cmd += ` --endpoint ${endpoint}`
-        if (target)    cmd += ` --target ${target}`
-        if (extraArgs) cmd += ` ${extraArgs}`
-        cmd += ` --${goal} '${pattern}'`
-        return cmd
-    }
-    else {
-        var cmd = `mvn com.xlrit.gears.runtime:gears-maven-runner-plugin:${version}:${goal}`
+    var cmd = `mvn com.xlrit.gears.runtime:gears-maven-runner-plugin:${version}:${goal}`
         if (endpoint)  cmd += ` -Dgears.runner.endpoint=${endpoint}`
         if (target)    cmd += ` -Dgears.runner.target=${target}`
         if (extraArgs) cmd += ` ${extraArgs}`
         cmd += ` -Dgears.runner.pattern='${pattern}'`
         return cmd
-    }
     }
 }
 
