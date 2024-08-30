@@ -182,7 +182,7 @@
         "traits": {
             "patterns": [
                 {
-                    "match": "#[a-z][a-z]*",
+                    "match": "#[a-z][a-z_]*",
                     "name": "string.unquoted.trait.gears"
                 }
             ]
