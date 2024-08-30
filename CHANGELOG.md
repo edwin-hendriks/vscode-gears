@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.19.0
+
+- Improved syntax highlighting for `*.scenario` files.
+- [ CTRL + / ] now comments/uncomments lines in `*.scenario` files.
+- Replaced build task 'Run with Selenide' with 'Export data'.
+- Added highlighting for new keywork `published` in `*.sn` files. 
+
 ## 0.18.9
 
 - better readable comments.
