@@ -69,11 +69,11 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     generateExecution(gearsConfig: any): Execution {
         const cwd            = this.workspaceRoot
         const configFile     = path.relative(cwd, gearsConfig.filename)
+        const startCmd       = this.config('generator.startCmd')
         const filter         = this.config('generator.filter')
         const extraArgs      = this.config('generator.extraArgs')
-        const generatorJar   = utils.getGeneratorJar(gearsConfig)
         
-        var cmd = `java -jar "${generatorJar}"`
+        var cmd = startCmd.replace("%GEARS_RELEASES%", process.env.GEARS_RELEASES).replace("%VERSION%", gearsConfig.generatorVersion)
         if (configFile) cmd += ` --config ${configFile}`
         if (filter)     cmd += ` --filter ${filter}`
         if (extraArgs)  cmd += ` ${extraArgs}`
@@ -83,10 +83,10 @@ export class GearsTaskProvider implements vscode.TaskProvider {
 
     copyResourcesExecution(gearsConfig: any): Execution {
         const cwd            = this.workspaceRoot
+        const startCmd       = this.config('generator.startCmd')
         const configFile     = path.relative(cwd, gearsConfig.filename)
-        const generatorJar   = utils.getGeneratorJar(gearsConfig)
         
-        var cmd = `java -jar "${generatorJar}"`
+        var cmd = startCmd.replace("%GEARS_RELEASES%", process.env.GEARS_RELEASES).replace("%VERSION%", gearsConfig.generatorVersion)
         if (configFile) cmd += ` --config ${configFile}`
         cmd += ` --copy-resources`
         

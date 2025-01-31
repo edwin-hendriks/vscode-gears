@@ -62,17 +62,18 @@ export function activate(context: vscode.ExtensionContext) {
         })
     )
 
-    const gearsConfig = utils.loadGearsConfig()
+    const gearsConfig = utils.loadGearsConfig() // configuration from gears.json
     const env = { ...process.env }
+
     const serverOptions: ServerOptions = {
         run: {
-            command: 'java',
-            args: ['-cp', utils.getGeneratorJar(gearsConfig), 'com.xlrit.gears.languageserver.GearsLanguageServerLauncher'],
+            command: 'gears-server',
+            args: [gearsConfig.generatorVersion],
             options: { env }
         },
         debug: {
-            command: 'java',
-            args: ['-cp', utils.getGeneratorJar(gearsConfig), 'com.xlrit.gears.languageserver.GearsLanguageServerLauncher'],
+            command: 'gears-server',
+            args: [gearsConfig.generatorVersion],
             options: { env }
         },
     };

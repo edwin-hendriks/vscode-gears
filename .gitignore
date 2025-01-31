@@ -1,6 +1,7 @@
 out
 node_modules
 *.lnk
-/PaGenServer.log
 *.vsix
 .idea
+/PaGenServer.log
+NOTES.txt
