@@ -89,6 +89,11 @@
         "configuration": {
             "title": "GEARS",
             "properties": {
+                "gears.generator.startCmd": {
+                    "type": "string",
+                    "default": "gears-generate %VERSION%",
+                    "description": "Specifies the command used to start the generator, where %GEARS_RELEASES% and %VERSION% are available as placeholders to be substituted with their actual values"
+                },
                 "gears.generator.filter": {
                     "type": "string",
                     "default": "",
