@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.20.0
+
+- Start the GEARS Generator & Language Server through shell scripts. Thus supporting GaaS (GEARS as a Service). 
+- Extension now suitable for Git Bash (which requires it to be the default terminal in VS Code when you use this extension)
+
 ## 0.19.0
 
 - Improved syntax highlighting for `*.scenario` files.
