@@ -22,7 +22,8 @@ export function loadGearsConfig(): any {
 
 export function getGeneratedProjectDir(gearsConfig: any): string {
   const projectName = gearsConfig.projectName
-  return `${workspaceRoot}/target/${projectName}`
+  const workspaceRootForwardSlashes =  workspaceRoot.replace(/\\/g, "/");
+  return `${workspaceRootForwardSlashes}/target/${projectName}`
 }
 
 export function getGeneratorJar(gearsConfig: any): string {
