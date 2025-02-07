@@ -12,12 +12,13 @@ import {
     RevealOutputChannelOn,
     ServerOptions
 } from 'vscode-languageclient/node';
+import { ChildProcess, spawn } from 'child_process'
 
 const outputChannel = vscode.window.createOutputChannel("GEARS")
 let client: LanguageClient;
 
 export function activate(context: vscode.ExtensionContext) {
-    console.log('Extension "vscode-gears" is now activating...')
+    outputChannel.appendLine('Extension "vscode-gears" is now activating...')
 
     vscode.languages.setLanguageConfiguration('sn', {
         wordPattern: /(-?\d*\.\d\w*)|([^\`\~\!\@\#\%\^\&\*\(\)\-\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\?\s]+)/g,
@@ -65,24 +66,25 @@ export function activate(context: vscode.ExtensionContext) {
     const gearsConfig = utils.loadGearsConfig() // configuration from gears.json
     const env = { ...process.env }
 
-    const serverOptions: ServerOptions = {
-        run: {
-            command: 'gears-server',
-            args: [gearsConfig.generatorVersion],
-            options: { env }
-        },
-        debug: {
-            command: 'gears-server',
-            args: [gearsConfig.generatorVersion],
-            options: { env }
-        },
-    };
+    //const serverOptions: ServerOptions = startLanguageServer;
+    // const serverOptions: ServerOptions = {
+    //     run: {
+    //         command: 'gears-server',
+    //         args: [gearsConfig.generatorVersion],
+    //         options: { env }
+    //     },
+    //     debug: {
+    //         command: 'gears-server',
+    //         args: [gearsConfig.generatorVersion],
+    //         options: { env }
+    //     },
+    // };
 
     // Options to control the language client
     const clientOptions: LanguageClientOptions = {
         // Register the server for plain text documents
         documentSelector: [{ scheme: 'file', language: 'sn' }],
-        outputChannel: outputChannel,
+        outputChannel,
         revealOutputChannelOn: RevealOutputChannelOn.Info,
         synchronize: {
             // Notify the server about file changes to '.clientrc files contained in the workspace
@@ -94,16 +96,38 @@ export function activate(context: vscode.ExtensionContext) {
     client = new LanguageClient(
         'gearsLanguageServer',
         'GEARS Language Server',
-        serverOptions,
+        () => startLanguageServer(env),
         clientOptions
     );
 
     // Start the client. This will also launch the server
     client.start();
 
-    console.log('Extension "vscode-gears" is now active')
+    outputChannel.appendLine('Extension "vscode-gears" is now active')
 }
 
 export function deactivate() {
-    console.log('Extension "vscode-gears" is deactivated')
+    outputChannel.appendLine('Extension "vscode-gears" is deactivated')
 }
+
+function startLanguageServer(env: any): Promise<ChildProcess> {
+    return new Promise((resolve, reject) => {
+        outputChannel.appendLine('Starting GEARS language server...')
+
+        const child = spawn('gears-server', ['1.18.2'], { env });
+        /*
+        child.stdout.on('data', (data) => {
+            outputChannel.appendLine(`stdout: ${data}`);
+        });
+        child.stderr.on('data', (data) => {
+            outputChannel.appendLine(`stderr: ${data}`);
+        });
+        */
+        child.on('error', (err) => {
+            outputChannel.appendLine('GEARS language server error')
+            reject(err);
+        });
+
+        resolve(child);
+    });
+  }
