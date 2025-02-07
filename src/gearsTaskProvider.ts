@@ -66,14 +66,19 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         return undefined
     }
 
+    generatorStartCmd(gearsConfig: any): string {
+        return this.config('generator.startCmd')
+            .replace("%GEARS_RELEASES%", process.env.GEARS_RELEASES)
+            .replace("%VERSION%", gearsConfig.generatorVersion)
+    }
+
     generateExecution(gearsConfig: any): Execution {
-        const cwd            = this.workspaceRoot
-        const configFile     = path.relative(cwd, gearsConfig.filename)
-        const startCmd       = this.config('generator.startCmd')
-        const filter         = this.config('generator.filter')
-        const extraArgs      = this.config('generator.extraArgs')
+        const cwd        = this.workspaceRoot
+        const configFile = path.relative(cwd, gearsConfig.filename)
+        const filter     = this.config('generator.filter')
+        const extraArgs  = this.config('generator.extraArgs')
         
-        var cmd = startCmd.replace("%GEARS_RELEASES%", process.env.GEARS_RELEASES).replace("%VERSION%", gearsConfig.generatorVersion)
+        var cmd = this.generatorStartCmd(gearsConfig)
         if (configFile) cmd += ` --config ${configFile}`
         if (filter)     cmd += ` --filter ${filter}`
         if (extraArgs)  cmd += ` ${extraArgs}`
@@ -82,11 +87,10 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     }
 
     copyResourcesExecution(gearsConfig: any): Execution {
-        const cwd            = this.workspaceRoot
-        const startCmd       = this.config('generator.startCmd')
-        const configFile     = path.relative(cwd, gearsConfig.filename)
+        const cwd        = this.workspaceRoot
+        const configFile = path.relative(cwd, gearsConfig.filename)
         
-        var cmd = startCmd.replace("%GEARS_RELEASES%", process.env.GEARS_RELEASES).replace("%VERSION%", gearsConfig.generatorVersion)
+        var cmd = this.generatorStartCmd(gearsConfig)
         if (configFile) cmd += ` --config ${configFile}`
         cmd += ` --copy-resources`
         
