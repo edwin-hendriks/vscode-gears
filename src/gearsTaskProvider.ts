@@ -17,11 +17,11 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     }
     
     provideTasks(token?: vscode.CancellationToken): vscode.ProviderResult<vscode.Task[]> {
-        function createTask(name: string, execution: Execution): vscode.Task {
+        function createTask(name: string, description: string, execution: Execution): vscode.Task {
             const problemMatcher = "$sn"
             const def: GearsTaskDefinition = {
                 type: GearsTaskProvider.GearsType, 
-                name: name
+                name: name,
             }
             const task = new vscode.Task(
                 def, 
@@ -29,8 +29,9 @@ export class GearsTaskProvider implements vscode.TaskProvider {
                 def.name, 
                 def.type, 
                 execution,
-                problemMatcher
+                problemMatcher,
             );
+            task.detail = description;
             task.group = vscode.TaskGroup.Build
             task.presentationOptions = { 
                 showReuseMessage: false 
@@ -46,15 +47,15 @@ export class GearsTaskProvider implements vscode.TaskProvider {
         }
         
         const tasks = [
-            createTask('1. Generate',            this.generateExecution(gearsConfig)),
-            createTask('2. Copy Resources',      this.copyResourcesExecution(gearsConfig)),
-            createTask('3. Show Diagrams',       this.diagramsExecution(gearsConfig)),
-            createTask('4. Build',               this.buildExecution(gearsConfig)),
-            createTask('5. Start Application',   this.startExecution(gearsConfig)),
-            createTask('6. Load data',           this.runnerExecution(gearsConfig, 'load')),
-            createTask('7. Run Scenarios',       this.runnerExecution(gearsConfig, 'run')),
-            createTask('8. Export data',         this.runnerExecution(gearsConfig, 'export')),
-            createTask('9. Open Generated Code', this.openCodeExecution(gearsConfig)),
+            createTask('1. Generate',            'Transform requirement specs in .sn files to designs and source code.', this.generateExecution(gearsConfig)),
+            createTask('2. Copy Resources',      'Use this if you only made changes to resources.', this.copyResourcesExecution(gearsConfig)),
+            createTask('3. Show Diagrams',       'Show generated designs.', this.diagramsExecution(gearsConfig)),
+            createTask('4. Build',               'Build the generated application.', this.buildExecution(gearsConfig)),
+            createTask('5. Start Application',   'Starts the generated application. Will also build it if needed.', this.startExecution(gearsConfig)),
+            createTask('6. Load data',           'Load data into the started system.', this.runnerExecution(gearsConfig, 'load')),
+            createTask('7. Run Scenarios',       'Run back-end test scenarios in the started system.', this.runnerExecution(gearsConfig, 'run')),
+            createTask('8. Export data',         'Export data that is in the started system to an importable format.', this.runnerExecution(gearsConfig, 'export')),
+            createTask('9. Open Generated Code', 'Open the generated source code in a new VS Code window.', this.openCodeExecution(gearsConfig)),
         ]
         
         //console.log("provideTasks: ", tasks)
