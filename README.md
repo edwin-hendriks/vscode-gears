@@ -10,9 +10,11 @@ To publish:
 
 # Prerequisites
 
-- GEARS must be installed (to be able to generate)
-- The environment variable "GEARS\_RELEASES" must point to the GEARS installation folder.
-- Java 11 or higher must be installed (to be able to compile)
+- GEARS must be installed (to be able to generate).
+- Set environment variables: 
+  - `GEARS_RELEASES` must point to the GEARS installation folder.
+  - `PATH` should include a path to the `gears-generate` and `gears-server` GEARS [scripts](https://gitlab.xlrit.com/xlrit/gears/scripts).
+- Java 21 or higher must be installed (to be able to compile). We recommend [Temurin JDK](https://adoptium.net/temurin/releases/) 21.
 
 # How to use
 
@@ -30,7 +32,7 @@ For snippets either press CTRL+SHIFT+P, type 'snip', choose 'Insert snippet' bef
 
 ## Tasks
 
-Press `CTRL+SHIFT+B`, then choose a task. They are already in logical order. E.g. GEARS: 1. Generate, 2. Show Diagrams, 3. Build, 4. Run Application, 5. Load data, 6. Run scenarios.
+Press `CTRL+SHIFT+B`, then choose a task. They are already in logical order.
 
 Below is an example demo of how to call the task `GEARS: 1. Generate`:
 
