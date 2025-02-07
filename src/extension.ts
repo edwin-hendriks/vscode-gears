@@ -1,8 +1,9 @@
 import * as vscode from 'vscode'
 import * as fs     from 'fs'
 import * as open   from 'open'
-import * as utils   from './gearsUtils'
+import * as utils  from './gearsUtils'
 
+import { ChildProcess, exec } from 'child_process'
 import { GearsTaskProvider } from './gearsTaskProvider'
 import { Config } from './common'
 
@@ -10,9 +11,7 @@ import {
     LanguageClient,
     LanguageClientOptions,
     RevealOutputChannelOn,
-    ServerOptions
 } from 'vscode-languageclient/node';
-import { ChildProcess, spawn } from 'child_process'
 
 const outputChannel = vscode.window.createOutputChannel("GEARS")
 let client: LanguageClient;
@@ -64,21 +63,7 @@ export function activate(context: vscode.ExtensionContext) {
     )
 
     const gearsConfig = utils.loadGearsConfig() // configuration from gears.json
-    const env = { ...process.env }
-
-    //const serverOptions: ServerOptions = startLanguageServer;
-    // const serverOptions: ServerOptions = {
-    //     run: {
-    //         command: 'gears-server',
-    //         args: [gearsConfig.generatorVersion],
-    //         options: { env }
-    //     },
-    //     debug: {
-    //         command: 'gears-server',
-    //         args: [gearsConfig.generatorVersion],
-    //         options: { env }
-    //     },
-    // };
+    const serverOptions = () => startLanguageServer(process.env, gearsConfig)
 
     // Options to control the language client
     const clientOptions: LanguageClientOptions = {
@@ -96,7 +81,7 @@ export function activate(context: vscode.ExtensionContext) {
     client = new LanguageClient(
         'gearsLanguageServer',
         'GEARS Language Server',
-        () => startLanguageServer(env),
+        serverOptions,
         clientOptions
     );
 
@@ -110,11 +95,11 @@ export function deactivate() {
     outputChannel.appendLine('Extension "vscode-gears" is deactivated')
 }
 
-function startLanguageServer(env: any): Promise<ChildProcess> {
+function startLanguageServer(env: any, gearsConfig: any): Promise<ChildProcess> {
     return new Promise((resolve, reject) => {
         outputChannel.appendLine('Starting GEARS language server...')
 
-        const child = spawn('gears-server', ['1.18.2'], { env });
+        const child = exec(`gears-server ${gearsConfig.generatorVersion}`, { env });
         /*
         child.stdout.on('data', (data) => {
             outputChannel.appendLine(`stdout: ${data}`);
