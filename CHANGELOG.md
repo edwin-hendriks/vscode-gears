@@ -2,8 +2,8 @@
 
 ## 0.20.0
 
-- Start the GEARS Generator & Language Server through shell scripts. Thus supporting GaaS (GEARS as a Service). 
-- Extension now suitable for Git Bash (which requires it to be the default terminal in VS Code when you use this extension)
+- Start the GEARS Generator & Language Server through shell scripts. Thus supporting GaaS (GEARS as a Service). **IMPORANT!!**: this requires your PATH environment variable includes a path to `gears-generate` and `gears-server` (part of GEARS [scripts](https://gitlab.xlrit.com/xlrit/gears/scripts)).
+- Extension now also suitable for Git Bash as default terminal in VS Code.
 
 ## 0.19.0
 
