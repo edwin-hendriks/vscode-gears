@@ -120,12 +120,16 @@
         "keywords": {
             "patterns": [
                 {
-                    "match": "\\b(reusable definitions|key|with subject|startable by)\\b",
+                    "match": "\\b(reusable definitions|key|with subject|startable by|view definitions)\\b",
                     "name": "keyword.other.gears"
                 },
                 {
                     "match": "\\b(process|description)(?=\\s+')",
                     "name": "keyword.other.gears"
+                },
+                {
+                    "match": "\\b(view|with fields|with sections|with search fields|with link to|filled with|record|reusable|list|process|detail|visible to|detailed by)\\b",
+                    "name": "keyword.control.gears"
                 },
                 {
                     "match": "\\b(for|the|only|first|last|each|one|multiple|the|is created with|are created with|is deleted|are deleted|is archived|are archived|are updated|in|applies|with|numerous)\\b",
