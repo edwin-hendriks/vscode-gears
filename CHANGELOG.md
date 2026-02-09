@@ -1,11 +1,18 @@
 # Changelog
 
-## 0.20.0
+## 0.20.1 (2026-02-09)
+
+- Made GEARS extension part of XLRIT
+- Added MIT license
+- Add view definition keywords to sn syntax
+- Bump brace-expansion from 2.0.1 to 2.0.2
+
+## 0.20.0 (2025-02-07)
 
 - Start the GEARS Generator & Language Server through shell scripts. Thus supporting GaaS (GEARS as a Service). **IMPORANT!!**: this requires your PATH environment variable includes a path to `gears-generate` and `gears-server` (part of GEARS [scripts](https://gitlab.xlrit.com/xlrit/gears/scripts)).
 - Extension now also suitable for Git Bash as default terminal in VS Code.
 
-## 0.19.0
+## 0.19.0 (2024-08-30)
 
 - Improved syntax highlighting for `*.scenario` files.
 - [ CTRL + / ] now comments/uncomments lines in `*.scenario` files.

@@ -1,11 +1,11 @@
 {
-    "name": "vscode-gears",
-    "displayName": "GEARS Language Support",
+    "name": "vscode-gears-by-xlrit",
+    "displayName": "GEARS Language Support by XLRIT",
     "description": "Support for the GEARS specification language",
     "icon": "img/GEARS_icon.png",
-    "version": "0.20.0",
-    "publisher": "edwin-hendriks",
-    "homepage": "https://github.com/edwin-hendriks/vscode-gears",
+    "version": "0.20.1",
+    "publisher": "XLRIT",
+    "homepage": "https://xlrit.com",
     "license": "GPL-3.0",
     "repository": {
         "type": "git",
