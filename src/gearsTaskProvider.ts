@@ -147,7 +147,7 @@ export class GearsTaskProvider implements vscode.TaskProvider {
     const extraArgs = this.config(`runner.extraArgs`)
     const pattern   = this.config(`runner.${goal}-pattern`)
     
-    const version = gearsConfig.runnerVersion
+    const version = gearsConfig.runnerVersion ?? gearsConfig.runtimeVersion
     
     var cmd = `mvn com.xlrit.gears.runtime:gears-maven-runner-plugin:${version}:${goal}`
         if (endpoint)  cmd += ` -Dgears.runner.endpoint=${endpoint}`
