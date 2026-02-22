@@ -3,7 +3,7 @@
     "displayName": "GEARS Language Support by XLRIT",
     "description": "Support for the GEARS specification language",
     "icon": "img/GEARS_icon.png",
-    "version": "0.20.1",
+    "version": "0.20.2",
     "publisher": "XLRIT",
     "homepage": "https://xlrit.com",
     "license": "GPL-3.0",

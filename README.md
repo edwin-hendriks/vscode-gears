@@ -56,5 +56,7 @@ Additional settings can be configured using VSCode's configuration mechanism (CT
 1. Update `CHANGELOG.md`
 2. adjust version number in package.json
 3. execute `npm install`
-4. execute `vsce packages`. _Will produce a `.vsix` file_
-5. go to https://marketplace.visualstudio.com/manage/publishers/XLRIT, login (ony possible if you are a member of publisher **XLRIT**) and update the extension. <br> ![update-exension](img/update-exension.png)
+4. execute `vsce package`. _Will produce a `.vsix` file_
+5. execute `publish-vscode-gears` to place the new `.vsix` in `$GEARS_RELEASES`.
+
+On 2026-08-13 we should be able to deploy like this: go to https://marketplace.visualstudio.com/manage/publishers/XLRIT, login (ony possible if you are a member of publisher **XLRIT**) and update the extension. <br> ![update-exension](img/update-exension.png)
