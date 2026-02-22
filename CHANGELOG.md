@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.20.2 (2026-02-22)
+
+- no need to specify `"runnerVersion"` anymore in `gears.json` (of ommitted it will simply use `"runtimeVersion"` which should always be correct)
+
 ## 0.20.1 (2026-02-09)
 
 - Made GEARS extension part of XLRIT
